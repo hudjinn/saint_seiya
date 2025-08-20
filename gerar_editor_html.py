@@ -40,15 +40,9 @@ html = '''<!DOCTYPE html>
     <title>Editor de Cartas Saint Seiya</title>
     <style>
         /* Ícones de efeito pequenos centralizados na base */
-        .efeito-html img.stat,
-        .efeito-html img[alt="Force"],
-        .efeito-html img[alt="Cosmos"],
-        .efeito-html img[alt="PV"],
-        .efeito-html img[alt="Cura"],
-        .efeito-html img[alt="Almas"],
-        .efeito-html img[alt="Sceau"],
-        .efeito-html img[alt="Compteur"],
+        /* Ícones de efeito: sempre 22px e alinhados ao texto */
         .effect img.stat,
+        .effect img.rank,
         .effect img[alt="Force"],
         .effect img[alt="Cosmos"],
         .effect img[alt="PV"],
@@ -58,15 +52,7 @@ html = '''<!DOCTYPE html>
         .effect img[alt="Compteur"] {
             width: 22px !important;
             height: 22px !important;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            margin-bottom: 0;
-            margin-top: 8px;
-            vertical-align: bottom;
-            position: relative;
-            left: 50%;
-            transform: translateX(-50%);
+            vertical-align: middle;
         }
         body { font-family: Arial, sans-serif; background: #222; color: #eee; }
         .editar-pos-btn {
