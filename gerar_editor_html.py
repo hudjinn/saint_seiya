@@ -297,11 +297,11 @@ for carta in cartas:
     ]
     nome_arquivo = os.path.basename(img_orig)
     if nome_arquivo in icones:
-        img = f"imagens/{nome_arquivo}"
+        img = f"imagens/{nome_arquivo}".lstrip("/")
     elif img_orig.startswith("imagens/"):
-        img = img_orig.replace("imagens/", "imagens_sem_texto/")
+        img = img_orig.replace("imagens/", "imagens_sem_texto/").lstrip("/")
     else:
-        img = img_orig
+        img = img_orig.lstrip("/")
     nome = carta["Nome"]
     classe = carta["Classe"]
     efeitos = carta.get("effects")
