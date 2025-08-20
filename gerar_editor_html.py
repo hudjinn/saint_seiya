@@ -308,13 +308,18 @@ for carta in cartas:
     efeitos_html = []
     if efeitos and isinstance(efeitos, list) and efeitos:
         for ef in efeitos:
+            html_efeito = None
             if isinstance(ef, dict):
                 if ef.get("html"):
-                    efeitos_html.append(ef["html"])
+                    html_efeito = ef["html"]
                 elif ef.get("text"):
-                    efeitos_html.append(ef["text"])
+                    html_efeito = ef["text"]
             elif isinstance(ef, str):
-                efeitos_html.append(ef)
+                html_efeito = ef
+            if html_efeito:
+                # Corrige src="/imagens/ para src="imagens/ e src='/imagens/ para src='imagens/
+                html_efeito = html_efeito.replace('src="/imagens/', 'src="imagens/').replace("src='/imagens/", "src='imagens/")
+                efeitos_html.append(html_efeito)
     else:
         efeito_fallback = carta.get("Efeito", "")
         efeitos_html = split_efeitos_html(efeito_fallback)
