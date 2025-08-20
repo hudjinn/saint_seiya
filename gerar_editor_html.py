@@ -40,13 +40,33 @@ html = '''<!DOCTYPE html>
     <title>Editor de Cartas Saint Seiya</title>
     <style>
         /* Ícones de efeito pequenos centralizados na base */
-        .efeito-html img.stat, .efeito-html img[alt="Force"], .efeito-html img[alt="Cosmos"], .efeito-html img[alt="PV"], .efeito-html img[alt="Cura"], .efeito-html img[alt="Almas"], .efeito-html img[alt="Sceau"], .efeito-html img[alt="Compteur"] {
+        .efeito-html img.stat,
+        .efeito-html img[alt="Force"],
+        .efeito-html img[alt="Cosmos"],
+        .efeito-html img[alt="PV"],
+        .efeito-html img[alt="Cura"],
+        .efeito-html img[alt="Almas"],
+        .efeito-html img[alt="Sceau"],
+        .efeito-html img[alt="Compteur"],
+        .effect img.stat,
+        .effect img[alt="Force"],
+        .effect img[alt="Cosmos"],
+        .effect img[alt="PV"],
+        .effect img[alt="Cura"],
+        .effect img[alt="Almas"],
+        .effect img[alt="Sceau"],
+        .effect img[alt="Compteur"] {
+            width: 22px !important;
+            height: 22px !important;
             display: block;
             margin-left: auto;
             margin-right: auto;
             margin-bottom: 0;
             margin-top: 8px;
             vertical-align: bottom;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
         }
         body { font-family: Arial, sans-serif; background: #222; color: #eee; }
         .editar-pos-btn {
@@ -319,20 +339,6 @@ for carta in cartas:
             if html_efeito:
                 # Corrige src="/imagens/ para src="imagens/ e src='/imagens/ para src='imagens/
                 html_efeito = html_efeito.replace('src="/imagens/', 'src="imagens/').replace("src='/imagens/", "src='imagens/")
-                # Força width/height 22px e alinhamento center bottom nos ícones de efeito
-                import re
-                def fix_icon_size(m):
-                    tag = m.group(0)
-                    # Remove width/height antigos
-                    tag = re.sub(r'width="?\d+"?', '', tag)
-                    tag = re.sub(r'height="?\d+"?', '', tag)
-                    # Adiciona width/height 22px e style de alinhamento
-                    if 'style=' in tag:
-                        tag = re.sub(r'style=["\"][^"\']*["\']', lambda sm: sm.group(0).replace('"', '').replace("'", '')[:-1] + ';width:22px;height:22px;display:inline-block;vertical-align:bottom;margin:0 auto;display:block;text-align:center"', tag)
-                    else:
-                        tag = tag.replace('<img ', '<img style="width:22px;height:22px;display:inline-block;vertical-align:bottom;margin:0 auto;display:block;text-align:center" ', 1)
-                    return tag
-                html_efeito = re.sub(r'<img [^>]*src=["\']imagens/[^>]+>', fix_icon_size, html_efeito)
                 efeitos_html.append(html_efeito)
     else:
         efeito_fallback = carta.get("Efeito", "")
