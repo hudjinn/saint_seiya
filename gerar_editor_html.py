@@ -319,6 +319,20 @@ for carta in cartas:
             if html_efeito:
                 # Corrige src="/imagens/ para src="imagens/ e src='/imagens/ para src='imagens/
                 html_efeito = html_efeito.replace('src="/imagens/', 'src="imagens/').replace("src='/imagens/", "src='imagens/")
+                # Força width/height 22px e alinhamento center bottom nos ícones de efeito
+                import re
+                def fix_icon_size(m):
+                    tag = m.group(0)
+                    # Remove width/height antigos
+                    tag = re.sub(r'width="?\d+"?', '', tag)
+                    tag = re.sub(r'height="?\d+"?', '', tag)
+                    # Adiciona width/height 22px e style de alinhamento
+                    if 'style=' in tag:
+                        tag = re.sub(r'style=["\"][^"\']*["\']', lambda sm: sm.group(0).replace('"', '').replace("'", '')[:-1] + ';width:22px;height:22px;display:inline-block;vertical-align:bottom;margin:0 auto;display:block;text-align:center"', tag)
+                    else:
+                        tag = tag.replace('<img ', '<img style="width:22px;height:22px;display:inline-block;vertical-align:bottom;margin:0 auto;display:block;text-align:center" ', 1)
+                    return tag
+                html_efeito = re.sub(r'<img [^>]*src=["\']imagens/[^>]+>', fix_icon_size, html_efeito)
                 efeitos_html.append(html_efeito)
     else:
         efeito_fallback = carta.get("Efeito", "")
