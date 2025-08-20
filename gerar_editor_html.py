@@ -6,7 +6,7 @@ from PIL import Image
 
 IMAGES_DIR = "imagens_sem_texto"
 IMAGES_ORIG_DIR = "imagens"
-HTML_PATH = "editor.html"
+HTML_PATH = "index.html"
 JSON_PATH = "cartas.json"
 
 with open(JSON_PATH, encoding="utf-8") as f:
