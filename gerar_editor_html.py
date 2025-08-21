@@ -138,15 +138,27 @@ html = '''<!DOCTYPE html>
         .edit-nome {
             position: absolute; top: 0px; left: 0; right: 0; width: 90%; margin: 0 auto;
             background: rgba(0,0,0,0.60); color: #fff; border-radius: 8px; border: 2px solid #111;
-            padding: 6px 8px 2px 8px; font-size: 1.1em; font-family: 'Arial', Arial, sans-serif; font-weight: bold; text-align: center;
+            padding: 6px 8px 2px 8px; font-size: 1.1em; font-family: 'Arial', Arial, sans-serif; text-align: center;
             text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-            outline: none; letter-spacing: 1px;
+            outline: none;
         }
         .edit-classe {
-            position: absolute; top: 41px; left: 0; right: 0; width: 80%; margin: 0 auto;
-            background: rgba(0,0,0,0.32); color: #e0e0e0; border-radius: 4px; border: 1.5px solid #aaa;
-            padding: 2px 6px; font-size: 0.95em; font-family: 'Georgia', serif; text-align: center;
-            text-shadow: 1px 1px 4px #000, 0 0 2px #fff; outline: none; font-style: italic;
+            z-index: 20;
+            position: absolute;
+            top: 40px;
+            left: 20px;
+            width: 80%;
+            background: rgba(0, 0, 0, 0.2);
+            font-size: 0.8em;
+            font-family: 'Georgia', serif;
+            border: none;
+            border-radius: 6px;
+            padding: 2px 8px;
+            outline: none;
+            text-align: center;
+            box-shadow: 0 1px 6px #0006;
+            color: #fff;
+
         }
         .efeito-box {
             position: absolute;
@@ -269,11 +281,13 @@ for kw in efeito_prefixos:
                 <span class="efeito-carta-tooltip"><img src="{img_exemplo}" alt="{nome_exemplo}" style="max-width:320px;max-height:460px;box-shadow:0 0 16px #000;border-radius:10px;border:2px solid #ffe066;background:#222;"><br><span style="color:#ffe066;font-size:1.1em;font-weight:bold;">{nome_exemplo}</span></span>
             </span>
             <input type="text" class="efeito-trad" data-orig="{kw}" value="{kw}">
+            <button type="button" class="efeito-aplicar-btn" data-orig="{kw}">Aplicar</button>
         </div>\n'''
     else:
         html += f'''<div class="efeito-row">
             <span class="efeito-orig">{kw}</span>
             <input type="text" class="efeito-trad" data-orig="{kw}" value="{kw}">
+            <button type="button" class="efeito-aplicar-btn" data-orig="{kw}">Aplicar</button>
         </div>\n'''
 html += '</div>'
 html += '''
@@ -325,6 +339,12 @@ for carta in cartas:
             if html_efeito:
                 # Corrige src="/imagens/ para src="imagens/ e src='/imagens/ para src='imagens/
                 html_efeito = html_efeito.replace('src="/imagens/', 'src="imagens/').replace("src='/imagens/", "src='imagens/")
+                # Envolve o prefixo do efeito global com <em class="keyword">...</em> se ainda não estiver
+                for prefixo in efeito_prefixos:
+                    if html_efeito.strip().startswith(prefixo):
+                        if not html_efeito.strip().startswith(f'<em class="keyword">{prefixo}</em>'):
+                            html_efeito = html_efeito.replace(prefixo, f'<em class="keyword">{prefixo}</em>', 1)
+                        break
                 efeitos_html.append(html_efeito)
     else:
         efeito_fallback = carta.get("Efeito", "")
@@ -335,7 +355,7 @@ for carta in cartas:
         <div class="carta-imgbox" style="position:relative;width:{'350px;height:500px;' if aspect=='portrait' else '500px;height:350px;'}">
             <img src="{img}" alt="{nome}" class="carta-img" style="display:block;position:relative;z-index:10;">
             <div contenteditable="true" class="edit-nome" style="z-index:20;">{nome}</div>
-            <div contenteditable="true" class="edit-classe" data-orig="{classe}" style="z-index:20;">{classe}</div>
+            <input type="text" class="edit-classe" data-orig="{classe}" value="{classe}" style="width:{'38%' if aspect=='landscape' else '80%'};">
             <img src="{img_orig}" class="restaurar-preview" style="display:none;position:absolute;left:0;top:0;width:100%;height:100%;z-index:31;pointer-events:none;">
             <canvas class="restaurar-canvas" style="display:none;position:absolute;left:0;top:0;width:100%;height:100%;z-index:99;pointer-events:auto;"></canvas>
             <span class="carta-ref-hover" style="position:absolute;top:8px;right:8px;z-index:20;">
@@ -352,7 +372,7 @@ for carta in cartas:
             </div>
             <div class="efeitos-stack">
 ''' + ''.join([
-    f'<div contenteditable="true" class="efeito-box" style="position:absolute;left:0;right:0;bottom:{10+idx*44}px;z-index:11;min-height:32px;margin:0 auto 6px auto;background:rgba(0,0,0,0.60);color:#fff;border-radius:6px;border:2px solid #888;padding:8px 12px 8px 12px;font-size:1.01em;text-align:center;text-shadow:1px 1px 6px #000,0 0 2px #000;outline:none;line-height:1.18em;font-family:\'Times New Roman\',\'Georgia\',serif;box-sizing:border-box;width:94%;' 
+    f'<div contenteditable="true" class="efeito-box" data-orig="{ef_html.replace('"', '&quot;').replace("'", "&#39;")}" style="position:absolute;left:0;right:0;bottom:{10+idx*44}px;z-index:11;min-height:32px;margin:0 auto 6px auto;background:rgba(0,0,0,0.60);color:#fff;border-radius:6px;border:2px solid #888;padding:8px 12px 8px 12px;font-size:1.01em;text-align:center;text-shadow:1px 1px 6px #000,0 0 2px #000;outline:none;line-height:1.18em;font-family:\'Times New Roman\',\'Georgia\',serif;box-sizing:border-box;width:94%;' 
     f'" data-pos-x="0" data-pos-y="0">{ef_html}'
     f'<div class="efeito-move-btns" style="pointer-events:none;">'
     f'<button class="efeito-move-btn up" title="Mover para cima" style="pointer-events:auto;">↑</button>'
@@ -404,24 +424,40 @@ html += '''
         });
     })();
     // Tradução automática de classes
+    // Sincroniza input de tradução -> carta
     document.querySelectorAll('.classe-trad').forEach(function(input) {
         input.addEventListener('input', function() {
             var orig = this.getAttribute('data-orig');
             var trad = this.value;
-            document.querySelectorAll('.edit-classe').forEach(function(div) {
-                if (div.getAttribute('data-orig') === orig) {
-                    div.innerText = trad;
+            document.querySelectorAll('.edit-classe').forEach(function(ic) {
+                if (ic.getAttribute('data-orig') === orig) {
+                    ic.value = trad;
                 }
             });
         });
     });
-    // Atualiza todos os efeitos ao editar a tradução global
-    document.querySelectorAll('.efeito-trad').forEach(function(input) {
-        input.addEventListener('input', function() {
+    // Sincroniza edição direta na carta -> input de tradução
+    document.querySelectorAll('.edit-classe').forEach(function(ic) {
+        ic.addEventListener('input', function() {
             var orig = this.getAttribute('data-orig');
-            var trad = this.value;
-            document.querySelectorAll('.efeito-box').forEach(function(div) {
-                div.innerHTML = div.innerHTML.replace(new RegExp(orig, 'g'), trad);
+            var novo = this.value;
+            document.querySelectorAll('.classe-trad').forEach(function(input) {
+                if (input.getAttribute('data-orig') === orig) {
+                    input.value = novo;
+                }
+            });
+        });
+    });
+    // Atualiza todos os efeitos ao editar a tradução global (só prefixo, igual classes)
+    document.querySelectorAll('.efeito-aplicar-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            var orig = this.getAttribute('data-orig');
+            var input = document.querySelector('.efeito-trad[data-orig="' + orig.replace(/'/g, "\\'") + '"]');
+            var trad = input ? input.value : orig;
+            document.querySelectorAll('.efeito-box em.keyword').forEach(function(em) {
+                if (em.textContent.trim() === orig.trim()) {
+                    em.textContent = trad;
+                }
             });
         });
     });
@@ -430,7 +466,7 @@ html += '''
         var cartas = [];
         document.querySelectorAll('.carta').forEach(function(cartaDiv) {
             var nome = cartaDiv.querySelector('.edit-nome').innerText;
-            var classe = cartaDiv.querySelector('.edit-classe').innerText;
+            var classe = cartaDiv.querySelector('.edit-classe').value;
             var efeitos = [];
             cartaDiv.querySelectorAll('.efeito-box').forEach(function(efDiv) {
                 efeitos.push({
@@ -659,6 +695,41 @@ html += '''
             tooltip.style.top = y + 'px';
         });
         el.addEventListener('mouseleave', function(){ tooltip.style.display = 'none'; });
+    });
+    // --- Observador de mudanças nos efeitos globais ---
+    // Garante que qualquer alteração manual (ex: colar texto) nos inputs de efeitos globais seja refletida nas cartas
+    const efeitoInputs = document.querySelectorAll('.efeito-trad');
+    efeitoInputs.forEach(function(input) {
+        // Usar MutationObserver para detectar mudanças no valor do input
+        const observer = new MutationObserver(function() {
+            input.dispatchEvent(new Event('input', { bubbles: true }));
+        });
+        observer.observe(input, { attributes: true, attributeFilter: ['value'] });
+        // Também observar mudanças diretas de texto (ex: colar via menu)
+        input.addEventListener('change', function() {
+            input.dispatchEvent(new Event('input', { bubbles: true }));
+        });
+        // E garantir atualização ao perder o foco
+        input.addEventListener('blur', function() {
+            input.dispatchEvent(new Event('input', { bubbles: true }));
+        });
+    });
+    // Atualiza também se o usuário editar manualmente o <em class="keyword"> na carta
+    document.querySelectorAll('.efeito-box').forEach(function(div) {
+        div.addEventListener('input', function(e) {
+            // Para cada efeito global, se o texto do <em class="keyword"> mudou, atualiza o input correspondente
+            var ems = div.querySelectorAll('em.keyword');
+            ems.forEach(function(em) {
+                var texto = em.textContent.trim();
+                document.querySelectorAll('.efeito-trad').forEach(function(input) {
+                    var orig = input.getAttribute('data-orig');
+                    if (orig.trim() === texto) {
+                        input.value = texto;
+                        input.dispatchEvent(new Event('input', { bubbles: true }));
+                    }
+                });
+            });
+        });
     });
     </script>
 </body>
