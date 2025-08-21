@@ -1,1 +1,3 @@
 extract.py
+#ignorar diretorio stable-diffusion-webui
+stable-diffusion-webui/

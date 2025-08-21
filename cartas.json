@@ -382,6 +382,11 @@
         "text": "Arrivée - Tous les joueurs piochent 1 carte puis soignent tous leurs Personnages blessés.",
         "html": "<div class=\"effect ground\"><em class=\"keyword arrivee\">Arrivée</em> - Tous les joueurs piochent 1 carte puis soignent tous leurs <em>Personnages</em> blessés.</div>",
         "icons": []
+      },
+      {
+        "type": "pv",
+        "html": "<strong>1 PV</strong> par groupe de 10 cartes dans votre jeu.",
+        "text": "1 PV par groupe de 10 cartes dans votre jeu."
       }
     ]
   },
@@ -1119,6 +1124,11 @@
         "icons": [
           "https://saint-seiya-deckbuilding.fr/imagens/cosmos.webp"
         ]
+      },
+      {
+        "type": "pv",
+        "html": "<strong>+ 1 PV</strong> si vous êtes le joueur possédant le plus de <em>Héros</em> dans votre deck.",
+        "text": "+ 1 PV si vous êtes le joueur possédant le plus de Héros dans votre deck."
       }
     ]
   },
@@ -1143,6 +1153,11 @@
         "text": "Arrivée - Tous les joueurs défaussent leur Armure en jeu.",
         "html": "<div class=\"effect ground\"><em class=\"keyword arrivee\">Arrivée</em> - Tous les joueurs défaussent leur <em>Armure</em> en jeu.</div>",
         "icons": []
+      },
+      {
+        "type": "pv",
+        "html": "<strong>+ 1 PV</strong> si vous êtes le joueur possédant le plus de <em>Chevaliers d'Argent</em> dans votre deck.",
+        "text": "+ 1 PV si vous êtes le joueur possédant le plus de Chevaliers d'Argent dans votre deck."
       }
     ]
   },
@@ -1832,6 +1847,11 @@
         "icons": [
           "https://saint-seiya-deckbuilding.fr/imagens/force.webp"
         ]
+      },
+      {
+        "type": "pv",
+        "html": "<strong>2 PV</strong> si vous possédez au moins une carte <em>Spica</em> dans votre deck.",
+        "text": "2 PV si vous possédez au moins une carte Spica dans votre deck."
       }
     ]
   },
@@ -1858,6 +1878,11 @@
         "icons": [
           "https://saint-seiya-deckbuilding.fr/imagens/force.webp"
         ]
+      },
+      {
+        "type": "pv",
+        "html": "<strong>2 PV</strong> si vous possédez au moins une carte <em>Léda</em> dans votre deck.",
+        "text": "2 PV si vous possédez au moins une carte Léda dans votre deck."
       }
     ]
   },
@@ -1882,6 +1907,11 @@
         "text": "Défausser - Placer dans votre défausse un Chevalier Noir présent dans la défausse d'un adversaire (hormis Jango ).",
         "html": "<div class=\"effect play\"><em class=\"keyword defausser\">Défausser</em> - Placer dans votre défausse un <em>Chevalier Noir</em> présent dans la défausse d'un adversaire (hormis <em>Jango</em>).</div>",
         "icons": []
+      },
+      {
+        "type": "pv",
+        "html": "<strong>1 PV</strong> pour chaque <em>Chevalier Noir</em> de nom différent dans votre deck.",
+        "text": "1 PV pour chaque Chevalier Noir de nom différent dans votre deck."
       }
     ]
   },
@@ -2374,6 +2404,11 @@
         "text": "Détruire - Placer dans votre défausse 1 de vos cartes détruites.",
         "html": "<div class=\"effect play\"><em class=\"keyword detruire\">Détruire</em> - Placer dans votre défausse 1 de vos cartes détruites.</div>",
         "icons": []
+      },
+      {
+        "type": "pv",
+        "html": "<strong>1 PV</strong> par groupe de 5 cartes détruites.",
+        "text": "1 PV par groupe de 5 cartes détruites."
       }
     ]
   },
@@ -2770,6 +2805,11 @@
         "icons": [
           "https://saint-seiya-deckbuilding.fr/imagens/rank4.webp"
         ]
+      },
+      {
+        "type": "pv",
+        "html": "<strong>2 PV</strong> par <em>Robe divine</em> dans votre deck.",
+        "text": "2 PV par Robe divine dans votre deck."
       }
     ]
   },
@@ -4586,6 +4626,11 @@
         "icons": [
           "https://saint-seiya-deckbuilding.fr/imagens/force.webp"
         ]
+      },
+      {
+        "type": "pv",
+        "html": "<strong>+1 PV</strong> par <em>Marina</em> dans votre deck.",
+        "text": "+1 PV par Marina dans votre deck."
       }
     ]
   },
@@ -4612,6 +4657,11 @@
         "icons": [
           "https://saint-seiya-deckbuilding.fr/imagens/force.webp"
         ]
+      },
+      {
+        "type": "pv",
+        "html": "<strong>+1 PV</strong> par <em>Chevalier de Bronze</em> différent dans votre deck.",
+        "text": "+1 PV par Chevalier de Bronze différent dans votre deck."
       }
     ]
   },
@@ -4638,6 +4688,11 @@
         "icons": [
           "https://saint-seiya-deckbuilding.fr/imagens/force.webp"
         ]
+      },
+      {
+        "type": "pv",
+        "html": "<strong>+1 PV</strong> par joueur, si vous êtes le joueur possédant le plus de cartes marquées.",
+        "text": "+1 PV par joueur, si vous êtes le joueur possédant le plus de cartes marquées."
       }
     ]
   },
@@ -4664,6 +4719,11 @@
         "icons": [
           "https://saint-seiya-deckbuilding.fr/imagens/force.webp"
         ]
+      },
+      {
+        "type": "pv",
+        "html": "<strong>+1 PV</strong> pour chacun de vos <em>Chevaliers</em> détruits.",
+        "text": "+1 PV pour chacun de vos Chevaliers détruits."
       }
     ]
   },
@@ -4690,6 +4750,11 @@
         "icons": [
           "https://saint-seiya-deckbuilding.fr/imagens/force.webp"
         ]
+      },
+      {
+        "type": "pv",
+        "html": "<strong>+3 PV</strong> si vous possédez au moins 5 <em>Personnages</em> marqués.",
+        "text": "+3 PV si vous possédez au moins 5 Personnages marqués."
       }
     ]
   },
@@ -4716,6 +4781,11 @@
         "icons": [
           "https://saint-seiya-deckbuilding.fr/imagens/force.webp"
         ]
+      },
+      {
+        "type": "pv",
+        "html": "<strong>+1 PV</strong> par <em>Armure</em> <img src=\"/imagens/rank4.webp\" width=\"16\" height=\"16\" class=\"rank\" alt=\"Rare (or)\" title=\"Rare (or)\"> dans votre deck.",
+        "text": "+1 PV par Armure dans votre deck."
       }
     ]
   },
@@ -4742,6 +4812,11 @@
         "icons": [
           "https://saint-seiya-deckbuilding.fr/imagens/force.webp"
         ]
+      },
+      {
+        "type": "pv",
+        "html": "<strong>+1 PV</strong> par <em>Personnage</em> <img src=\"/imagens/rank5.webp\" width=\"16\" height=\"16\" class=\"rank\" alt=\"Très Rare (bleu)\" title=\"Très Rare (bleu)\"> dans votre deck.",
+        "text": "+1 PV par Personnage dans votre deck."
       }
     ]
   },
@@ -5708,6 +5783,11 @@
         "icons": [
           "https://saint-seiya-deckbuilding.fr/imagens/rank4.webp"
         ]
+      },
+      {
+        "type": "pv",
+        "html": "Nombre de <em>Spectres</em> et <em>Renégats</em> dans votre <em>Néant</em>.",
+        "text": "Nombre de Spectres et Renégats dans votre Néant ."
       }
     ]
   },
@@ -5732,6 +5812,11 @@
         "text": "Sortie - Chaque adversaire gèle les Héros de sa main, puis pioche jusqu'à avoir 5 cartes en main.",
         "html": "<div class=\"effect ground\"><em class=\"keyword sortie\">Sortie</em> - Chaque adversaire gèle les <em>Héros</em> de sa main, puis pioche jusqu'à avoir 5 cartes en main.</div>",
         "icons": []
+      },
+      {
+        "type": "pv",
+        "html": "Votre niveau de <em>Sens</em> le plus élevé.",
+        "text": "Votre niveau de Sens le plus élevé."
       }
     ]
   },
@@ -6245,6 +6330,11 @@
         "icons": [
           "https://saint-seiya-deckbuilding.fr/imagens/ame.webp"
         ]
+      },
+      {
+        "type": "pv",
+        "html": "<strong>-1 PV</strong> supplémentaire par <em>Personnage</em> en dessous de ce <em>Gigant</em> dans la pile d'<em>Entrave</em>.",
+        "text": "-1 PV supplémentaire par Personnage en dessous de ce Gigant dans la pile d' Entrave ."
       }
     ]
   },
@@ -6774,6 +6864,11 @@
         "text": "Lorsque vous devez défausser votre Armure équipée, gelez-la au lieu de la défausser.",
         "html": "<div class=\"effect entrave\">Lorsque vous devez défausser votre <em>Armure</em> équipée, gelez-la au lieu de la défausser.</div>",
         "icons": []
+      },
+      {
+        "type": "pv",
+        "html": "<strong>+1 PV</strong> par <em>Cube</em>, <em>Mills</em> ou <em>Ochs</em> dans votre <em>Néant</em> et _-1 PV_ par <em>Cube</em>, <em>Mills</em> ou <em>Ochs</em> dans votre pile d'<em>Entrave</em>.",
+        "text": "+1 PV par Cube , Mills ou Ochs dans votre Néant et _-1 PV_ par Cube , Mills ou Ochs dans votre pile d' Entrave ."
       }
     ]
   },
@@ -6798,6 +6893,11 @@
         "text": "Blessez un Personnage de votre main pour affronter un Personnage des Enfers .",
         "html": "<div class=\"effect entrave\">Blessez un <em>Personnage</em> de votre main pour affronter un <em>Personnage</em> des <em>Enfers</em>.</div>",
         "icons": []
+      },
+      {
+        "type": "pv",
+        "html": "<strong>+1 PV</strong> par <em>Cube</em>, <em>Mills</em> ou <em>Ochs</em> dans votre <em>Néant</em> et _-1 PV_ par <em>Cube</em>, <em>Mills</em> ou <em>Ochs</em> dans votre pile d'<em>Entrave</em>.",
+        "text": "+1 PV par Cube , Mills ou Ochs dans votre Néant et _-1 PV_ par Cube , Mills ou Ochs dans votre pile d' Entrave ."
       }
     ]
   },
@@ -6822,6 +6922,11 @@
         "text": "Détruisez un de vos Personnages blessés pour combattre un Personnage .",
         "html": "<div class=\"effect entrave\">Détruisez un de vos <em>Personnages</em> blessés pour combattre un <em>Personnage</em>.</div>",
         "icons": []
+      },
+      {
+        "type": "pv",
+        "html": "<strong>+1 PV</strong> par <em>Cube</em>, <em>Mills</em> ou <em>Ochs</em> dans votre <em>Néant</em> et _-1 PV_ par <em>Cube</em>, <em>Mills</em> ou <em>Ochs</em> dans votre pile d'<em>Entrave</em>.",
+        "text": "+1 PV par Cube , Mills ou Ochs dans votre Néant et _-1 PV_ par Cube , Mills ou Ochs dans votre pile d' Entrave ."
       }
     ]
   },
