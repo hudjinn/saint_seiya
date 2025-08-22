@@ -858,32 +858,124 @@ html += """
     });
     // Exportar JSON
     function exportarJson() {
-        var cartas = [];
-        document.querySelectorAll('.carta').forEach(function(cartaDiv) {
-            var nome = cartaDiv.querySelector('.edit-nome').innerText;
-            var classe = cartaDiv.querySelector('.edit-classe').value;
-            var efeitos = [];
-            cartaDiv.querySelectorAll('.efeito-box').forEach(function(efDiv) {
-                efeitos.push({
-                    texto: efDiv.innerHTML,
-                    x: parseInt(efDiv.getAttribute('data-pos-x')||'0',10),
-                    y: parseInt(efDiv.getAttribute('data-pos-y')||'0',10)
-                });
-            });
-            var restauracoes = cartaDiv.dataset.restauracoes ? JSON.parse(cartaDiv.dataset.restauracoes) : [];
-            cartas.push({Nome: nome, Classe: classe, Efeitos: efeitos, restauracoes: restauracoes});
+        // Carrega cartas.json original (sincrono, pois só no export)
+        var req = new XMLHttpRequest();
+        req.open('GET', 'cartas.json', false); // síncrono
+        req.send(null);
+        var cartasOriginais = [];
+        if (req.status === 200) {
+            try { cartasOriginais = JSON.parse(req.responseText); } catch(e) { cartasOriginais = []; }
+        }
+        // Monta mapa por imagem original
+        var mapaOrig = {};
+        cartasOriginais.forEach(function(carta) {
+            if (carta && carta.image) mapaOrig[carta.image] = carta;
         });
-        // Salva também as traduções das listas de classes e efeitos globais
+        // Função para normalizar texto de efeito: remove tags, pega só texto
+        function normalizaEfeitoTexto(efeitoHtml) {
+            if (!efeitoHtml) return '';
+            var div = document.createElement('div');
+            div.innerHTML = efeitoHtml;
+            // Remove tradução global: pega o texto original das keywords
+            div.querySelectorAll('em.keyword').forEach(function(em){
+                em.textContent = em.getAttribute('data-orig') || em.textContent;
+            });
+            return div.textContent.replace(/\s+/g,' ').trim();
+        }
+        var cartasEditadas = {};
+        document.querySelectorAll('.carta').forEach(function(cartaDiv, idx) {
+            var imgOrig = cartaDiv.querySelector('.restaurar-preview').getAttribute('src');
+            var cartaOrig = mapaOrig[imgOrig] || {};
+            var nome = cartaDiv.querySelector('.edit-nome').innerText;
+            // Para comparar classe, pega o valor original (data-orig) ignorando tradução global
+            var classeInput = cartaDiv.querySelector('.edit-classe');
+            var classe = classeInput.value;
+            var classeDataOrig = classeInput.getAttribute('data-orig') || '';
+            var nomeOrig = cartaOrig.Nome || '';
+            var classeOrig = cartaOrig.Classe || '';
+            var alterado = false;
+            var motivos = [];
+            if (nome !== nomeOrig) { alterado = true; motivos.push('nome:' + nomeOrig + ' => ' + nome); }
+            // Não compara classe para decidir se exporta
+            // Efeitos: compara texto e posição, ignorando só tradução global
+            var efeitos = [];
+            var efeitosOrig = (cartaOrig.Efeitos || cartaOrig.effects || []);
+            var efDivs = cartaDiv.querySelectorAll('.efeito-box');
+            for (var j = 0; j < efDivs.length; j++) {
+                var efDiv = efDivs[j];
+                // Sempre salva o texto original do efeito (data-orig), não o renderizado/traduzido
+                var texto = efDiv.getAttribute('data-orig') || efDiv.innerHTML;
+                var x = parseInt(efDiv.getAttribute('data-pos-x')||'0',10);
+                var y = parseInt(efDiv.getAttribute('data-pos-y')||'0',10);
+                var textoOrig = '';
+                var xOrig = 0, yOrig = 0;
+                if (efeitosOrig[j]) {
+                    textoOrig = efeitosOrig[j].texto || efeitosOrig[j].html || efeitosOrig[j] || '';
+                    xOrig = efeitosOrig[j].x == null ? 0 : efeitosOrig[j].x;
+                    yOrig = efeitosOrig[j].y == null ? 0 : efeitosOrig[j].y;
+                }
+                // Para ignorar tradução global, compara o texto puro ANTES da tradução
+                function textoSemTraduKeyword(html) {
+                    if (!html) return '';
+                    var div = document.createElement('div');
+                    div.innerHTML = html;
+                    div.querySelectorAll('em.keyword').forEach(function(em){
+                        em.textContent = em.getAttribute('data-orig') || em.textContent;
+                    });
+                    return div.textContent.replace(/\s+/g,' ').trim();
+                }
+                var textoComp = textoSemTraduKeyword(texto);
+                var textoOrigComp = textoSemTraduKeyword(textoOrig);
+                if (textoComp !== textoOrigComp) {
+                    alterado = true; motivos.push('efeito'+j+':"'+textoOrigComp+'" => "'+textoComp+'"');
+                }
+                if ((x||0) !== (xOrig||0) || (y||0) !== (yOrig||0)) {
+                    alterado = true; motivos.push('efeito'+j+'_pos:('+xOrig+','+yOrig+') => ('+x+','+y+')');
+                }
+                efeitos.push({texto: texto, x: x, y: y});
+                if (textoComp !== textoOrigComp || (x||0)!==(xOrig||0) || (y||0)!==(yOrig||0)) {
+                    console.log('[DEBUG] Efeito carta', imgOrig, 'idx', j, {
+                        textoComp, textoOrigComp, x, xOrig, y, yOrig, texto, textoOrig
+                    });
+                }
+            }
+            var restauracoes = cartaDiv.dataset.restauracoes ? JSON.parse(cartaDiv.dataset.restauracoes) : [];
+            var restOrig = cartaOrig.restauracoes || [];
+            var restVazia = (!restauracoes || restauracoes.length === 0);
+            var restOrigVazia = (!restOrig || restOrig.length === 0);
+            if (!restVazia || !restOrigVazia) {
+                if (JSON.stringify(restauracoes) !== JSON.stringify(restOrig)) {
+                    alterado = true; motivos.push('restauracoes:' + JSON.stringify(restOrig) + ' => ' + JSON.stringify(restauracoes));
+                }
+            }
+            if (alterado) {
+                cartasEditadas[imgOrig] = {
+                    Nome: nome,
+                    Classe: classe,
+                    Efeitos: efeitos,
+                    restauracoes: restauracoes
+                };
+                var nomeLog = nomeOrig || imgOrig;
+                console.log('[ALTERADA]', nomeLog, '|', motivos.join(' | '));
+            }
+        });
+        // Exporta apenas traduções alteradas
         var classes_trad = {};
         document.querySelectorAll('.classe-trad').forEach(function(input) {
-            classes_trad[input.getAttribute('data-orig')] = input.value;
+            var orig = input.getAttribute('data-orig');
+            if (input.value !== orig) {
+                classes_trad[orig] = input.value;
+            }
         });
         var efeitos_trad = {};
         document.querySelectorAll('.efeito-trad').forEach(function(input) {
-            efeitos_trad[input.getAttribute('data-orig')] = input.value;
+            var orig = input.getAttribute('data-orig');
+            if (input.value !== orig) {
+                efeitos_trad[orig] = input.value;
+            }
         });
         var exportData = {
-            cartas: cartas,
+            cartas: cartasEditadas,
             classes_trad: classes_trad,
             efeitos_trad: efeitos_trad
         };
@@ -901,32 +993,26 @@ html += """
         var reader = new FileReader();
         reader.onload = function(e) {
             var data = JSON.parse(e.target.result);
-            // Suporte ao novo formato com campos extras
-            var cartas = Array.isArray(data) ? data : data.cartas;
-            document.querySelectorAll('.carta').forEach(function(cartaDiv, i) {
-                if (cartas && cartas[i]) {
-                    cartaDiv.querySelector('.edit-nome').innerText = cartas[i].Nome || '';
-                    cartaDiv.querySelector('.edit-classe').value = cartas[i].Classe || '';
+            // Novo formato: cartas é um objeto {imgOrig: {dados...}}
+            var cartasEditadas = data.cartas || {};
+            document.querySelectorAll('.carta').forEach(function(cartaDiv) {
+                var imgOrig = cartaDiv.querySelector('.restaurar-preview').getAttribute('src');
+                if (cartasEditadas[imgOrig]) {
+                    var carta = cartasEditadas[imgOrig];
+                    if (carta.Nome !== undefined) cartaDiv.querySelector('.edit-nome').innerText = carta.Nome;
+                    if (carta.Classe !== undefined) cartaDiv.querySelector('.edit-classe').value = carta.Classe;
                     var efDivs = cartaDiv.querySelectorAll('.efeito-box');
-                    if (Array.isArray(cartas[i].Efeitos)) {
+                    if (Array.isArray(carta.Efeitos)) {
                         for (var j = 0; j < efDivs.length; j++) {
-                            var ef = cartas[i].Efeitos[j] || {};
+                            var ef = carta.Efeitos[j] || {};
                             efDivs[j].innerHTML = ef.texto || '';
                             efDivs[j].setAttribute('data-pos-x', ef.x || 0);
                             efDivs[j].setAttribute('data-pos-y', ef.y || 0);
                             efDivs[j].style.transform = `translate(${ef.x||0}px,${ef.y||0}px)`;
                         }
-                    } else {
-                        var efeitos = (cartas[i].Efeito || '').split(/<br\s*\/?>|;|(?<=[.])\s+(?=[A-ZÀ-Ý])/);
-                        for (var j = 0; j < efDivs.length; j++) {
-                            efDivs[j].innerHTML = efeitos[j] || '';
-                            efDivs[j].setAttribute('data-pos-x', 0);
-                            efDivs[j].setAttribute('data-pos-y', 0);
-                            efDivs[j].style.transform = '';
-                        }
                     }
-                    if (cartas[i].restauracoes) {
-                        cartaDiv.dataset.restauracoes = JSON.stringify(cartas[i].restauracoes);
+                    if (carta.restauracoes) {
+                        cartaDiv.dataset.restauracoes = JSON.stringify(carta.restauracoes);
                     }
                 }
             });
