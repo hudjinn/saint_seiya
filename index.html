@@ -11156,65 +11156,9 @@
                 ctx.lineWidth = 3;
                 ctx.setLineDash([8,4]);
                 ctx.strokeRect(startX, startY, endX-startX, endY-startY);
-                try {
-                    const resp = await fetch('cartas_editadas.json', {cache: 'no-store'});
-                    if (resp.ok) {
-                        const data = await resp.json();
-                        var cartas = Array.isArray(data) ? data : data.cartas;
-                        document.querySelectorAll('.carta').forEach(function(cartaDiv, i) {
-                            if (cartas && cartas[i]) {
-                                cartaDiv.querySelector('.edit-nome').innerText = cartas[i].Nome || '';
-                                cartaDiv.querySelector('.edit-classe').value = cartas[i].Classe || '';
-                                var efDivs = cartaDiv.querySelectorAll('.efeito-box');
-                                if (Array.isArray(cartas[i].Efeitos)) {
-                                    for (var j = 0; j < efDivs.length; j++) {
-                                        var ef = cartas[i].Efeitos[j] || {};
-                                        efDivs[j].innerHTML = ef.texto || '';
-                                        efDivs[j].setAttribute('data-pos-x', ef.x || 0);
-                                        efDivs[j].setAttribute('data-pos-y', ef.y || 0);
-                                        efDivs[j].style.transform = `translate(${ef.x||0}px,${ef.y||0}px)`;
-                                    }
-                                } else {
-                                    var efeitos = (cartas[i].Efeito || '').split(/<br\s*\/?>|;|(?<=[.])\s+(?=[A-ZÀ-Ý])/);
-                                    for (var j = 0; j < efDivs.length; j++) {
-                                        efDivs[j].innerHTML = efeitos[j] || '';
-                                        efDivs[j].setAttribute('data-pos-x', 0);
-                                        efDivs[j].setAttribute('data-pos-y', 0);
-                                        efDivs[j].style.transform = '';
-                                    }
-                                }
-                                if (cartas[i].restauracoes) {
-                                    cartaDiv.dataset.restauracoes = JSON.stringify(cartas[i].restauracoes);
-                                }
-                            }
-                        });
-                        // Restaurar traduções de classes
-                        if (data.classes_trad) {
-                            document.querySelectorAll('.classe-trad').forEach(function(input) {
-                                var orig = input.getAttribute('data-orig');
-                                if (data.classes_trad[orig] !== undefined) {
-                                    input.value = data.classes_trad[orig];
-                                    input.dispatchEvent(new Event('input', { bubbles: true }));
-                                }
-                            });
-                        }
-                        // Restaurar traduções de efeitos globais
-                        if (data.efeitos_trad) {
-                            document.querySelectorAll('.efeito-trad').forEach(function(input) {
-                                var orig = input.getAttribute('data-orig');
-                                if (data.efeitos_trad[orig] !== undefined) {
-                                    input.value = data.efeitos_trad[orig];
-                                    input.dispatchEvent(new Event('input', { bubbles: true }));
-                                }
-                            });
-                        }
-                    }
-                } catch (e) {
-                    // arquivo não existe ou erro de fetch, não faz nada
-                }
-            })();
-                toolbar.style.display = 'none';
+                ctx.restore();
             });
+
             if(cancelBtn) cancelBtn.addEventListener('click', function(e) {
                 rect = null;
                 canvas.style.display = 'none';
