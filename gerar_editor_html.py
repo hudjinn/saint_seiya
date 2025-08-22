@@ -110,33 +110,14 @@ html = """<!DOCTYPE html>
             flex: 0 0 auto;
             margin-left: 0;
         }
-    .efeito-move-btns { display: none; gap: 2px; margin-top: 4px; justify-content: center; }
-    .efeito-move-btns {
-        display: none;
-        position: absolute;
-        top: 0; left: 0; right: 0; bottom: 0;
-        width: 100%; height: 100%;
-        pointer-events: none;
-    }
-    .efeito-move-btns.active { display: block; }
-    .efeito-move-btn {
-        background: #ffe066;
-        color: #222;
-        border: 1px solid #aaa;
-        border-radius: 4px;
-        font-size: 1em;
-        padding: 0 4px;
-        cursor: pointer;
-        min-width: 22px;
-        min-height: 22px;
-        position: absolute;
-        pointer-events: auto;
-        opacity: 0.92;
-    }
-    .efeito-move-btn.up    { top: -12px; left: 50%; transform: translateX(-50%); }
-    .efeito-move-btn.down  { bottom: -12px; left: 50%; transform: translateX(-50%); }
-    .efeito-move-btn.left  { left: -12px; top: 50%; transform: translateY(-50%); }
-    .efeito-move-btn.right { right: -12px; top: 50%; transform: translateY(-50%); }
+    /* Botões de ação de posição do efeito são criados dinamicamente via JS */
+    .efeito-pos-action-btns { display: flex; gap: 4px; margin-left: 6px; }
+    .efeito-pos-action-btns button { background: #444; color: #fff; border-radius: 4px; border: none; padding: 0 8px; height: 22px; font-size: 1em; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+    .efeito-pos-action-btns .ok { background: linear-gradient(90deg,#2ecc40 0%,#27ae60 100%); }
+    .efeito-pos-action-btns .cancel { background: linear-gradient(90deg,#e74c3c 0%,#c0392b 100%); }
+    .efeito-pos-action-btns .reset { background: #888; }
+    .efeito-pos-arrows { display: flex; flex-direction: row; gap: 2px; margin-left: 6px; }
+    .efeito-pos-arrows button { background: #ffe066; color: #222; border: 1px solid #aaa; border-radius: 4px; font-size: 1em; padding: 0 4px; cursor: pointer; width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; }
         .efeito-orig { color: #ff6666; font-style: normal; font-weight: bold; text-shadow: 1px 1px 4px #000; cursor: pointer; position: relative; }
         .efeito-carta-tooltip { display: none; position: fixed; z-index: 1000; background: #222; border: 2px solid #ffe066; border-radius: 10px; padding: 10px 10px 6px 10px; box-shadow: 0 8px 32px #000a; min-width: 320px; text-align: center; max-width: 420px; overflow: visible; }
         .efeito-carta-tooltip img { max-width: 320px; max-height: 460px; box-shadow: 0 0 16px #000; border-radius: 10px; border: 2px solid #ffe066; background: #222; }
@@ -155,7 +136,7 @@ html = """<!DOCTYPE html>
             color: #fff;
             border-radius: 8px;
             padding: 6px 8px 2px 8px;
-            font-size: 1.1em;
+            font-size: 1.4em;
             font-family: 'Arial', Arial, sans-serif;
             font-weight: bold;
             text-align: center;
@@ -165,34 +146,28 @@ html = """<!DOCTYPE html>
         .edit-classe { z-index: 20; position: absolute; top: 40px; left: 20px; width: 80%; background: rgba(0, 0, 0, 0.2); font-size: 0.8em; font-family: 'Georgia', serif; border: none; border-radius: 6px; padding: 2px 8px; outline: none; text-align: center; box-shadow: 0 1px 6px #0006; color: #fff; }
     .edit-classe { font-style: italic; }
     .edit-classe-landscape { width: 37% !important; }
-        .efeitos-stack { display: flex; flex-direction: column; align-items: center; text-align: center; }
         .efeitos-stack {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
             font-family: 'Georgia', serif;
             font-size: 0.8em;
             color: #111;
-        }
-        .carta.portrait .efeitos-stack {
+            width: 85%;
+            margin: 0 auto;
             position: absolute;
-            left: 9px;
-            right: 0px;
             bottom: 24px;
-            width: 94%;
+            left: 0;
+            right: 0;
         }
-        .carta.landscape .efeitos-stack {
-            position: absolute;
-            left: 13px;
-            right: 0px;
-            bottom: 22px;
-            width: 95%;
-        }
-        /* Ajuste especial para cartas epop_e */
+        .carta.landscape .efeitos-stack,
+        .carta.portrait .efeitos-stack,
         .carta.landscape.epop_e .efeitos-stack {
-            position: absolute;
-            left: 50px;
-            right: 0px;
-            bottom: 92px;
-            width: 80%;
-            font-size: medium;
+            width: 85%;
+            margin: 0 auto;
+            left: 0;
+            right: 0;
         }
         .effect {
             font-family: 'NeoSansW01', sans-serif;
@@ -218,7 +193,7 @@ html = """<!DOCTYPE html>
             background: none !important;
         }
         .effect.play {
-            background: #ffeddd;
+            background: #deccbb;
             color: #302d29;
         }
         .effect.ground {
@@ -492,10 +467,7 @@ html += """
     <!-- Botões removidos daqui -->
         </form>
     </div>
-        <div id="editar-pos-container" style="text-align:center;margin:32px auto 18px auto;max-width:900px;">
-        <button type="button" class="editar-pos-btn" id="editar-pos-btn">Editar Posição dos Efeitos</button>
-        <span id="editar-pos-info" style="display:block;color:#ffe066;font-size:1.05em;margin-top:8px;">Clique para ativar/desativar o modo de edição de posição dos efeitos. Use as setas que aparecem sobre cada efeito para mover.</span>
-    </div>
+        <!-- Edição de posição agora é individual por efeito -->
     <div id="cartas">
 """
 
@@ -586,14 +558,16 @@ for carta in cartas:
     for idx, ef_html in enumerate(efeitos_html):
         ef_html_escaped = ef_html.replace('"', '&quot;').replace("'", "&#39;")
         html += (
+            f'<div class="efeito-box-wrapper" style="position:relative;display:flex;align-items:flex-start;margin-top:18px;margin-bottom:8px;">'
+            f'<div class="efeito-pos-toolbar" style="position:absolute;top:-18px;right:-13px;z-index:10;display:flex;flex-direction:row;align-items:center;gap:4px;">'
+            f'<button class="efeito-pos-editar-btn" title="Editar posição" style="width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;background:#ffe066;color:#222;border-radius:50%;border:1.5px solid #ffe066;box-shadow:0 0 2px #0002;cursor:pointer;font-size:1em;padding:0;transition:box-shadow .2s;outline:1px solid #bbb;outline-offset:-1px;">✥</button>'
+            f'</div>'
+            f'<div style="display:flex;flex-direction:column;align-items:center;width:100%;">'
             f'<div contenteditable="true" class="efeito-box" data-orig="{ef_html_escaped}" data-pos-x="0" data-pos-y="0" style="--efeito-bottom:{10+idx*44}px;">'
             f'{ef_html}'
-            f'<div class="efeito-move-btns">'
-            f'<button class="efeito-move-btn up" title="Mover para cima">↑</button>'
-            f'<button class="efeito-move-btn down" title="Mover para baixo">↓</button>'
-            f'<button class="efeito-move-btn left" title="Mover para a esquerda">←</button>'
-            f'<button class="efeito-move-btn right" title="Mover para a direita">→</button>'
-            f'</div></div>'
+            f'</div>'
+            f'</div>'
+            f'</div>'
         )
     html += """
             </div>
@@ -607,24 +581,17 @@ html += """
     <script>
     // --- Edição de posição dos efeitos ---
     (function(){
-        var editandoPos = false;
-        var btnEditarPos = document.getElementById('editar-pos-btn');
-        btnEditarPos.addEventListener('click', function() {
-            editandoPos = !editandoPos;
-            document.querySelectorAll('.efeito-move-btns').forEach(function(btns){
-                if(editandoPos) btns.classList.add('active');
-                else btns.classList.remove('active');
-            });
-            btnEditarPos.style.background = editandoPos ? '#ffe066' : '#ffb347';
-            btnEditarPos.style.color = editandoPos ? '#222' : '#222';
-            btnEditarPos.innerText = editandoPos ? 'Sair do Modo Edição de Posição' : 'Editar Posição dos Efeitos';
-        });
-        document.querySelectorAll('.efeito-box').forEach(function(box){
-            var btns = box.querySelector('.efeito-move-btns');
-            var up = btns.querySelector('.up');
-            var down = btns.querySelector('.down');
-            var left = btns.querySelector('.left');
-            var right = btns.querySelector('.right');
+        // Edição dinâmica dos botões de posição do efeito
+        document.querySelectorAll('.efeito-box-wrapper').forEach(function(wrapper){
+            var editarBtn = wrapper.querySelector('.efeito-pos-editar-btn');
+            var box = wrapper.querySelector('.efeito-box');
+            var toolbar = wrapper.querySelector('.efeito-pos-toolbar');
+            var posBefore = {x:0, y:0};
+            function closeAll(){
+                document.querySelectorAll('.efeito-pos-action-btns').forEach(function(b){b.remove();});
+                document.querySelectorAll('.efeito-pos-arrows').forEach(function(b){b.remove();});
+                document.querySelectorAll('.efeito-pos-editar-btn').forEach(function(b){b.classList.remove('ativo');});
+            }
             function move(dx,dy){
                 var x = parseInt(box.getAttribute('data-pos-x')||'0',10)+dx;
                 var y = parseInt(box.getAttribute('data-pos-y')||'0',10)+dy;
@@ -632,11 +599,69 @@ html += """
                 box.setAttribute('data-pos-y',y);
                 box.style.transform = `translate(${x}px,${y}px)`;
             }
-            up.addEventListener('click',function(e){e.stopPropagation();move(0,-1);});
-            down.addEventListener('click',function(e){e.stopPropagation();move(0,1);});
-            left.addEventListener('click',function(e){e.stopPropagation();move(-1,0);});
-            right.addEventListener('click',function(e){e.stopPropagation();move(1,0);});
+            editarBtn.addEventListener('click',function(e){
+                e.stopPropagation();
+                closeAll();
+                editarBtn.classList.add('ativo');
+                // Cria os botões de ação e setas
+                var actionBtns = document.createElement('span');
+                actionBtns.className = 'efeito-pos-action-btns';
+                actionBtns.innerHTML = `
+                    <button class="reset" title="Resetar posição">🗑️</button>
+                    <button class="ok" title="Confirmar">✔</button>
+                    <button class="cancel" title="Cancelar">✖</button>
+                `;
+                var arrows = document.createElement('span');
+                arrows.className = 'efeito-pos-arrows';
+                arrows.innerHTML = `
+                    <button class="up" title="Mover para cima">↑</button>
+                    <button class="down" title="Mover para baixo">↓</button>
+                    <button class="left" title="Mover para a esquerda">←</button>
+                    <button class="right" title="Mover para a direita">→</button>
+                `;
+                toolbar.appendChild(actionBtns);
+                toolbar.appendChild(arrows);
+                posBefore.x = parseInt(box.getAttribute('data-pos-x')||'0',10);
+                posBefore.y = parseInt(box.getAttribute('data-pos-y')||'0',10);
+                // Eventos dos botões
+                actionBtns.querySelector('.reset').onclick = function(ev){
+                    ev.stopPropagation();
+                    box.setAttribute('data-pos-x',0);
+                    box.setAttribute('data-pos-y',0);
+                    box.style.transform = '';
+                };
+                actionBtns.querySelector('.ok').onclick = function(ev){
+                    ev.stopPropagation();
+                    closeAll();
+                };
+                actionBtns.querySelector('.cancel').onclick = function(ev){
+                    ev.stopPropagation();
+                    box.setAttribute('data-pos-x',posBefore.x);
+                    box.setAttribute('data-pos-y',posBefore.y);
+                    box.style.transform = `translate(${posBefore.x}px,${posBefore.y}px)`;
+                    closeAll();
+                };
+                // Eventos das setas
+                arrows.querySelector('.up').onclick = function(ev){ ev.stopPropagation(); move(0,-1); };
+                arrows.querySelector('.down').onclick = function(ev){ ev.stopPropagation(); move(0,1); };
+                arrows.querySelector('.left').onclick = function(ev){ ev.stopPropagation(); move(-1,0); };
+                arrows.querySelector('.right').onclick = function(ev){ ev.stopPropagation(); move(1,0); };
+            });
+            // Setas de movimentação com teclado
+            box.addEventListener('keydown', function(e){
+                if(!editarBtn.classList.contains('ativo')) return;
+                if(e.key==='ArrowUp'){ move(0,-1); e.preventDefault(); }
+                if(e.key==='ArrowDown'){ move(0,1); e.preventDefault(); }
+                if(e.key==='ArrowLeft'){ move(-1,0); e.preventDefault(); }
+                if(e.key==='ArrowRight'){ move(1,0); e.preventDefault(); }
+            });
         });
+        // Fecha ao clicar fora
+        document.addEventListener('click', function(e){
+            document.querySelectorAll('.efeito-pos-action-btns').forEach(function(b){b.remove();});
+            document.querySelectorAll('.efeito-pos-editar-btn').forEach(function(b){b.classList.remove('ativo');});
+        });
+
 
         // Corrige eventos dos botões de cada carta
         document.querySelectorAll('.carta-container').forEach(function(container){
