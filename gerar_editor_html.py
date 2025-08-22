@@ -197,7 +197,7 @@ html = """<!DOCTYPE html>
             color: #302d29;
         }
         .effect.ground {
-            background: #2f2a22;
+            background: #1d1501;
             color: #fff;
         }
         .effect.passive {
@@ -330,6 +330,9 @@ html = """<!DOCTYPE html>
             height: 100%;
             display: block;
         }
+        .restaurar-toolbar .restaurar-trash {
+            background: linear-gradient(90deg,#b71c1c 0%,#f44336 100%);
+        }
     </style>
 </head>
 <body>
@@ -438,7 +441,7 @@ for kw in efeito_prefixos:
             kw_norm = norm(kw)
             # Tons mais neutros e suaves, sem text-shadow
             if kw_norm in ["arrivee", "miseenjeu", "talent", "apparition"]:
-                return "background:#dbefff;color:#007dc6;"
+                return "background:#1d1501;color:#007dc6;"
             if kw_norm in ["blesser", "defausser", "vaincu", "detruire", "geler", "aneanti", "capacite"]:
                 return "background:#ffe3e3;color:#b71c1c;"
             if kw_norm in ["marque"]:
@@ -543,6 +546,7 @@ for carta in cartas:
         <div class="restaurar-toolbar">
             <button class="restaurar-ok" title="Salvar restauração">✔</button>
             <button class="restaurar-cancel" title="Cancelar">✖</button>
+            <button class="restaurar-trash" title="Descartar todas as restaurações">🗑️</button>
         </div>
     </div>
     <div class="carta {aspect} {classe_css}">
@@ -577,8 +581,46 @@ for carta in cartas:
 """
 html += """
     </div>
-    <p style="margin-top:40px;">Edite o nome, classe e os efeitos sobre a carta. Para salvar, exporte o JSON ou importe para continuar a tradução depois.</p>
+    <p style=\"margin-top:40px;\">Edite o nome, classe e os efeitos sobre a carta. Para salvar, exporte o JSON ou importe para continuar a tradução depois.</p>
     <script>
+    // Importa automaticamente cartas_editadas.json se existir (GitHub Pages ou servidor)
+    (async function() {
+        try {
+            const resp = await fetch('cartas_editadas.json', {cache: 'no-store'});
+            if (resp.ok) {
+                const data = await resp.json();
+                document.querySelectorAll('.carta').forEach(function(cartaDiv, i) {
+                    if (data[i]) {
+                        cartaDiv.querySelector('.edit-nome').innerText = data[i].Nome || '';
+                        cartaDiv.querySelector('.edit-classe').value = data[i].Classe || '';
+                        var efDivs = cartaDiv.querySelectorAll('.efeito-box');
+                        if (Array.isArray(data[i].Efeitos)) {
+                            for (var j = 0; j < efDivs.length; j++) {
+                                var ef = data[i].Efeitos[j] || {};
+                                efDivs[j].innerHTML = ef.texto || '';
+                                efDivs[j].setAttribute('data-pos-x', ef.x || 0);
+                                efDivs[j].setAttribute('data-pos-y', ef.y || 0);
+                                efDivs[j].style.transform = `translate(${ef.x||0}px,${ef.y||0}px)`;
+                            }
+                        } else {
+                            var efeitos = (data[i].Efeito || '').split(/<br\\s*\\/?>|;|(?<=[.])\\s+(?=[A-ZÀ-Ý])/);
+                            for (var j = 0; j < efDivs.length; j++) {
+                                efDivs[j].innerHTML = efeitos[j] || '';
+                                efDivs[j].setAttribute('data-pos-x', 0);
+                                efDivs[j].setAttribute('data-pos-y', 0);
+                                efDivs[j].style.transform = '';
+                            }
+                        }
+                        if (data[i].restauracoes) {
+                            cartaDiv.dataset.restauracoes = JSON.stringify(data[i].restauracoes);
+                        }
+                    }
+                });
+            }
+        } catch (e) {
+            // arquivo não existe ou erro de fetch, não faz nada
+        }
+    })();
     // --- Edição de posição dos efeitos ---
     (function(){
         // Edição dinâmica dos botões de posição do efeito
@@ -708,6 +750,16 @@ html += """
                     imgOriginal.style.zIndex = 32;
                     canvas.style.display = 'block';
                     toolbar.style.display = 'flex';
+                    drawAllRestauracoes();
+                });
+            }
+            // Botão de lixeira para descartar todas as restaurações
+            var trashBtn = toolbar.querySelector('.restaurar-trash');
+            if(trashBtn) {
+                trashBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    restauracoes = [];
+                    container.dataset.restauracoes = JSON.stringify(restauracoes);
                     drawAllRestauracoes();
                 });
             }
