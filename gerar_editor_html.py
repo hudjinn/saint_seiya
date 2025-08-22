@@ -204,51 +204,45 @@ html = """<!DOCTYPE html>
             background: #eee6f9;
             color: #302d29;
         }
-    /* Keywords especiais - cartas e lista */
+        /* Keywords especiais - cartas e lista */
 
-    em.keyword {
-        font-weight: bold;
-    }
-    .efeito-box em.keyword.arrivee,
-    .efeitos-lista .efeito-row em.keyword.arrivee,
-    .efeito-box em.keyword.miseenjeu,
-    .efeitos-lista .efeito-row em.keyword.miseenjeu,
-    .efeito-box em.keyword.talent,
-    .efeitos-lista .efeito-row em.keyword.talent,
-    .efeito-box em.keyword.apparition,
-    .efeitos-lista .efeito-row em.keyword.apparition { color: #007dc6; }
-    .efeito-box em.keyword.blesser,
-    .efeitos-lista .efeito-row em.keyword.blesser,
-    .efeito-box em.keyword.defausser,
-    .efeitos-lista .efeito-row em.keyword.defausser,
-    .efeito-box em.keyword.vaincu,
-    .efeitos-lista .efeito-row em.keyword.vaincu,
-    .efeito-box em.keyword.detruire,
-    .efeitos-lista .efeito-row em.keyword.detruire,
-    .efeito-box em.keyword.geler,
-    .efeitos-lista .efeito-row em.keyword.geler,
-    .efeito-box em.keyword.aneanti,
-    .efeitos-lista .efeito-row em.keyword.aneanti,
-    .efeito-box em.keyword.capacite,
-    .efeitos-lista .efeito-row em.keyword.capacite { color: red; }
-    .efeito-box em.keyword.marque,
-    .efeitos-lista .efeito-row em.keyword.marque { color: purple; }
-    .efeito-box em.keyword.sortie,
-    .efeitos-lista .efeito-row em.keyword.sortie,
-    .efeito-box em.keyword.findepopee,
-    .efeitos-lista .efeito-row em.keyword.finedpopee,
-    .efeito-box em.keyword.findepopee,
-    .efeitos-lista .efeito-row em.keyword.findepopee { color: orange; }
-    .efeito-box em.keyword.findepartie,
-    .efeitos-lista .efeito-row em.keyword.findepartie,
-    .efeito-box em.keyword.findepartie,
-    .efeitos-lista .efeito-row em.keyword.findepartie { color: #629732; }
-
-            color: #ff6666;
-            font-style: normal;
+        em.keyword {
             font-weight: bold;
-            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
         }
+        .efeito-box em.keyword.arrivee,
+        .efeitos-lista .efeito-row em.keyword.arrivee,
+        .efeito-box em.keyword.miseenjeu,
+        .efeitos-lista .efeito-row em.keyword.miseenjeu,
+        .efeito-box em.keyword.talent,
+        .efeitos-lista .efeito-row em.keyword.talent,
+        .efeito-box em.keyword.apparition,
+        .efeitos-lista .efeito-row em.keyword.apparition { color: #007dc6; }
+        .efeito-box em.keyword.blesser,
+        .efeitos-lista .efeito-row em.keyword.blesser,
+        .efeito-box em.keyword.defausser,
+        .efeitos-lista .efeito-row em.keyword.defausser,
+        .efeito-box em.keyword.vaincu,
+        .efeitos-lista .efeito-row em.keyword.vaincu,
+        .efeito-box em.keyword.detruire,
+        .efeitos-lista .efeito-row em.keyword.detruire,
+        .efeito-box em.keyword.geler,
+        .efeitos-lista .efeito-row em.keyword.geler,
+        .efeito-box em.keyword.aneanti,
+        .efeitos-lista .efeito-row em.keyword.aneanti,
+        .efeito-box em.keyword.capacite,
+        .efeitos-lista .efeito-row em.keyword.capacite { color: red; }
+        .efeito-box em.keyword.marque,
+        .efeitos-lista .efeito-row em.keyword.marque { color: purple; }
+        .efeito-box em.keyword.sortie,
+        .efeitos-lista .efeito-row em.keyword.sortie,
+        .efeito-box em.keyword.findepopee,
+        .efeitos-lista .efeito-row em.keyword.finedpopee,
+        .efeito-box em.keyword.findepopee,
+        .efeitos-lista .efeito-row em.keyword.findepopee { color: orange; }
+        .efeito-box em.keyword.findepartie,
+        .efeitos-lista .efeito-row em.keyword.findepartie,
+        .efeito-box em.keyword.findepartie,
+        .efeitos-lista .efeito-row em.keyword.findepartie { color: #629732; }
         .efeito-orig {
             color: #ff6666;
             font-style: normal;
@@ -626,21 +620,23 @@ html += """
             })
             .then(function(data) {
                 if (!data) return;
+                // Preenche cartas
+                var cartas = Array.isArray(data) ? data : data.cartas;
                 document.querySelectorAll('.carta').forEach(function(cartaDiv, i) {
-                    if (data[i]) {
-                        cartaDiv.querySelector('.edit-nome').innerText = data[i].Nome || '';
-                        cartaDiv.querySelector('.edit-classe').value = data[i].Classe || '';
+                    if (cartas && cartas[i]) {
+                        cartaDiv.querySelector('.edit-nome').innerText = cartas[i].Nome || '';
+                        cartaDiv.querySelector('.edit-classe').value = cartas[i].Classe || '';
                         var efDivs = cartaDiv.querySelectorAll('.efeito-box');
-                        if (Array.isArray(data[i].Efeitos)) {
+                        if (Array.isArray(cartas[i].Efeitos)) {
                             for (var j = 0; j < efDivs.length; j++) {
-                                var ef = data[i].Efeitos[j] || {};
+                                var ef = cartas[i].Efeitos[j] || {};
                                 efDivs[j].innerHTML = ef.texto || '';
                                 efDivs[j].setAttribute('data-pos-x', ef.x || 0);
                                 efDivs[j].setAttribute('data-pos-y', ef.y || 0);
                                 efDivs[j].style.transform = `translate(${ef.x||0}px,${ef.y||0}px)`;
                             }
                         } else {
-                            var efeitos = (data[i].Efeito || '').split(/<br\\s*\\/?>|;|(?<=[.])\\s+(?=[A-ZÀ-Ý])/);
+                            var efeitos = (cartas[i].Efeito || '').split(/<br\\s*\\/?>|;|(?<=[.])\\s+(?=[A-ZÀ-Ý])/);
                             for (var j = 0; j < efDivs.length; j++) {
                                 efDivs[j].innerHTML = efeitos[j] || '';
                                 efDivs[j].setAttribute('data-pos-x', 0);
@@ -648,11 +644,31 @@ html += """
                                 efDivs[j].style.transform = '';
                             }
                         }
-                        if (data[i].restauracoes) {
-                            cartaDiv.dataset.restauracoes = JSON.stringify(data[i].restauracoes);
+                        if (cartas[i].restauracoes) {
+                            cartaDiv.dataset.restauracoes = JSON.stringify(cartas[i].restauracoes);
                         }
                     }
                 });
+                // Restaurar traduções de classes
+                if (data.classes_trad) {
+                    document.querySelectorAll('.classe-trad').forEach(function(input) {
+                        var orig = input.getAttribute('data-orig');
+                        if (data.classes_trad[orig] !== undefined) {
+                            input.value = data.classes_trad[orig];
+                            input.dispatchEvent(new Event('input', { bubbles: true }));
+                        }
+                    });
+                }
+                // Restaurar traduções de efeitos globais
+                if (data.efeitos_trad) {
+                    document.querySelectorAll('.efeito-trad').forEach(function(input) {
+                        var orig = input.getAttribute('data-orig');
+                        if (data.efeitos_trad[orig] !== undefined) {
+                            input.value = data.efeitos_trad[orig];
+                            input.dispatchEvent(new Event('input', { bubbles: true }));
+                        }
+                    });
+                }
             })
             .catch(function(e) {
                 // arquivo não existe ou erro de fetch, não faz nada
