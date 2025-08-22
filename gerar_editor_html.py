@@ -584,11 +584,14 @@ html += """
     <p style=\"margin-top:40px;\">Edite o nome, classe e os efeitos sobre a carta. Para salvar, exporte o JSON ou importe para continuar a tradução depois.</p>
     <script>
     // Importa automaticamente cartas_editadas.json se existir (GitHub Pages ou servidor)
-    (async function() {
-        try {
-            const resp = await fetch('cartas_editadas.json', {cache: 'no-store'});
-            if (resp.ok) {
-                const data = await resp.json();
+    (function() {
+        fetch('cartas_editadas.json', {cache: 'no-store'})
+            .then(function(resp) {
+                if (!resp.ok) return null;
+                return resp.json();
+            })
+            .then(function(data) {
+                if (!data) return;
                 document.querySelectorAll('.carta').forEach(function(cartaDiv, i) {
                     if (data[i]) {
                         cartaDiv.querySelector('.edit-nome').innerText = data[i].Nome || '';
@@ -616,10 +619,10 @@ html += """
                         }
                     }
                 });
-            }
-        } catch (e) {
-            // arquivo não existe ou erro de fetch, não faz nada
-        }
+            })
+            .catch(function(e) {
+                // arquivo não existe ou erro de fetch, não faz nada
+            });
     })();
     // --- Edição de posição dos efeitos ---
     (function(){
@@ -840,6 +843,7 @@ html += """
         a.download = 'cartas_editadas.json';
         a.click();
     }
+    window.exportarJson = exportarJson;
     // Importar JSON
     function importarJson(event) {
         var file = event.target.files[0];
@@ -899,6 +903,7 @@ html += """
         };
         reader.readAsText(file);
     }
+    window.importarJson = importarJson;
     // Função de restauração visual (canvas)
     document.querySelectorAll('.carta-container').forEach(function(container) {
         var btn = container.querySelector('.restaurar-btn');
