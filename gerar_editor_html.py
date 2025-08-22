@@ -970,6 +970,7 @@ html += """
                 ctx.restore();
             });
 
+            var cancelBtn = toolbar.querySelector('.restaurar-cancel');
             if(cancelBtn) cancelBtn.addEventListener('click', function(e) {
                 rect = null;
                 canvas.style.display = 'none';
@@ -1007,9 +1008,7 @@ html += """
     });
     // Tooltip para classes (segue o mouse)
     document.querySelectorAll('.classe-orig.classe-hover').forEach(function(el) {
-    // Tooltip para efeitos globais (segue o mouse)
-    document.querySelectorAll('.efeito-orig.efeito-hover').forEach(function(el) {
-        var tooltip = el.querySelector('.efeito-carta-tooltip');
+        var tooltip = el.querySelector('.classe-carta-tooltip');
         el.addEventListener('mouseenter', function(e){
             tooltip.style.display = 'block';
         });
@@ -1028,7 +1027,10 @@ html += """
         });
         el.addEventListener('mouseleave', function(){ tooltip.style.display = 'none'; });
     });
-        var tooltip = el.querySelector('.classe-carta-tooltip');
+
+    // Tooltip para efeitos globais (segue o mouse)
+    document.querySelectorAll('.efeito-orig.efeito-hover').forEach(function(el) {
+        var tooltip = el.querySelector('.efeito-carta-tooltip');
         el.addEventListener('mouseenter', function(e){
             tooltip.style.display = 'block';
         });
