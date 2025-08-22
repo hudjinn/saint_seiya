@@ -820,7 +820,21 @@ html += """
             var restauracoes = cartaDiv.dataset.restauracoes ? JSON.parse(cartaDiv.dataset.restauracoes) : [];
             cartas.push({Nome: nome, Classe: classe, Efeitos: efeitos, restauracoes: restauracoes});
         });
-        var blob = new Blob([JSON.stringify(cartas, null, 2)], {type: 'application/json'});
+        // Salva também as traduções das listas de classes e efeitos globais
+        var classes_trad = {};
+        document.querySelectorAll('.classe-trad').forEach(function(input) {
+            classes_trad[input.getAttribute('data-orig')] = input.value;
+        });
+        var efeitos_trad = {};
+        document.querySelectorAll('.efeito-trad').forEach(function(input) {
+            efeitos_trad[input.getAttribute('data-orig')] = input.value;
+        });
+        var exportData = {
+            cartas: cartas,
+            classes_trad: classes_trad,
+            efeitos_trad: efeitos_trad
+        };
+        var blob = new Blob([JSON.stringify(exportData, null, 2)], {type: 'application/json'});
         var a = document.createElement('a');
         a.href = URL.createObjectURL(blob);
         a.download = 'cartas_editadas.json';
@@ -833,23 +847,23 @@ html += """
         var reader = new FileReader();
         reader.onload = function(e) {
             var data = JSON.parse(e.target.result);
+            // Suporte ao novo formato com campos extras
+            var cartas = Array.isArray(data) ? data : data.cartas;
             document.querySelectorAll('.carta').forEach(function(cartaDiv, i) {
-                if (data[i]) {
-                    cartaDiv.querySelector('.edit-nome').innerText = data[i].Nome || '';
-                    cartaDiv.querySelector('.edit-classe').innerText = data[i].Classe || '';
+                if (cartas && cartas[i]) {
+                    cartaDiv.querySelector('.edit-nome').innerText = cartas[i].Nome || '';
+                    cartaDiv.querySelector('.edit-classe').value = cartas[i].Classe || '';
                     var efDivs = cartaDiv.querySelectorAll('.efeito-box');
-                    // Suporte ao novo formato: Efeitos como array de objetos {texto, x, y}
-                    if (Array.isArray(data[i].Efeitos)) {
+                    if (Array.isArray(cartas[i].Efeitos)) {
                         for (var j = 0; j < efDivs.length; j++) {
-                            var ef = data[i].Efeitos[j] || {};
+                            var ef = cartas[i].Efeitos[j] || {};
                             efDivs[j].innerHTML = ef.texto || '';
                             efDivs[j].setAttribute('data-pos-x', ef.x || 0);
                             efDivs[j].setAttribute('data-pos-y', ef.y || 0);
                             efDivs[j].style.transform = `translate(${ef.x||0}px,${ef.y||0}px)`;
                         }
                     } else {
-                        // Suporte ao formato antigo (string)
-                        var efeitos = (data[i].Efeito || '').split(/<br\s*\/?>|;|(?<=[.])\s+(?=[A-ZÀ-Ý])/);
+                        var efeitos = (cartas[i].Efeito || '').split(/<br\s*\/?>|;|(?<=[.])\s+(?=[A-ZÀ-Ý])/);
                         for (var j = 0; j < efDivs.length; j++) {
                             efDivs[j].innerHTML = efeitos[j] || '';
                             efDivs[j].setAttribute('data-pos-x', 0);
@@ -857,11 +871,31 @@ html += """
                             efDivs[j].style.transform = '';
                         }
                     }
-                    if (data[i].restauracoes) {
-                        cartaDiv.dataset.restauracoes = JSON.stringify(data[i].restauracoes);
+                    if (cartas[i].restauracoes) {
+                        cartaDiv.dataset.restauracoes = JSON.stringify(cartas[i].restauracoes);
                     }
                 }
             });
+            // Restaurar traduções de classes
+            if (data.classes_trad) {
+                document.querySelectorAll('.classe-trad').forEach(function(input) {
+                    var orig = input.getAttribute('data-orig');
+                    if (data.classes_trad[orig] !== undefined) {
+                        input.value = data.classes_trad[orig];
+                        input.dispatchEvent(new Event('input', { bubbles: true }));
+                    }
+                });
+            }
+            // Restaurar traduções de efeitos globais
+            if (data.efeitos_trad) {
+                document.querySelectorAll('.efeito-trad').forEach(function(input) {
+                    var orig = input.getAttribute('data-orig');
+                    if (data.efeitos_trad[orig] !== undefined) {
+                        input.value = data.efeitos_trad[orig];
+                        input.dispatchEvent(new Event('input', { bubbles: true }));
+                    }
+                });
+            }
         };
         reader.readAsText(file);
     }
@@ -928,42 +962,63 @@ html += """
                 ctx.lineWidth = 3;
                 ctx.setLineDash([8,4]);
                 ctx.strokeRect(startX, startY, endX-startX, endY-startY);
-                ctx.restore();
-                ctx.save();
-                ctx.globalAlpha = 0.7;
-                ctx.drawImage(imgOriginal, startX, startY, endX-startX, endY-startY, startX, startY, endX-startX, endY-startY);
-                ctx.restore();
-            });
-            canvas.addEventListener('mouseup', function(e) {
-                if (!drawing) return;
-                drawing = false;
-                rect = {
-                    x: Math.round(Math.min(startX, endX)),
-                    y: Math.round(Math.min(startY, endY)),
-                    w: Math.round(Math.abs(endX-startX)),
-                    h: Math.round(Math.abs(endY-startY))
-                };
-            });
-        }
-        if(toolbar) {
-            var okBtn = toolbar.querySelector('.restaurar-ok');
-            var cancelBtn = toolbar.querySelector('.restaurar-cancel');
-            if(okBtn) okBtn.addEventListener('click', function(e) {
-                if (rect && rect.w > 0 && rect.h > 0) {
-                    var tempCanvas = document.createElement('canvas');
-                    tempCanvas.width = imgSemTexto.naturalWidth;
-                    tempCanvas.height = imgSemTexto.naturalHeight;
-                    var tempCtx = tempCanvas.getContext('2d');
-                    tempCtx.drawImage(imgSemTexto, 0, 0);
-                    tempCtx.drawImage(imgOriginal, rect.x, rect.y, rect.w, rect.h, rect.x, rect.y, rect.w, rect.h);
-                    imgSemTexto.src = tempCanvas.toDataURL('image/webp');
-                    restauracoes.push(rect);
-                    container.dataset.restauracoes = JSON.stringify(restauracoes);
-                    drawAllRestauracoes();
+                try {
+                    const resp = await fetch('cartas_editadas.json', {cache: 'no-store'});
+                    if (resp.ok) {
+                        const data = await resp.json();
+                        var cartas = Array.isArray(data) ? data : data.cartas;
+                        document.querySelectorAll('.carta').forEach(function(cartaDiv, i) {
+                            if (cartas && cartas[i]) {
+                                cartaDiv.querySelector('.edit-nome').innerText = cartas[i].Nome || '';
+                                cartaDiv.querySelector('.edit-classe').value = cartas[i].Classe || '';
+                                var efDivs = cartaDiv.querySelectorAll('.efeito-box');
+                                if (Array.isArray(cartas[i].Efeitos)) {
+                                    for (var j = 0; j < efDivs.length; j++) {
+                                        var ef = cartas[i].Efeitos[j] || {};
+                                        efDivs[j].innerHTML = ef.texto || '';
+                                        efDivs[j].setAttribute('data-pos-x', ef.x || 0);
+                                        efDivs[j].setAttribute('data-pos-y', ef.y || 0);
+                                        efDivs[j].style.transform = `translate(${ef.x||0}px,${ef.y||0}px)`;
+                                    }
+                                } else {
+                                    var efeitos = (cartas[i].Efeito || '').split(/<br\\s*\\/?>|;|(?<=[.])\\s+(?=[A-ZÀ-Ý])/);
+                                    for (var j = 0; j < efDivs.length; j++) {
+                                        efDivs[j].innerHTML = efeitos[j] || '';
+                                        efDivs[j].setAttribute('data-pos-x', 0);
+                                        efDivs[j].setAttribute('data-pos-y', 0);
+                                        efDivs[j].style.transform = '';
+                                    }
+                                }
+                                if (cartas[i].restauracoes) {
+                                    cartaDiv.dataset.restauracoes = JSON.stringify(cartas[i].restauracoes);
+                                }
+                            }
+                        });
+                        // Restaurar traduções de classes
+                        if (data.classes_trad) {
+                            document.querySelectorAll('.classe-trad').forEach(function(input) {
+                                var orig = input.getAttribute('data-orig');
+                                if (data.classes_trad[orig] !== undefined) {
+                                    input.value = data.classes_trad[orig];
+                                    input.dispatchEvent(new Event('input', { bubbles: true }));
+                                }
+                            });
+                        }
+                        // Restaurar traduções de efeitos globais
+                        if (data.efeitos_trad) {
+                            document.querySelectorAll('.efeito-trad').forEach(function(input) {
+                                var orig = input.getAttribute('data-orig');
+                                if (data.efeitos_trad[orig] !== undefined) {
+                                    input.value = data.efeitos_trad[orig];
+                                    input.dispatchEvent(new Event('input', { bubbles: true }));
+                                }
+                            });
+                        }
+                    }
+                } catch (e) {
+                    // arquivo não existe ou erro de fetch, não faz nada
                 }
-                rect = null;
-                canvas.style.display = 'none';
-                imgOriginal.style.display = 'none';
+            })();
                 toolbar.style.display = 'none';
             });
             if(cancelBtn) cancelBtn.addEventListener('click', function(e) {
