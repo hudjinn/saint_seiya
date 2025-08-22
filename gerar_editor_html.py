@@ -349,8 +349,11 @@ html = """<!DOCTYPE html>
             <button type="button" onclick="document.getElementById('importar-arquivo').click()" class="import-btn">⬆ Importar JSON</button>
             <input type="file" id="importar-arquivo" style="display:none" accept="application/json" onchange="importarJson(event)">
         </div>
-        <div class="classes-lista">
-            <h2>Tradução de Classes Comuns</h2>
+        <div class="classes-lista collapsible-box">
+            <div class="collapsible-header" style="display:flex;align-items:center;justify-content:space-between;cursor:pointer;">
+                <h2 style="margin:0;">Tradução de Classes Comuns</h2>
+                <button type="button" class="collapsible-toggle" aria-expanded="true" style="background:#444;color:#ffe066;border:none;border-radius:6px;padding:6px 18px;font-size:1em;cursor:pointer;">Ocultar</button>
+            </div>
             <form id="classes-form">
 """
 # Lista de classes para tradução
@@ -387,8 +390,11 @@ html += """
     <!-- Botões removidos daqui -->
         </form>
     </div>
-    <div class="efeitos-lista">
-        <h2>Tradução de Efeitos Globais</h2>
+    <div class="efeitos-lista collapsible-box classes-lista" style="margin-top:32px;">
+        <div class="collapsible-header" style="display:flex;align-items:center;justify-content:space-between;cursor:pointer;">
+            <h2 style="margin:0;">Tradução de Efeitos Globais</h2>
+            <button type="button" class="collapsible-toggle" aria-expanded="true" style="background:#444;color:#ffe066;border:none;border-radius:6px;padding:6px 18px;font-size:1em;cursor:pointer;">Ocultar</button>
+        </div>
         <form id="efeitos-form">
 """
 # Lista de efeitos para tradução
@@ -583,6 +589,34 @@ html += """
     </div>
     <p style=\"margin-top:40px;\">Edite o nome, classe e os efeitos sobre a carta. Para salvar, exporte o JSON ou importe para continuar a tradução depois.</p>
     <script>
+    // Expande/retrai as seções de classes e efeitos
+    document.querySelectorAll('.collapsible-header').forEach(function(header){
+        var box = header.parentElement;
+        var toggle = header.querySelector('.collapsible-toggle');
+        var form = box.querySelector('form');
+        var row = box.querySelector('.row-container');
+        toggle.addEventListener('click', function(e){
+            e.stopPropagation();
+            var expanded = toggle.getAttribute('aria-expanded') === 'true';
+            if(expanded){
+                form.style.display = 'none';
+                if(row) row.style.display = 'none';
+                toggle.textContent = 'Mostrar';
+                toggle.setAttribute('aria-expanded','false');
+            }else{
+                form.style.display = '';
+                if(row) row.style.display = '';
+                toggle.textContent = 'Ocultar';
+                toggle.setAttribute('aria-expanded','true');
+            }
+        });
+        // Clique no header também expande/retrai
+        header.addEventListener('click', function(e){
+            if(e.target !== toggle){
+                toggle.click();
+            }
+        });
+    });
     // Importa automaticamente cartas_editadas.json se existir (GitHub Pages ou servidor)
     (function() {
         fetch('cartas_editadas.json', {cache: 'no-store'})
