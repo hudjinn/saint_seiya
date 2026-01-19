@@ -298,7 +298,8 @@ html = """<!DOCTYPE html>
             margin-bottom: 0;
         }
         .restaurar-preview { display: none; position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; z-index: 31; pointer-events: auto; background: rgba(0,0,0,0.0); }
-        .restaurar-canvas { display: none; position: absolute; left: 0; top: 0; width: 100%; height: 100%; z-index: 99; pointer-events: auto; }
+        .restaurar-canvas { display: none; position: absolute; left: 0; top: 0; width: 100%; height: 100%; z-index: 5; pointer-events: none; }
+        .restaurar-canvas.editing { pointer-events: auto; z-index: 99; }
         /* Ícones cosmos e forca: width 22px; demais: width conforme HTML do JSON */
         .effect img[alt="Cosmos"], .effect img[alt="Force"] {
             width: 22px !important;
@@ -795,6 +796,12 @@ html += """
                     ctx.drawImage(imgOriginal, r.x, r.y, r.w, r.h, r.x, r.y, r.w, r.h);
                 });
             }
+            // Se já houver restaurações salvas, exibe o canvas com elas
+            if (restauracoes.length > 0) {
+                syncCanvasSize();
+                canvas.style.display = 'block';
+                drawAllRestauracoes();
+            }
             if(restaurarBtn) {
                 restaurarBtn.addEventListener('click', function(e) {
                     e.stopPropagation();
@@ -903,8 +910,8 @@ html += """
             var efDivs = cartaDiv.querySelectorAll('.efeito-box');
             for (var j = 0; j < efDivs.length; j++) {
                 var efDiv = efDivs[j];
-                // Sempre salva o texto original do efeito (data-orig), não o renderizado/traduzido
-                var texto = efDiv.getAttribute('data-orig') || efDiv.innerHTML;
+                // Sempre salva o texto atual do efeito (innerHTML com edições do usuário)
+                var texto = efDiv.innerHTML;
                 var x = parseInt(efDiv.getAttribute('data-pos-x')||'0',10);
                 var y = parseInt(efDiv.getAttribute('data-pos-y')||'0',10);
                 var textoOrig = '';
@@ -1073,6 +1080,7 @@ html += """
                 e.stopPropagation();
                 syncCanvasSize();
                 canvas.style.display = 'block';
+                canvas.classList.add('editing');
                 imgOriginal.style.display = 'block';
                 toolbar.style.display = 'flex';
                 drawAllRestauracoes();
@@ -1105,10 +1113,36 @@ html += """
                 ctx.strokeRect(startX, startY, endX-startX, endY-startY);
                 ctx.restore();
             });
+            canvas.addEventListener('mouseup', function(e) {
+                if (!drawing) return;
+                drawing = false;
+                rect = {x: Math.min(startX,endX), y: Math.min(startY,endY), w: Math.abs(endX-startX), h: Math.abs(endY-startY)};
+            });
 
+            var okBtn = toolbar.querySelector('.restaurar-ok');
+            if(okBtn) okBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (rect && rect.w > 0 && rect.h > 0) {
+                    restauracoes.push(rect);
+                    container.dataset.restauracoes = JSON.stringify(restauracoes);
+                    drawAllRestauracoes();
+                }
+                rect = null;
+                canvas.classList.remove('editing');
+                imgOriginal.style.display = 'none';
+                toolbar.style.display = 'none';
+                // Mantém o canvas visível se houver restaurações
+                if (restauracoes.length > 0) {
+                    canvas.style.display = 'block';
+                } else {
+                    canvas.style.display = 'none';
+                }
+            });
             var cancelBtn = toolbar.querySelector('.restaurar-cancel');
             if(cancelBtn) cancelBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
                 rect = null;
+                canvas.classList.remove('editing');
                 canvas.style.display = 'none';
                 imgOriginal.style.display = 'none';
                 toolbar.style.display = 'none';
