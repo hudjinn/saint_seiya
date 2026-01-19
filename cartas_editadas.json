@@ -1,5 +1,18 @@
 {
-  "cartas": {},
+  "cartas": {
+    "imagens/seiya.webp": {
+      "Nome": "Seiya de Pégasus",
+      "Classe": "Herói",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><em>Reforçar Seiya com a Armadura de Pégasus.</em></div>",
+          "x": 0,
+          "y": 0
+        }
+      ],
+      "restauracoes": []
+    }
+  },
   "classes_trad": {
     "Armure": "Armadura",
     "Armure d'Or": "Armadura de Ouro",
