@@ -56,6 +56,9 @@ html = """<!DOCTYPE html>
 <head>
     <meta charset=\"UTF-8\">
     <title>Editor de Cartas Saint Seiya</title>
+    <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">
+    <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>
+    <link href=\"https://fonts.googleapis.com/css2?family=Belanosima:wght@700&family=UnifrakturMaguntia&display=swap\" rel=\"stylesheet\">
     <style>
         .carta.epop_e .edit-nome {
             color: #b4a79e;
