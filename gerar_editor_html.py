@@ -126,18 +126,14 @@ html = """<!DOCTYPE html>
         .carta.portrait .carta-imgbox { width: 300px; height: 419px; }
     .carta.landscape .carta-imgbox { width: 419px; height: 300px; }
     .carta-img { width: 100%; height: 100%; border-radius: 12px; box-shadow: 0 0 16px #000a; object-fit: fill; border: none; }
-        /* Faixa de fundo do nome por ranking */
+        /* Faixa de fundo do nome por ranking — posição/tamanho controlado por JS */
         .nome-faixa {
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 46px;
             z-index: 1;
-            border-radius: 12px 12px 0 0;
+            border-radius: 4px;
             pointer-events: none;
+            transition: none;
         }
-        .carta.landscape .nome-faixa { height: 46px; }
         .nome-faixa.rank0 { background: rgba(80,80,80,0.7); }
         .nome-faixa.rank1 { background: rgba(100,140,200,0.75); }
         .nome-faixa.rank2 { background: rgba(90,180,100,0.75); }
@@ -146,7 +142,7 @@ html = """<!DOCTYPE html>
         .nome-faixa.rank5 { background: rgba(140,80,200,0.75); }
         .edit-nome {
             position: absolute;
-            top: 2px;
+            top: 0;
             left: 0;
             right: 0;
             width: 90%;
@@ -162,7 +158,7 @@ html = """<!DOCTYPE html>
             outline: none;
             z-index: 2;
         }
-        .edit-classe { z-index: 20; position: absolute; top: 40px; left: 20px; width: 80%; background: rgba(0, 0, 0, 0.2); font-size: 0.8em; font-family: 'Georgia', serif; border: none; border-radius: 6px; padding: 2px 8px; outline: none; text-align: center; box-shadow: 0 1px 6px #0006; color: #fff; }
+        .edit-classe { z-index: 20; position: absolute; top: 34px; left: 20px; width: 80%; background: rgba(0, 0, 0, 0.2); font-size: 0.8em; font-family: 'Georgia', serif; border: none; border-radius: 6px; padding: 2px 8px; outline: none; text-align: center; box-shadow: 0 1px 6px #0006; color: #fff; }
     .edit-classe { font-style: italic; }
     .edit-classe-landscape { width: 37% !important; }
         .efeitos-stack {
@@ -171,28 +167,30 @@ html = """<!DOCTYPE html>
             align-items: center;
             text-align: center;
             font-family: 'Georgia', serif;
-            font-size: 0.8em;
+            font-size: 0.7em;
             color: #111;
-            width: 85%;
-            margin: 0 auto;
             position: absolute;
-            bottom: 24px;
-            left: 0;
-            right: 0;
+            margin: 0;
         }
-        .carta.landscape .efeitos-stack,
-        .carta.portrait .efeitos-stack,
-        .carta.landscape.epop_e .efeitos-stack {
-            width: 85%;
-            margin: 0 auto;
-            left: 0;
-            right: 0;
+        /* Portrait: bbox (25,368)→(260,398), imagem 300x419 */
+        .carta.portrait .efeitos-stack {
+            left: 25px;
+            width: 235px;
+            bottom: 21px;
+            right: auto;
+        }
+        /* Landscape: bbox (20,248)→(380,275), imagem 419x300 */
+        .carta.landscape .efeitos-stack {
+            left: 20px;
+            width: 360px;
+            bottom: 25px;
+            right: auto;
         }
         .effect {
             font-family: 'NeoSansW01', sans-serif;
-            border-radius: 8px;
-            padding: 4px 10px;
-            margin-bottom: 4px;
+            border-radius: 6px;
+            padding: 2px 6px;
+            margin-bottom: 2px;
             display: inline-block;
         }
         /* Se a keyword findepartie estiver presente, deixa o texto da effect branco exceto a keyword */
@@ -583,13 +581,12 @@ for carta in cartas:
     for idx, ef_html in enumerate(efeitos_html):
         ef_html_escaped = ef_html.replace('"', '&quot;').replace("'", "&#39;")
         html += (
-            f'<div class="efeito-box-wrapper" style="position:relative;display:flex;align-items:flex-start;margin-top:18px;margin-bottom:8px;">'
+            f'<div class="efeito-box-wrapper" style="position:relative;display:flex;align-items:flex-start;margin:0;">'
             f'<div class="efeito-pos-toolbar" style="position:absolute;top:-18px;right:-13px;z-index:10;display:flex;flex-direction:row;align-items:center;gap:4px;">'
             f'<button class="efeito-pos-editar-btn" title="Editar posição" style="width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;background:#ffe066;color:#222;border-radius:50%;border:1.5px solid #ffe066;box-shadow:0 0 2px #0002;cursor:pointer;font-size:1em;padding:0;transition:box-shadow .2s;outline:1px solid #bbb;outline-offset:-1px;">✥</button>'
             f'</div>'
             f'<div style="display:flex;flex-direction:column;align-items:center;width:100%;">'
-            f'<div contenteditable="true" class="efeito-box" data-orig="{ef_html_escaped}" data-pos-x="0" data-pos-y="0" style="--efeito-bottom:{10+idx*44}px;">'
-            f'{ef_html}'
+            f'<div contenteditable="true" class="efeito-box" data-orig="{ef_html_escaped}" data-pos-x="0" data-pos-y="0">'            f'{ef_html}'
             f'</div>'
             f'</div>'
             f'</div>'
@@ -1274,6 +1271,32 @@ html += """
                 });
             });
         });
+    });
+    // --- Sincroniza .nome-faixa com o bounding box real do .edit-nome ---
+    function syncNomeFaixa(editNome) {
+        var imgbox = editNome.closest('.carta-imgbox');
+        if (!imgbox) return;
+        var faixa = imgbox.querySelector('.nome-faixa');
+        if (!faixa) return;
+        var boxRect = imgbox.getBoundingClientRect();
+        var nomeRect = editNome.getBoundingClientRect();
+        faixa.style.top    = (nomeRect.top  - boxRect.top)  + 'px';
+        faixa.style.left   = (nomeRect.left - boxRect.left) + 'px';
+        faixa.style.width  = nomeRect.width  + 'px';
+        faixa.style.height = nomeRect.height + 'px';
+    }
+    function syncAllNomeFaixas() {
+        document.querySelectorAll('.edit-nome').forEach(syncNomeFaixa);
+    }
+    // Aplica após fontes/layout renderizados
+    if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(syncAllNomeFaixas);
+    }
+    window.addEventListener('load', syncAllNomeFaixas);
+    window.addEventListener('resize', syncAllNomeFaixas);
+    // Atualiza ao editar o nome
+    document.querySelectorAll('.edit-nome').forEach(function(el) {
+        el.addEventListener('input', function() { syncNomeFaixa(el); });
     });
     </script>
 </body>
