@@ -946,7 +946,8 @@ html += """
                     });
                 }
             }
-            var restauracoes = cartaDiv.dataset.restauracoes ? JSON.parse(cartaDiv.dataset.restauracoes) : [];
+            var cartaContainer = cartaDiv.closest('.carta-container');
+            var restauracoes = (cartaContainer && cartaContainer.dataset.restauracoes) ? JSON.parse(cartaContainer.dataset.restauracoes) : [];
             var restOrig = cartaOrig.restauracoes || [];
             var restVazia = (!restauracoes || restauracoes.length === 0);
             var restOrigVazia = (!restOrig || restOrig.length === 0);
