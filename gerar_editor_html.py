@@ -5,7 +5,7 @@ import re
 import unicodedata
 from PIL import Image
 
-IMAGES_DIR = "imagens_sem_texto"
+IMAGES_DIR = "imagens"
 IMAGES_ORIG_DIR = "imagens"
 HTML_PATH = "index.html"
 JSON_PATH = "cartas.json"
@@ -123,9 +123,27 @@ html = """<!DOCTYPE html>
         .efeito-carta-tooltip img { max-width: 320px; max-height: 460px; box-shadow: 0 0 16px #000; border-radius: 10px; border: 2px solid #ffe066; background: #222; }
         .carta { display: inline-block; margin: 24px; background: #333; padding: 12px; border-radius: 12px; vertical-align: top; box-shadow: 0 0 16px #000a; }
         .carta-imgbox { position: relative; margin-bottom: 0; }
-        .carta.portrait .carta-imgbox { width: 350px; height: 500px; }
-    .carta.landscape .carta-imgbox { width: 500px; height: 350px; }
-    .carta-img { width: 100%; height: 100%; border-radius: 12px; box-shadow: 0 0 16px #000a; object-fit: cover; border: none; }
+        .carta.portrait .carta-imgbox { width: 300px; height: 419px; }
+    .carta.landscape .carta-imgbox { width: 419px; height: 300px; }
+    .carta-img { width: 100%; height: 100%; border-radius: 12px; box-shadow: 0 0 16px #000a; object-fit: fill; border: none; }
+        /* Faixa de fundo do nome por ranking */
+        .nome-faixa {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 46px;
+            z-index: 1;
+            border-radius: 12px 12px 0 0;
+            pointer-events: none;
+        }
+        .carta.landscape .nome-faixa { height: 46px; }
+        .nome-faixa.rank0 { background: rgba(80,80,80,0.7); }
+        .nome-faixa.rank1 { background: rgba(100,140,200,0.75); }
+        .nome-faixa.rank2 { background: rgba(90,180,100,0.75); }
+        .nome-faixa.rank3 { background: rgba(210,170,60,0.75); }
+        .nome-faixa.rank4 { background: rgba(210,80,80,0.75); }
+        .nome-faixa.rank5 { background: rgba(140,80,200,0.75); }
         .edit-nome {
             position: absolute;
             top: 2px;
@@ -142,6 +160,7 @@ html = """<!DOCTYPE html>
             text-align: center;
             text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
             outline: none;
+            z-index: 2;
         }
         .edit-classe { z-index: 20; position: absolute; top: 40px; left: 20px; width: 80%; background: rgba(0, 0, 0, 0.2); font-size: 0.8em; font-family: 'Georgia', serif; border: none; border-radius: 6px; padding: 2px 8px; outline: none; text-align: center; box-shadow: 0 1px 6px #0006; color: #fff; }
     .edit-classe { font-style: italic; }
@@ -490,12 +509,12 @@ for carta in cartas:
         "cosmos.webp", "force.webp", "flamme.webp", "ame.webp", "sceau.webp", "compteur.webp", "heal.webp"
     ]
     nome_arquivo = os.path.basename(img_orig)
-    if nome_arquivo in icones:
-        img = f"imagens/{nome_arquivo}".lstrip("/")
-    elif img_orig.startswith("imagens/"):
-        img = img_orig.replace("imagens/", "imagens_sem_texto/").lstrip("/")
-    else:
-        img = img_orig.lstrip("/")
+    # sempre usar imagem original
+    img = img_orig.lstrip("/")
+    # Extrai classe de ranking do TipoIcone
+    tipo_icone = carta.get("TipoIcone", "")
+    rank_match = re.search(r'rank(\d+)', tipo_icone)
+    rank_class = f"rank{rank_match.group(1)}" if rank_match else "rank0"
     nome = carta["Nome"]
     classe = carta["Classe"]
     efeitos = carta.get("effects")
@@ -553,6 +572,7 @@ for carta in cartas:
     <div class="carta {aspect} {classe_css}">
         <div class="{carta_imgbox_class}">
             <img src="{img}" alt="{nome}" class="carta-img">
+            <div class="nome-faixa {rank_class}"></div>
             <div contenteditable="true" class="edit-nome">{nome}</div>
             <input type="text" class="{edit_classe_class}" data-orig="{classe}" value="{classe}">
             <img src="{img_orig}" class="restaurar-preview">
