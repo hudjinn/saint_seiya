@@ -28,7 +28,7 @@ def classe_borda_url(classe, aspect):
     filepath = os.path.join('imagens', 'bordas', slug + '.png')
     if os.path.exists(filepath):
         return filepath.replace('\\', '/')
-    return 'imagens/bordas/class_h.png' if aspect == 'landscape' else 'imagens/bordas/class_v.png'
+    return 'imagens/bordas/clean_card.png'
 
 # Coletar keywords de efeitos a partir dos <em class="keyword ...">...</em> presentes nos efeitos das cartas
 import html as htmlmod
@@ -1443,7 +1443,8 @@ html += """
     var CLASSES_OCULTAS = ['provação', 'saga', 'altar', 'maison', 'capacidade', 'provacão', 'provacao'];
     function syncClasseWidth(input) {
         var val = input.value.trim();
-        if (!val || CLASSES_OCULTAS.indexOf(val.toLowerCase()) !== -1) {
+        var _ocultas = (typeof CLASSES_OCULTAS !== 'undefined') ? CLASSES_OCULTAS : [];
+        if (!val || _ocultas.indexOf(val.toLowerCase()) !== -1) {
             input.style.display = 'none';
             return;
         }
