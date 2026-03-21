@@ -21,6 +21,15 @@ def get_aspect(img_path):
     except Exception:
         return 'portrait'
 
+def classe_borda_url(classe, aspect):
+    slug = unicodedata.normalize('NFD', classe.lower())
+    slug = ''.join(c for c in slug if unicodedata.category(c) != 'Mn')
+    slug = re.sub(r'[^a-z0-9]+', '_', slug).strip('_')
+    filepath = os.path.join('imagens', 'bordas', slug + '.png')
+    if os.path.exists(filepath):
+        return filepath.replace('\\', '/')
+    return 'imagens/bordas/class_h.png' if aspect == 'landscape' else 'imagens/bordas/class_v.png'
+
 # Coletar keywords de efeitos a partir dos <em class="keyword ...">...</em> presentes nos efeitos das cartas
 import html as htmlmod
 efeito_keywords = set()
@@ -66,6 +75,10 @@ html = """<!DOCTYPE html>
         body { font-family: Arial, sans-serif; background: #222; color: #eee; }
         .main-container { margin: 0 auto 24px auto; }
         .header-box { text-align: center; font-size: 1.18em; color: #ffe066; background: #222; padding: 16px 28px; border-radius: 14px; box-shadow: 0 0 14px #000; margin: 32px auto 24px auto; }
+        .firebase-save-btn { background: #f57c00; color: #fff; border: none; border-radius: 6px; padding: 8px 18px; font-size: 1em; cursor: pointer; font-weight: bold; margin-left: 8px; }
+        .firebase-save-btn:hover { background: #ff9800; }
+        .firebase-login-btn { background: #333; color: #ffe066; border: 1px solid #ffe066; border-radius: 6px; padding: 8px 10px; font-size: 1em; cursor: pointer; }
+        .firebase-login-btn:hover { background: #444; }
         .toolbar-box { text-align: center; margin-bottom: 24px; }
         .export-btn { background: linear-gradient(90deg,#ffe066 0%,#ffb347 100%); color: #222; font-weight: bold; font-size: 1.25em; border: 2.5px solid #ffb347; border-radius: 10px; padding: 12px 32px; margin: 0 18px 8px 0; box-shadow: 0 2px 12px #0008; letter-spacing: 1px; transition: filter .2s; cursor:pointer; }
         .import-btn { background: linear-gradient(90deg,#66e0ff 0%,#3ad29f 100%); color: #222; font-weight: bold; font-size: 1.25em; border: 2.5px solid #3ad29f; border-radius: 10px; padding: 12px 32px; margin: 0 0 8px 0; box-shadow: 0 2px 12px #0008; letter-spacing: 1px; transition: filter .2s; cursor:pointer; }
@@ -164,11 +177,13 @@ html = """<!DOCTYPE html>
             outline: none;
             z-index: 2;
         }
-        .edit-classe { z-index: 20; position: absolute; top: 34px; left: 20px; background-repeat: no-repeat; background-color: transparent; font-size: 0.8em; font-family: 'Georgia', serif; border: none; border-radius: 6px; padding: 2px 8px; outline: none; text-align: center; box-shadow: 0 1px 6px #0006; color: #fff; width: auto; min-width: 40px; max-width: 80%; }
+        .edit-classe { z-index: 20; position: absolute; top: 34px; left: 20px; background-repeat: no-repeat; background-color: transparent; font-size: 0.8em; font-family: 'Georgia', serif; border: none; border-radius: 6px; padding: 2px 8px; outline: none; text-align: center; box-shadow: none; color: #fff; width: auto; min-width: 40px; max-width: 80%; }
     .edit-classe { font-style: italic; }
-    /* Imagem de classe: posição/tamanho calculados dinamicamente por JS (syncClasseWidth) */
-    .portrait-imgbox .edit-classe { background-image: url(imagens/bordas/class_vertical.png); left: 50%; transform: translateX(-50%); }
-    .landscape-imgbox .edit-classe { background-image: url(imagens/bordas/class_horizontal.png); max-width: 50%; }
+    /* Imagem de classe: background-image definido inline por carta no Python; posição por orientação */
+    .portrait-imgbox .edit-classe { left: 50%; transform: translateX(-50%); }
+    .landscape-imgbox .edit-classe { max-width: 50%; left: 5px; }
+    .landscape-imgbox .edit-classe[data-orig="Renégat"],
+    .landscape-imgbox .edit-classe[data-orig="Armure"] { left: 20px; }
     .rank-select { display: block; width: 28px; height: 28px; background: #1a1a1a; color: #ffe066; border: 2px solid #ffe066; border-radius: 6px; font-size: 0.7em; font-weight: bold; cursor: pointer; text-align: center; text-align-last: center; padding: 0; -webkit-appearance: none; appearance: none; outline: none; box-shadow: 0 0 4px #000; }
     .rank-select option { background: #222; color: #eee; }
         .efeitos-stack {
@@ -291,6 +306,7 @@ html = """<!DOCTYPE html>
         .width-ctrl-btn { background: #333; color: #ffe066; border: 1px solid #ffe066; border-radius: 4px; padding: 1px 5px; font-size: 0.62em; cursor: pointer; font-weight: bold; line-height: 1.6; }
         .width-ctrl-btn:hover { background: #ffe066; color: #222; }
         .efeito-item { position: relative; width: 100%; display: flex; flex-direction: column; align-items: center; }
+        .efeito-item-pv .efeito-box { background-color: rgb(200, 180, 164); border-radius: 4px; }
         .efeito-item-handle { cursor: grab; color: #ffe066aa; font-size: 0.75em; width: 100%; display: flex; justify-content: flex-end; align-items: center; gap: 3px; user-select: none; padding: 1px 3px 0; }
         .efeito-item-handle:hover { color: #ffe066; }
         .efeito-item-handle:active { cursor: grabbing; }
@@ -300,14 +316,18 @@ html = """<!DOCTYPE html>
         .efeito-item-reset-btn:hover { background: #555; color: #fff; }
         .efeito-reset-all-btn { background: #2a2a2a; color: #aaa; border: 1px solid #666; border-radius: 3px; padding: 0 4px; font-size: 0.8em; cursor: pointer; line-height: 1.5; margin-left: 4px; }
         .efeito-reset-all-btn:hover { background: #555; color: #fff; }
-        /* Ícones cosmos e forca: width 22px; demais: width conforme HTML do JSON */
+        /* Ícones cosmos e forca: 14x14; rank: 11x11 */
         .effect img[alt="Cosmos"], .effect img[alt="Force"] {
-            width: 15px !important;
-            height: 15px !important;
+            width: 14px !important;
+            height: 14px !important;
             vertical-align: middle;
         }
-        /* Os demais ícones não terão width forçado, usarão o width do HTML do JSON */
-        .effect img:not([alt="Cosmos"]):not([alt="Force"]) {
+        .effect img.rank {
+            width: 11px !important;
+            height: 11px !important;
+            vertical-align: middle;
+        }
+        .effect img:not([alt="Cosmos"]):not([alt="Force"]):not(.rank) {
             vertical-align: middle;
         }
 
@@ -329,20 +349,49 @@ html = """<!DOCTYPE html>
             background: linear-gradient(90deg,#b71c1c 0%,#f44336 100%);
         }
     </style>
+    <!-- Firebase SDK (compat) -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
 </head>
 <body>
     <div class="main-container">
         <div class="header-box">
             <b>Editor de Cartas Saint Seiya</b><br>
             Edite o <b>nome</b>, <b>classe</b> e <b>efeitos</b> de cada carta diretamente na lista abaixo.<br>
-            Para traduzir rapidamente, utilize as caixas de tradução de <b>classes</b> e <b>efeitos globais</b> — ao alterar um termo, todas as cartas com aquele termo serão atualizadas automaticamente.<br>
-            <span style="color:#b0e0ff;">Para restaurar partes da imagem original (ex: remover falhas da versão sem texto), clique no botão <span style="background:#ffe066;color:#222;padding:2px 8px;border-radius:5px;font-weight:bold;">✏️</span> na carta desejada, desenhe um retângulo sobre a área a restaurar e confirme com <b>✔</b> ou cancele com <b>✖</b>. A restauração é visual e não altera o arquivo original.</span><br>
-            <span style="color:#ffe066;font-size:0.98em;">Use <b>Exportar JSON</b> para salvar seu progresso e <b>Importar JSON</b> para continuar depois.</span>
+            Para traduzir rapidamente, use as seções <b>Classes</b> e <b>Efeitos Globais</b> — ao alterar um termo, todas as cartas com aquele termo são atualizadas automaticamente.<br>
+            <span style="color:#b0e0ff;">
+                Para restaurar partes da imagem original, clique em <span style="background:#ffe066;color:#222;padding:2px 8px;border-radius:5px;font-weight:bold;">✏️</span>, desenhe um retângulo sobre a área e confirme com <b>✔</b> ou cancele com <b>✖</b>.<br>
+                Use <b>N+/N−</b> para alargar a faixa de fundo do nome (cobre o texto original). Use <b>E+/E−</b> para ajustar a largura de cada efeito individualmente.<br>
+                Arraste o bloco de efeitos pelo handle <b>· · · · ·</b> ou arraste cada efeito individualmente pelo <b>⠿</b>. Os efeitos não saem do limite da carta.<br>
+                Clique em <b>↺</b> para redefinir a posição de um efeito, ou em <b>↺ todos</b> para redefinir todos os efeitos da carta de uma vez.
+            </span><br>
+            <span style="color:#ffe066;font-size:0.98em;">
+                <b>Exportar JSON</b> salva seu progresso localmente. <b>Importar JSON</b> restaura um progresso salvo.<br>
+                <b>☁️ Salvar</b> publica as alterações no Firebase (clique em <b>🔑</b> e insira a senha de acesso). Os dados são versionados automaticamente por dia.
+            </span>
         </div>
         <div class="toolbar-box">
             <button type="button" onclick="exportarJson()" class="export-btn">⬇ Exportar JSON</button>
             <button type="button" onclick="document.getElementById('importar-arquivo').click()" class="import-btn">⬆ Importar JSON</button>
             <input type="file" id="importar-arquivo" style="display:none" accept="application/json" onchange="importarJson(event)">
+            <button type="button" onclick="fbSalvar()" class="firebase-save-btn" id="firebase-save-btn">☁️ Salvar</button>
+            <button type="button" onclick="document.getElementById('firebase-login-modal').style.display='flex'" class="firebase-login-btn" id="firebase-login-btn" title="Entrar no Firebase">🔑</button>
+            <span id="firebase-user-status" style="font-size:0.85em;color:#aaa;margin-left:8px;vertical-align:middle;"></span>
+        </div>
+        <!-- Modal login Firebase -->
+        <div id="firebase-login-modal" style="display:none;position:fixed;inset:0;background:#000b;z-index:9999;align-items:center;justify-content:center;">
+          <div style="background:#222;border:2px solid #f57c00;border-radius:12px;padding:28px 32px;min-width:320px;max-width:400px;color:#fff;">
+            <h3 style="color:#f57c00;margin-top:0;">Acesso Firebase</h3>
+            <label style="display:block;margin-bottom:12px;">Senha de acesso:<br>
+              <input id="fb-senha" type="password" placeholder="••••••••" style="width:100%;padding:6px;margin-top:4px;border-radius:5px;border:1px solid #555;background:#333;color:#fff;box-sizing:border-box;">
+            </label>
+            <div id="fb-login-erro" style="color:#f44336;font-size:0.9em;margin-bottom:8px;display:none;"></div>
+            <div style="display:flex;gap:10px;justify-content:flex-end;">
+              <button onclick="fbFazerLogin()" style="background:#f57c00;color:#fff;border:none;border-radius:6px;padding:8px 20px;font-weight:bold;cursor:pointer;">Entrar</button>
+              <button onclick="document.getElementById('firebase-login-modal').style.display='none'" style="background:#444;color:#fff;border:none;border-radius:6px;padding:8px 16px;cursor:pointer;">Fechar</button>
+            </div>
+          </div>
         </div>
         <div class="classes-lista collapsible-box">
             <div class="collapsible-header" style="display:flex;align-items:center;justify-content:space-between;cursor:pointer;">
@@ -501,11 +550,13 @@ for carta in cartas:
     classe = carta["Classe"]
     efeitos = carta.get("effects")
     efeitos_html = []
+    efeitos_tipos = []
     if efeitos and isinstance(efeitos, list) and efeitos:
         # PV type sempre primeiro
         efeitos = sorted(efeitos, key=lambda e: 0 if (isinstance(e, dict) and e.get("type") == "pv") else 1)
         for ef in efeitos:
             html_efeito = None
+            ef_type = ef.get("type", "") if isinstance(ef, dict) else ""
             if isinstance(ef, dict):
                 if ef.get("html"):
                     html_efeito = ef["html"]
@@ -528,9 +579,11 @@ for carta in cartas:
                             html_efeito = html_efeito.replace(prefixo, f'<em class="{class_keyword}">{prefixo}</em>', 1)
                         break
                 efeitos_html.append(html_efeito)
+                efeitos_tipos.append(ef_type)
     else:
         efeito_fallback = carta.get("Efeito", "")
         efeitos_html = split_efeitos_html(efeito_fallback)
+        efeitos_tipos = [''] * len(efeitos_html)
     aspect = get_aspect(img)
     # Define classes extras para portrait/landscape
     carta_imgbox_class = f"carta-imgbox {'portrait-imgbox' if aspect=='portrait' else 'landscape-imgbox'}"
@@ -562,6 +615,10 @@ for carta in cartas:
           <button class="width-ctrl-btn" data-target="nome" data-delta="10" title="Alargar nome">N+</button>
         </div>
         <div style="display:flex;gap:2px;">
+          <button class="width-ctrl-btn" data-target="classe" data-delta="-5" title="Estreitar classe">C-</button>
+          <button class="width-ctrl-btn" data-target="classe" data-delta="5" title="Alargar classe">C+</button>
+        </div>
+        <div style="display:flex;gap:2px;">
           <button class="width-ctrl-btn" data-target="efeito" data-delta="-10" title="Estreitar efeitos">E-</button>
           <button class="width-ctrl-btn" data-target="efeito" data-delta="10" title="Alargar efeitos">E+</button>
         </div>
@@ -571,15 +628,16 @@ for carta in cartas:
             <img src="{img}" alt="{nome}" class="carta-img">
             <div class="nome-faixa {rank_class}" data-rank="{rank_num}"></div>
             <div contenteditable="true" class="edit-nome">{nome}</div>
-            <input type="text" class="{edit_classe_class}" data-orig="{classe}" data-orientation="{'landscape' if aspect=='landscape' else 'portrait'}" value="{classe}">
+            <input type="text" class="{edit_classe_class}" data-orig="{classe}" data-orientation="{'landscape' if aspect=='landscape' else 'portrait'}" style="background-image: url({classe_borda_url(classe, aspect)})" value="{classe}">
             <div class="efeitos-stack" data-drag-x="0" data-drag-y="0">
                 <div class="efeitos-drag-handle" title="Arrastar para mover · duplo-clique para resetar">· · · · · <button class="efeito-reset-all-btn" title="Redefinir posição de TODOS os efeitos">↺ todos</button></div>
 """
     # Adiciona os efeitos_html com wrapper individual para drag/resize
-    for idx, ef_html in enumerate(efeitos_html):
+    for idx, (ef_html, ef_tipo) in enumerate(zip(efeitos_html, efeitos_tipos)):
         ef_html_escaped = ef_html.replace('"', '&quot;').replace("'", "&#39;")
+        pv_class = ' efeito-item-pv' if ef_tipo == 'pv' else ''
         html += (
-            f'<div class="efeito-item" data-idx="{idx}" data-pos-x="0" data-pos-y="0">'
+            f'<div class="efeito-item{pv_class}" data-idx="{idx}" data-pos-x="0" data-pos-y="0">'
             f'<div class="efeito-item-handle" title="Arrastar · duplo-clique para resetar">⠿ '
             f'<button class="efeito-item-width-btn" data-delta="-5" title="Estreitar">E-</button>'
             f'<button class="efeito-item-width-btn" data-delta="5" title="Alargar">E+</button>'
@@ -737,16 +795,18 @@ html += """
             e.preventDefault();
             var startX = e.clientX - dragX, startY = e.clientY - dragY;
             handle.style.cursor = 'grabbing';
+            // Captura limites UMA VEZ no mousedown para evitar glitch de recalculo
+            var minX, maxX, minY, maxY;
+            if (imgbox) {
+                var ib = imgbox.getBoundingClientRect(), sb = stack.getBoundingClientRect();
+                var origLeft = sb.left - ib.left - dragX;
+                var origTop  = sb.top  - ib.top  - dragY;
+                minX = -origLeft; maxX = ib.width  - origLeft - sb.width;
+                minY = -origTop;  maxY = ib.height - origTop  - sb.height;
+            }
             function onMove(ev) {
                 var newX = ev.clientX - startX, newY = ev.clientY - startY;
                 if (imgbox) {
-                    var ib = imgbox.getBoundingClientRect(), sb = stack.getBoundingClientRect();
-                    var stackW = sb.width, stackH = sb.height;
-                    // posição original sem transform
-                    var origLeft = sb.left - ib.left - newX + dragX;
-                    var origTop  = sb.top  - ib.top  - newY + dragY;
-                    var minX = -origLeft, maxX = ib.width  - origLeft - stackW;
-                    var minY = -origTop,  maxY = ib.height - origTop  - stackH;
                     newX = Math.max(minX, Math.min(maxX, newX));
                     newY = Math.max(minY, Math.min(maxY, newY));
                 }
@@ -787,20 +847,24 @@ html += """
             if (e.target.classList.contains('efeito-item-width-btn') || e.target.classList.contains('efeito-item-reset-btn')) return;
             e.preventDefault();
             var startX = e.clientX - dragX, startY = e.clientY - dragY;
+            // Captura limites UMA VEZ no mousedown para evitar glitch de recalculo
+            var minX, maxX, minY, maxY;
+            if (imgbox) {
+                var ib = imgbox.getBoundingClientRect(), it = item.getBoundingClientRect();
+                var stk = item.closest('.efeitos-stack');
+                var stkRect = stk ? stk.getBoundingClientRect() : ib;
+                var origLeft = it.left - stkRect.left - dragX;
+                var origTop  = it.top  - stkRect.top  - dragY;
+                var ibRelLeft = ib.left - stkRect.left;
+                var ibRelTop  = ib.top  - stkRect.top;
+                minX = ibRelLeft - origLeft;
+                maxX = ibRelLeft + ib.width  - origLeft - it.width;
+                minY = ibRelTop  - origTop;
+                maxY = ibRelTop  + ib.height - origTop  - it.height;
+            }
             function onMove(ev) {
                 var newX = ev.clientX - startX, newY = ev.clientY - startY;
                 if (imgbox) {
-                    var ib = imgbox.getBoundingClientRect(), it = item.getBoundingClientRect();
-                    var stk = item.closest('.efeitos-stack');
-                    var stkRect = stk ? stk.getBoundingClientRect() : ib;
-                    var origLeft = it.left - stkRect.left - newX + dragX;
-                    var origTop  = it.top  - stkRect.top  - newY + dragY;
-                    var ibRelLeft = ib.left - stkRect.left;
-                    var ibRelTop  = ib.top  - stkRect.top;
-                    var minX = ibRelLeft - origLeft;
-                    var maxX = ibRelLeft + ib.width  - origLeft - it.width;
-                    var minY = ibRelTop  - origTop;
-                    var maxY = ibRelTop  + ib.height - origTop  - it.height;
                     newX = Math.max(minX, Math.min(maxX, newX));
                     newY = Math.max(minY, Math.min(maxY, newY));
                 }
@@ -830,6 +894,12 @@ html += """
                 var extra = (parseInt(faixa.dataset.wExtra || '0', 10)) + delta;
                 faixa.dataset.wExtra = extra;
                 syncNomeFaixa(container.querySelector('.edit-nome'));
+            } else if (target === 'classe') {
+                var ic = container.querySelector('.edit-classe');
+                if (ic) {
+                    ic.dataset.wExtra = (parseInt(ic.dataset.wExtra || '0', 10)) + delta;
+                    syncClasseWidth(ic);
+                }
             } else if (target === 'efeito') {
                 var st = container.querySelector('.efeitos-stack');
                 st.style.width = Math.max(40, st.offsetWidth + delta) + 'px';
@@ -875,8 +945,8 @@ html += """
             });
         });
     });
-    // Exportar JSON
-    function exportarJson() {
+    // Extrai dados de export (usado por exportarJson e salvarNoGitHub)
+    function gerarExportData() {
         // Carrega cartas.json original (sincrono, pois só no export)
         var req = new XMLHttpRequest();
         req.open('GET', 'cartas.json', false); // síncrono
@@ -966,6 +1036,9 @@ html += """
             var faixaEl = cartaDiv.querySelector('.nome-faixa');
             var nomeWExtra = faixaEl ? (parseInt(faixaEl.dataset.wExtra || '0', 10)) : 0;
             if (nomeWExtra !== 0) { alterado = true; motivos.push('nomeWExtra:' + nomeWExtra); }
+            var classeEl = cartaDiv.querySelector('.edit-classe');
+            var classeWExtra = classeEl ? (parseInt(classeEl.dataset.wExtra || '0', 10)) : 0;
+            if (classeWExtra !== 0) { alterado = true; motivos.push('classeWExtra:' + classeWExtra); }
             // Verificar se rank mudou
             var rankSelect = cartaDiv.closest('.carta-container').querySelector('.rank-select');
             var rank = rankSelect ? parseInt(rankSelect.value) : 0;
@@ -982,6 +1055,7 @@ html += """
                     stackX: stackX,
                     stackY: stackY,
                     nomeWExtra: nomeWExtra,
+                    classeWExtra: classeWExtra,
                     rank: rank
                 };
                 var nomeLog = nomeOrig || imgOrig;
@@ -1008,6 +1082,11 @@ html += """
             classes_trad: classes_trad,
             efeitos_trad: efeitos_trad
         };
+        return exportData;
+    }
+    // Exportar JSON
+    function exportarJson() {
+        var exportData = gerarExportData();
         var blob = new Blob([JSON.stringify(exportData, null, 2)], {type: 'application/json'});
         var a = document.createElement('a');
         a.href = URL.createObjectURL(blob);
@@ -1015,73 +1094,165 @@ html += """
         a.click();
     }
     window.exportarJson = exportarJson;
+    // --- Firebase: configuração ---
+    // ⚠️  Preencha abaixo com os valores do seu projeto Firebase (console.firebase.google.com)
+    var FIREBASE_CONFIG = {
+        apiKey:            "AIzaSyDfSuZvHP4kkY26gdG6tUQp-ETD9-Af6zs",
+        authDomain:        "saint-seiya-deck.firebaseapp.com",
+        databaseURL:       "https://saint-seiya-deck-default-rtdb.firebaseio.com",
+        projectId:         "saint-seiya-deck",
+        storageBucket:     "saint-seiya-deck.firebasestorage.app",
+        messagingSenderId: "18893229874",
+        appId:             "1:18893229874:web:50428be5e6d3299b1fd12b"
+    };
+    // Email fixo do usuário compartilhado (não é segredo — a senha/token nunca está no código)
+    var FIREBASE_EMAIL = "editor@saint-seiya-deck.com";
+    firebase.initializeApp(FIREBASE_CONFIG);
+    var fbAuth = firebase.auth();
+    var fbDb   = firebase.database();
+    fbAuth.onAuthStateChanged(function(user) {
+        var status = document.getElementById('firebase-user-status');
+        if (user) {
+            if (status) status.textContent = '✅ Conectado';
+            fbCarregar();
+        } else {
+            if (status) status.textContent = '';
+        }
+    });
+    function fbFazerLogin() {
+        var senha = document.getElementById('fb-senha').value;
+        var erro  = document.getElementById('fb-login-erro');
+        erro.style.display = 'none';
+        if (!senha) { erro.textContent = 'Digite a senha.'; erro.style.display = ''; return; }
+        fbAuth.signInWithEmailAndPassword(FIREBASE_EMAIL, senha)
+            .then(function() {
+                document.getElementById('firebase-login-modal').style.display = 'none';
+                document.getElementById('fb-senha').value = '';
+            })
+            .catch(function() {
+                erro.textContent = 'Senha incorreta ou não autorizado.';
+                erro.style.display = '';
+            });
+    }
+    window.fbFazerLogin = fbFazerLogin;
+    // Firebase não aceita ".", "/", "#", "$", "[", "]" nas chaves — codifica/decodifica
+    function fbEncodeKey(k) {
+        return k.replace(/%/g,'%25').replace(/\./g,'%2E').replace(/#/g,'%23')
+                .replace(/\$/g,'%24').replace(/\//g,'%2F').replace(/\[/g,'%5B').replace(/\]/g,'%5D');
+    }
+    function fbDecodeKey(k) { return decodeURIComponent(k); }
+    function fbEncodeData(data) {
+        var enc = { cartas: {}, classes_trad: data.classes_trad, efeitos_trad: data.efeitos_trad };
+        Object.keys(data.cartas || {}).forEach(function(k) { enc.cartas[fbEncodeKey(k)] = data.cartas[k]; });
+        return enc;
+    }
+    function fbDecodeData(data) {
+        var dec = { cartas: {}, classes_trad: data.classes_trad, efeitos_trad: data.efeitos_trad };
+        Object.keys(data.cartas || {}).forEach(function(k) { dec.cartas[fbDecodeKey(k)] = data.cartas[k]; });
+        return dec;
+    }
+    function fbCarregar() {
+        fbDb.ref('cartas_editadas').once('value').then(function(snap) {
+            var data = snap.val();
+            if (data) aplicarDados(fbDecodeData(data));
+        });
+    }
+    async function fbSalvar() {
+        var user = fbAuth.currentUser;
+        if (!user) {
+            document.getElementById('firebase-login-modal').style.display = 'flex';
+            return;
+        }
+        var btn = document.getElementById('firebase-save-btn');
+        btn.disabled = true; btn.textContent = '⏳ Salvando...';
+        try {
+            var exportData = fbEncodeData(gerarExportData());
+            var hoje = new Date().toISOString().slice(0, 10);
+            await fbDb.ref('cartas_editadas').set(exportData);
+            await fbDb.ref('backups/' + hoje).set(exportData);
+            btn.textContent = '✅ Salvo!';
+            setTimeout(function(){ btn.disabled=false; btn.textContent='☁️ Salvar'; }, 3000);
+        } catch(e) {
+            btn.disabled = false; btn.textContent = '☁️ Salvar';
+            alert('Erro ao salvar: ' + e.message);
+        }
+    }
+    window.fbSalvar = fbSalvar;
+    document.getElementById('firebase-login-modal').addEventListener('click', function(e) {
+        if (e.target === this) this.style.display = 'none';
+    });
+    document.getElementById('fb-senha').addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') fbFazerLogin();
+    });
+    // Aplica dados importados ao DOM (reutilizado por importarJson e pela carga do Firebase)
+    function aplicarDados(data) {
+        var cartasEditadas = data.cartas || {};
+        document.querySelectorAll('.carta').forEach(function(cartaDiv) {
+            var imgOrig = cartaDiv.dataset.imgOrig;
+            if (cartasEditadas[imgOrig]) {
+                var carta = cartasEditadas[imgOrig];
+                if (carta.Nome !== undefined) { cartaDiv.querySelector('.edit-nome').innerText = carta.Nome; formatNome(cartaDiv.querySelector('.edit-nome')); }
+                if (carta.Classe !== undefined) cartaDiv.querySelector('.edit-classe').value = carta.Classe;
+                var efItems2 = cartaDiv.querySelectorAll('.efeito-item');
+                if (Array.isArray(carta.Efeitos)) {
+                    for (var j = 0; j < efItems2.length; j++) {
+                        var eit2 = efItems2[j]; var efDiv2 = eit2.querySelector('.efeito-box');
+                        var ef2 = carta.Efeitos[j] || {};
+                        if (efDiv2 && ef2.texto !== undefined) efDiv2.innerHTML = ef2.texto;
+                        if (ef2.x || ef2.y) { var dx2=ef2.x||0, dy2=ef2.y||0; eit2.setAttribute('data-pos-x',dx2); eit2.setAttribute('data-pos-y',dy2); eit2.style.transform='translate('+dx2+'px,'+dy2+'px)'; }
+                        if (ef2.w && efDiv2) efDiv2.style.width = ef2.w;
+                    }
+                }
+                var stack = cartaDiv.querySelector('.efeitos-stack');
+                if (stack && carta.stackX !== undefined) {
+                    var dx = carta.stackX || 0, dy = carta.stackY || 0;
+                    stack.setAttribute('data-drag-x', dx);
+                    stack.setAttribute('data-drag-y', dy);
+                    stack.style.transform = 'translate(' + dx + 'px,' + dy + 'px)';
+                }
+                if (carta.nomeWExtra !== undefined) {
+                    var faixaEl2 = cartaDiv.querySelector('.nome-faixa');
+                    if (faixaEl2) { faixaEl2.dataset.wExtra = carta.nomeWExtra; syncNomeFaixa(cartaDiv.querySelector('.edit-nome')); }
+                }
+                if (carta.classeWExtra !== undefined) {
+                    var classeEl2 = cartaDiv.querySelector('.edit-classe');
+                    if (classeEl2) { classeEl2.dataset.wExtra = carta.classeWExtra; syncClasseWidth(classeEl2); }
+                }
+                if (carta.rank !== undefined) {
+                    var rankSel = cartaDiv.closest('.carta-container').querySelector('.rank-select');
+                    if (rankSel) {
+                        rankSel.value = carta.rank;
+                        rankSel.dispatchEvent(new Event('change', {bubbles: true}));
+                    }
+                }
+            }
+        });
+        if (data.classes_trad) {
+            document.querySelectorAll('.classe-trad').forEach(function(input) {
+                var orig = input.getAttribute('data-orig');
+                if (data.classes_trad[orig] !== undefined) {
+                    input.value = data.classes_trad[orig];
+                    input.dispatchEvent(new Event('input', { bubbles: true }));
+                }
+            });
+        }
+        if (data.efeitos_trad) {
+            document.querySelectorAll('.efeito-trad').forEach(function(input) {
+                var orig = input.getAttribute('data-orig');
+                if (data.efeitos_trad[orig] !== undefined) {
+                    input.value = data.efeitos_trad[orig];
+                    input.dispatchEvent(new Event('input', { bubbles: true }));
+                }
+            });
+        }
+        if (typeof syncAllClasseWidths === 'function') syncAllClasseWidths();
+    }
     // Importar JSON
     function importarJson(event) {
         var file = event.target.files[0];
         if (!file) return;
         var reader = new FileReader();
-        reader.onload = function(e) {
-            var data = JSON.parse(e.target.result);
-            // Novo formato: cartas é um objeto {imgOrig: {dados...}}
-            var cartasEditadas = data.cartas || {};
-            document.querySelectorAll('.carta').forEach(function(cartaDiv) {
-                var imgOrig = cartaDiv.dataset.imgOrig;
-                if (cartasEditadas[imgOrig]) {
-                    var carta = cartasEditadas[imgOrig];
-                    if (carta.Nome !== undefined) { cartaDiv.querySelector('.edit-nome').innerText = carta.Nome; formatNome(cartaDiv.querySelector('.edit-nome')); }
-                    if (carta.Classe !== undefined) cartaDiv.querySelector('.edit-classe').value = carta.Classe;
-                    var efItems2 = cartaDiv.querySelectorAll('.efeito-item');
-                    if (Array.isArray(carta.Efeitos)) {
-                        for (var j = 0; j < efItems2.length; j++) {
-                            var eit2 = efItems2[j]; var efDiv2 = eit2.querySelector('.efeito-box');
-                            var ef2 = carta.Efeitos[j] || {};
-                            if (efDiv2 && ef2.texto !== undefined) efDiv2.innerHTML = ef2.texto;
-                            if (ef2.x || ef2.y) { var dx2=ef2.x||0, dy2=ef2.y||0; eit2.setAttribute('data-pos-x',dx2); eit2.setAttribute('data-pos-y',dy2); eit2.style.transform='translate('+dx2+'px,'+dy2+'px)'; }
-                            if (ef2.w && efDiv2) efDiv2.style.width = ef2.w;
-                        }
-                    }
-                    var stack = cartaDiv.querySelector('.efeitos-stack');
-                    if (stack && carta.stackX !== undefined) {
-                        var dx = carta.stackX || 0, dy = carta.stackY || 0;
-                        stack.setAttribute('data-drag-x', dx);
-                        stack.setAttribute('data-drag-y', dy);
-                        stack.style.transform = 'translate(' + dx + 'px,' + dy + 'px)';
-                    }
-                    if (carta.nomeWExtra !== undefined) {
-                        var faixaEl2 = cartaDiv.querySelector('.nome-faixa');
-                        if (faixaEl2) { faixaEl2.dataset.wExtra = carta.nomeWExtra; syncNomeFaixa(cartaDiv.querySelector('.edit-nome')); }
-                    }
-                    if (carta.rank !== undefined) {
-                        var rankSel = cartaDiv.closest('.carta-container').querySelector('.rank-select');
-                        if (rankSel) {
-                            rankSel.value = carta.rank;
-                            rankSel.dispatchEvent(new Event('change', {bubbles: true}));
-                        }
-                    }
-                }
-            });
-            // Restaurar traduções de classes
-            if (data.classes_trad) {
-                document.querySelectorAll('.classe-trad').forEach(function(input) {
-                    var orig = input.getAttribute('data-orig');
-                    if (data.classes_trad[orig] !== undefined) {
-                        input.value = data.classes_trad[orig];
-                        input.dispatchEvent(new Event('input', { bubbles: true }));
-                    }
-                });
-            }
-            // Restaurar traduções de efeitos globais
-            if (data.efeitos_trad) {
-                document.querySelectorAll('.efeito-trad').forEach(function(input) {
-                    var orig = input.getAttribute('data-orig');
-                    if (data.efeitos_trad[orig] !== undefined) {
-                        input.value = data.efeitos_trad[orig];
-                        input.dispatchEvent(new Event('input', { bubbles: true }));
-                    }
-                });
-            }
-            if (typeof syncAllClasseWidths === 'function') syncAllClasseWidths();
-        };
+        reader.onload = function(e) { aplicarDados(JSON.parse(e.target.result)); };
         reader.readAsText(file);
     }
     window.importarJson = importarJson;
@@ -1226,7 +1397,8 @@ html += """
     function formatNome(el) {
         var text = el.innerText.trim();
         el.innerHTML = '';
-        if (text.length > 20) {
+        var isLandscape = !!el.closest('.landscape-imgbox');
+        if (!isLandscape && text.length > 20) {
             var spaceIdx = text.indexOf(' ');
             if (spaceIdx > 0) {
                 var s1 = document.createElement('span');
@@ -1286,7 +1458,8 @@ html += """
         _classeMirror.textContent = input.value || '\u00a0';
         var textW = _classeMirror.offsetWidth;
         var padding = parseFloat(cs.paddingLeft) + parseFloat(cs.paddingRight) + 16;
-        var newW = Math.max(40, textW + padding);
+        var wExtra = parseInt(input.dataset.wExtra || '0', 10);
+        var newW = Math.max(40, textW + padding + wExtra);
         input.style.width = newW + 'px';
         // Alinha a imagem de classe ao card dinamicamente (mesmo princípio do syncNomeFaixa)
         var imgbox = input.closest('.carta-imgbox');
