@@ -503,7 +503,7 @@ for kw in efeito_prefixos:
             return "background:#f4f4f4;color:#222;"
 
         html += f"""<div class=\"efeito-row\">
-            <span class=\"efeito-orig efeito-hover\"><em class=\"keyword {kw.lower().replace(' ', '_')}\" style=\"display:inline-block;padding:2px 10px;margin-right:14px;border-radius:7px;font-style:normal;font-weight:bold;text-shadow:none;{cor_keyword(kw)}\">{kw}</em>
+            <span class=\"efeito-orig efeito-hover\"><em class=\"keyword {kw.lower().replace(' ', '_')}\" data-orig=\"{kw}\" style=\"display:inline-block;padding:2px 10px;margin-right:14px;border-radius:7px;font-style:normal;font-weight:bold;text-shadow:none;{cor_keyword(kw)}\">{kw}</em>
                 <span class=\"efeito-carta-tooltip\"><img src=\"{img_exemplo}\" alt=\"{nome_exemplo}\" style=\"max-width:320px;max-height:460px;box-shadow:0 0 16px #000;border-radius:10px;border:2px solid #ffe066;background:#222;\"><br><span style=\"color:#ffe066;font-size:1.1em;font-weight:bold;\">{nome_exemplo}</span></span>
             </span>
             <input type=\"text\" class=\"efeito-trad\" data-orig=\"{kw}\" value=\"{kw}\">
@@ -511,7 +511,7 @@ for kw in efeito_prefixos:
         </div>\n"""
     else:
         html += f"""<div class=\"efeito-row\">
-            <span class=\"efeito-orig\"><em class=\"keyword {kw.lower().replace(' ', '_')}\" style=\"display:inline-block;padding:2px 10px;margin-right:14px;border-radius:7px;font-style:normal;font-weight:bold;text-shadow:none;{cor_keyword(kw)}\">{kw}</em></span>
+            <span class=\"efeito-orig\"><em class=\"keyword {kw.lower().replace(' ', '_')}\" data-orig=\"{kw}\" style=\"display:inline-block;padding:2px 10px;margin-right:14px;border-radius:7px;font-style:normal;font-weight:bold;text-shadow:none;{cor_keyword(kw)}\">{kw}</em></span>
             <input type=\"text\" class=\"efeito-trad\" data-orig=\"{kw}\" value=\"{kw}\">
             <button type=\"button\" class=\"efeito-aplicar-btn\" data-orig=\"{kw}\">Aplicar</button>
         </div>\n"""
@@ -932,17 +932,29 @@ html += """
             });
         });
     });
-    // Atualiza todos os efeitos ao editar a tradução global (só prefixo, igual classes)
+    // Aplica tradução global num keyword específico em todas as cartas
+    function aplicarTradEfeitoOrig(orig, trad) {
+        document.querySelectorAll('.efeito-box em.keyword').forEach(function(em) {
+            if ((em.getAttribute('data-orig') || '').trim() === orig.trim()) {
+                em.textContent = trad;
+            }
+        });
+    }
+    // Listener de input em cada campo de tradução global: aplica imediatamente nas cartas
+    document.querySelectorAll('.efeito-trad').forEach(function(input) {
+        function aplicar() {
+            aplicarTradEfeitoOrig(input.getAttribute('data-orig'), input.value);
+        }
+        input.addEventListener('input', aplicar);
+        input.addEventListener('change', aplicar);
+        input.addEventListener('blur', aplicar);
+    });
+    // Botão "Aplicar" mantido para forçar reaplicação manual
     document.querySelectorAll('.efeito-aplicar-btn').forEach(function(btn) {
         btn.addEventListener('click', function() {
             var orig = this.getAttribute('data-orig');
             var input = document.querySelector('.efeito-trad[data-orig="' + orig.replace(/'/g, "\\'") + '"]');
-            var trad = input ? input.value : orig;
-            document.querySelectorAll('.efeito-box em.keyword').forEach(function(em) {
-                if (em.textContent.trim() === orig.trim()) {
-                    em.textContent = trad;
-                }
-            });
+            aplicarTradEfeitoOrig(orig, input ? input.value : orig);
         });
     });
     // Extrai dados de export (usado por exportarJson e salvarNoGitHub)
@@ -1326,24 +1338,7 @@ html += """
         });
         el.addEventListener('mouseleave', function(){ tooltip.style.display = 'none'; });
     });
-    // --- Observador de mudanças nos efeitos globais ---
-    // Garante que qualquer alteração manual (ex: colar texto) nos inputs de efeitos globais seja refletida nas cartas
-    const efeitoInputs = document.querySelectorAll('.efeito-trad');
-    efeitoInputs.forEach(function(input) {
-        // Usar MutationObserver para detectar mudanças no valor do input
-        const observer = new MutationObserver(function() {
-            input.dispatchEvent(new Event('input', { bubbles: true }));
-        });
-        observer.observe(input, { attributes: true, attributeFilter: ['value'] });
-        // Também observar mudanças diretas de texto (ex: colar via menu)
-        input.addEventListener('change', function() {
-            input.dispatchEvent(new Event('input', { bubbles: true }));
-        });
-        // E garantir atualização ao perder o foco
-        input.addEventListener('blur', function() {
-            input.dispatchEvent(new Event('input', { bubbles: true }));
-        });
-    });
+    // (listeners de efeito-trad registrados acima junto ao efeito-aplicar-btn)
     // Atualiza também se o usuário editar manualmente o <em class="keyword"> na carta
     document.querySelectorAll('.efeito-box').forEach(function(div) {
         div.addEventListener('input', function(e) {
