@@ -1107,10 +1107,15 @@ html += """
     };
     // Email fixo do usuário compartilhado (não é segredo — a senha/token nunca está no código)
     var FIREBASE_EMAIL = "editor@saint-seiya-deck.com";
-    firebase.initializeApp(FIREBASE_CONFIG);
-    var fbAuth = firebase.auth();
-    var fbDb   = firebase.database();
-    fbAuth.onAuthStateChanged(function(user) {
+    var fbAuth, fbDb;
+    try {
+        firebase.initializeApp(FIREBASE_CONFIG);
+        fbAuth = firebase.auth();
+        fbDb   = firebase.database();
+    } catch(e) {
+        console.warn('Firebase não inicializado (verifique a apiKey):', e.message);
+    }
+    if (fbAuth) fbAuth.onAuthStateChanged(function(user) {
         var status = document.getElementById('firebase-user-status');
         if (user) {
             if (status) status.textContent = '✅ Conectado';
@@ -1120,6 +1125,7 @@ html += """
         }
     });
     function fbFazerLogin() {
+        if (!fbAuth) { alert('Firebase não configurado. Verifique a apiKey.'); return; }
         var senha = document.getElementById('fb-senha').value;
         var erro  = document.getElementById('fb-login-erro');
         erro.style.display = 'none';
@@ -1158,6 +1164,7 @@ html += """
         });
     }
     async function fbSalvar() {
+        if (!fbAuth || !fbDb) { alert('Firebase não configurado. Verifique a apiKey.'); return; }
         var user = fbAuth.currentUser;
         if (!user) {
             document.getElementById('firebase-login-modal').style.display = 'flex';
@@ -1442,6 +1449,7 @@ html += """
     document.body.appendChild(_classeMirror);
     var CLASSES_OCULTAS = ['provação', 'saga', 'altar', 'maison', 'capacidade', 'provacão', 'provacao'];
     function syncClasseWidth(input) {
+        if (!input || !_classeMirror) return;
         var val = input.value.trim();
         var _ocultas = (typeof CLASSES_OCULTAS !== 'undefined') ? CLASSES_OCULTAS : [];
         if (!val || _ocultas.indexOf(val.toLowerCase()) !== -1) {
