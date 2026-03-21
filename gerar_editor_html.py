@@ -135,17 +135,20 @@ html = """<!DOCTYPE html>
             z-index: 1;
             border-radius: 4px;
             pointer-events: none;
-            transition: none;
+            background-repeat: no-repeat;
         }
         .nome-faixa.rank0 { background: rgba(80,80,80,0.7); }
-        .nome-faixa.rank1 { background: rgba(100,140,200,0.75); }
-        .nome-faixa.rank2 { background: rgba(90,180,100,0.75); }
-        .nome-faixa.rank3 { background: rgba(210,170,60,0.75); }
-        .nome-faixa.rank4 { background: rgba(210,80,80,0.75); }
-        .nome-faixa.rank5 { background: rgba(140,80,200,0.75); }
+        .nome-faixa.rank1 { background-image: url(imagens/bordas/rank1.png); }
+        .nome-faixa.rank2 { background-image: url(imagens/bordas/rank2.png); }
+        .nome-faixa.rank3 { background-image: url(imagens/bordas/rank3.png); }
+        .nome-faixa.rank4 { background-image: url(imagens/bordas/rank4.png); }
+        .nome-faixa.rank5 { background-image: url(imagens/bordas/rank5.png); }
+        .nome-faixa.rank6 { background-image: url(imagens/bordas/rank6.png); }
+        .nome-faixa.rank7 { background-image: url(imagens/bordas/rank7.png); }
+        .nome-faixa.rank8 { background-image: url(imagens/bordas/rank8.png); }
         .edit-nome {
             position: absolute;
-            top: 0;
+            top: 2px;
             left: 0;
             right: 0;
             width: 90%;
@@ -153,7 +156,7 @@ html = """<!DOCTYPE html>
             color: #fff;
             border-radius: 8px;
             padding: 6px 8px 2px 8px;
-            font-size: 1.4em;
+            font-size: 1.2em;
             font-family: 'Arial', Arial, sans-serif;
             font-weight: bold;
             text-align: center;
@@ -161,9 +164,13 @@ html = """<!DOCTYPE html>
             outline: none;
             z-index: 2;
         }
-        .edit-classe { z-index: 20; position: absolute; top: 34px; left: 20px; width: 80%; background: rgba(0, 0, 0, 0.2); font-size: 0.8em; font-family: 'Georgia', serif; border: none; border-radius: 6px; padding: 2px 8px; outline: none; text-align: center; box-shadow: 0 1px 6px #0006; color: #fff; }
+        .edit-classe { z-index: 20; position: absolute; top: 34px; left: 20px; background-repeat: no-repeat; background-color: transparent; font-size: 0.8em; font-family: 'Georgia', serif; border: none; border-radius: 6px; padding: 2px 8px; outline: none; text-align: center; box-shadow: 0 1px 6px #0006; color: #fff; width: auto; min-width: 40px; max-width: 80%; }
     .edit-classe { font-style: italic; }
-    .edit-classe-landscape { width: 37% !important; }
+    /* Imagem de classe: posição/tamanho calculados dinamicamente por JS (syncClasseWidth) */
+    .portrait-imgbox .edit-classe { background-image: url(imagens/bordas/class_vertical.png); left: 50%; transform: translateX(-50%); }
+    .landscape-imgbox .edit-classe { background-image: url(imagens/bordas/class_horizontal.png); max-width: 50%; }
+    .rank-select { display: block; width: 28px; height: 28px; background: #1a1a1a; color: #ffe066; border: 2px solid #ffe066; border-radius: 6px; font-size: 0.7em; font-weight: bold; cursor: pointer; text-align: center; text-align-last: center; padding: 0; -webkit-appearance: none; appearance: none; outline: none; box-shadow: 0 0 4px #000; }
+    .rank-select option { background: #222; color: #eee; }
         .efeitos-stack {
             display: flex;
             flex-direction: column;
@@ -278,52 +285,21 @@ html = """<!DOCTYPE html>
         /* --- Botões de referência e restaurar em coluna à direita --- */
         .carta-ref-restaurar-col { position: absolute; top: 8px; right: 8px; z-index: 20; display: flex; flex-direction: column; align-items: flex-end; gap: 12px; }
         .carta-ref-icone { display: inline-block; width: 28px; height: 28px; background: #ffe066; border-radius: 50%; box-shadow: 0 0 6px #000; cursor: pointer; text-align: center; line-height: 28px; font-size: 1.2em; font-weight: bold; }
-        .restaurar-btn { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; background: #222; border-radius: 50%; color: #ffe066; border: 2px solid #ffe066; font-size: 1.2em; cursor: pointer; box-shadow: 0 0 6px #0006; margin-top: 0; }
-        .restaurar-toolbar {
-            display: none;
-            position: absolute;
-            top: 72px;
-            right: -6px;
-            z-index: 120;
-            flex-direction: column;
-            gap: 7px;
-            background: #222;
-            border-radius: 10px;
-            box-shadow: 0 2px 12px #000a;
-            padding: 8px 6px 6px 6px;
-            align-items: flex-end;
-        }
-        .restaurar-toolbar button {
-            font-size: 1em;
-            font-weight: bold;
-            border-radius: 7px;
-            padding: 4px 12px;
-            margin: 0 0 3px 0;
-            box-shadow: 0 2px 8px #0006;
-            cursor: pointer;
-            transition: filter .2s;
-            color: #fff;
-            border: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .restaurar-toolbar .restaurar-ok {
-            background: linear-gradient(90deg,#2ecc40 0%,#27ae60 100%);
-        }
-        .restaurar-toolbar .restaurar-cancel {
-            background: linear-gradient(90deg,#e74c3c 0%,#c0392b 100%);
-        }
-        .restaurar-toolbar button:last-child {
-            margin-bottom: 0;
-        }
-        .restaurar-preview { display: none; position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; z-index: 31; pointer-events: auto; background: rgba(0,0,0,0.0); }
-        .restaurar-canvas { display: none; position: absolute; left: 0; top: 0; width: 100%; height: 100%; z-index: 5; pointer-events: none; }
-        .restaurar-canvas.editing { pointer-events: auto; z-index: 99; }
+        .efeitos-drag-handle { cursor: grab; color: #ffe066aa; font-size: 0.85em; line-height: 1; padding: 1px 4px 3px; text-align: center; width: 100%; user-select: none; letter-spacing: 3px; }
+        .efeitos-drag-handle:hover { color: #ffe066; }
+        .efeitos-drag-handle:active { cursor: grabbing; }
+        .width-ctrl-btn { background: #333; color: #ffe066; border: 1px solid #ffe066; border-radius: 4px; padding: 1px 5px; font-size: 0.62em; cursor: pointer; font-weight: bold; line-height: 1.6; }
+        .width-ctrl-btn:hover { background: #ffe066; color: #222; }
+        .efeito-item { position: relative; width: 100%; display: flex; flex-direction: column; align-items: center; }
+        .efeito-item-handle { cursor: grab; color: #ffe066aa; font-size: 0.75em; width: 100%; display: flex; justify-content: flex-end; align-items: center; gap: 3px; user-select: none; padding: 1px 3px 0; }
+        .efeito-item-handle:hover { color: #ffe066; }
+        .efeito-item-handle:active { cursor: grabbing; }
+        .efeito-item-width-btn { background: #2a2a2a; color: #ffe066; border: 1px solid #ffe066; border-radius: 3px; padding: 0 4px; font-size: 0.85em; cursor: pointer; line-height: 1.5; }
+        .efeito-item-width-btn:hover { background: #ffe066; color: #222; }
         /* Ícones cosmos e forca: width 22px; demais: width conforme HTML do JSON */
         .effect img[alt="Cosmos"], .effect img[alt="Force"] {
-            width: 22px !important;
-            height: 22px !important;
+            width: 15px !important;
+            height: 15px !important;
             vertical-align: middle;
         }
         /* Os demais ícones não terão width forçado, usarão o width do HTML do JSON */
@@ -516,11 +492,14 @@ for carta in cartas:
     tipo_icone = carta.get("TipoIcone", "")
     rank_match = re.search(r'rank(\d+)', tipo_icone)
     rank_class = f"rank{rank_match.group(1)}" if rank_match else "rank0"
+    rank_num = int(rank_match.group(1)) if rank_match else 0
     nome = carta["Nome"]
     classe = carta["Classe"]
     efeitos = carta.get("effects")
     efeitos_html = []
     if efeitos and isinstance(efeitos, list) and efeitos:
+        # PV type sempre primeiro
+        efeitos = sorted(efeitos, key=lambda e: 0 if (isinstance(e, dict) and e.get("type") == "pv") else 1)
         for ef in efeitos:
             html_efeito = None
             if isinstance(ef, dict):
@@ -563,35 +542,45 @@ for carta in cartas:
                 <span class="carta-ref-tooltip-nome">{nome}</span>
             </span>
         </span>
-        <span class="restaurar-btn" title="Restaurar pedaço da imagem">✏️</span>
-        <div class="restaurar-toolbar">
-            <button class="restaurar-ok" title="Salvar restauração">✔</button>
-            <button class="restaurar-cancel" title="Cancelar">✖</button>
-            <button class="restaurar-trash" title="Descartar todas as restaurações">🗑️</button>
+        <select class="rank-select" title="Rank da carta (clique para alterar)">
+            <option value="0"{'  selected' if rank_num==0 else ''}>–</option>
+            <option value="1"{'  selected' if rank_num==1 else ''}>Básico</option>
+            <option value="2"{'  selected' if rank_num==2 else ''}>Bronze</option>
+            <option value="3"{'  selected' if rank_num==3 else ''}>Prata</option>
+            <option value="4"{'  selected' if rank_num==4 else ''}>Ouro</option>
+            <option value="5"{'  selected' if rank_num==5 else ''}>Divino</option>
+            <option value="6"{'  selected' if rank_num==6 else ''}>B/P</option>
+            <option value="7">B/O</option>
+            <option value="8">P/O</option>
+        </select>
+        <div style="display:flex;gap:2px;">
+          <button class="width-ctrl-btn" data-target="nome" data-delta="-10" title="Estreitar nome">N-</button>
+          <button class="width-ctrl-btn" data-target="nome" data-delta="10" title="Alargar nome">N+</button>
+        </div>
+        <div style="display:flex;gap:2px;">
+          <button class="width-ctrl-btn" data-target="efeito" data-delta="-10" title="Estreitar efeitos">E-</button>
+          <button class="width-ctrl-btn" data-target="efeito" data-delta="10" title="Alargar efeitos">E+</button>
         </div>
     </div>
-    <div class="carta {aspect} {classe_css}">
+    <div class="carta {aspect} {classe_css}" data-img-orig="{img_orig}">
         <div class="{carta_imgbox_class}">
             <img src="{img}" alt="{nome}" class="carta-img">
-            <div class="nome-faixa {rank_class}"></div>
+            <div class="nome-faixa {rank_class}" data-rank="{rank_num}"></div>
             <div contenteditable="true" class="edit-nome">{nome}</div>
-            <input type="text" class="{edit_classe_class}" data-orig="{classe}" value="{classe}">
-            <img src="{img_orig}" class="restaurar-preview">
-            <canvas class="restaurar-canvas"></canvas>
-            <div class="efeitos-stack">
+            <input type="text" class="{edit_classe_class}" data-orig="{classe}" data-orientation="{'landscape' if aspect=='landscape' else 'portrait'}" value="{classe}">
+            <div class="efeitos-stack" data-drag-x="0" data-drag-y="0">
+                <div class="efeitos-drag-handle" title="Arrastar para mover · duplo-clique para resetar">· · · · ·</div>
 """
-    # Adiciona os efeitos_html como divs, um por vez
+    # Adiciona os efeitos_html com wrapper individual para drag/resize
     for idx, ef_html in enumerate(efeitos_html):
         ef_html_escaped = ef_html.replace('"', '&quot;').replace("'", "&#39;")
         html += (
-            f'<div class="efeito-box-wrapper" style="position:relative;display:flex;align-items:flex-start;margin:0;">'
-            f'<div class="efeito-pos-toolbar" style="position:absolute;top:-18px;right:-13px;z-index:10;display:flex;flex-direction:row;align-items:center;gap:4px;">'
-            f'<button class="efeito-pos-editar-btn" title="Editar posição" style="width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;background:#ffe066;color:#222;border-radius:50%;border:1.5px solid #ffe066;box-shadow:0 0 2px #0002;cursor:pointer;font-size:1em;padding:0;transition:box-shadow .2s;outline:1px solid #bbb;outline-offset:-1px;">✥</button>'
+            f'<div class="efeito-item" data-idx="{idx}" data-pos-x="0" data-pos-y="0">'
+            f'<div class="efeito-item-handle" title="Arrastar · duplo-clique para resetar">⠿ '
+            f'<button class="efeito-item-width-btn" data-delta="-5" title="Estreitar">E-</button>'
+            f'<button class="efeito-item-width-btn" data-delta="5" title="Alargar">E+</button>'
             f'</div>'
-            f'<div style="display:flex;flex-direction:column;align-items:center;width:100%;">'
-            f'<div contenteditable="true" class="efeito-box" data-orig="{ef_html_escaped}" data-pos-x="0" data-pos-y="0">'            f'{ef_html}'
-            f'</div>'
-            f'</div>'
+            f'<div contenteditable="true" class="efeito-box" data-orig="{ef_html_escaped}">{ef_html}</div>'
             f'</div>'
         )
     html += """
@@ -646,15 +635,16 @@ html += """
                 document.querySelectorAll('.carta').forEach(function(cartaDiv, i) {
                     if (cartas && cartas[i]) {
                         cartaDiv.querySelector('.edit-nome').innerText = cartas[i].Nome || '';
-                        cartaDiv.querySelector('.edit-classe').value = cartas[i].Classe || '';
-                        var efDivs = cartaDiv.querySelectorAll('.efeito-box');
+                        formatNome(cartaDiv.querySelector('.edit-nome'));
+                        var efItems3 = cartaDiv.querySelectorAll('.efeito-item');
                         if (Array.isArray(cartas[i].Efeitos)) {
-                            for (var j = 0; j < efDivs.length; j++) {
+                            for (var j = 0; j < efItems3.length; j++) {
                                 var ef = cartas[i].Efeitos[j] || {};
-                                efDivs[j].innerHTML = ef.texto || '';
-                                efDivs[j].setAttribute('data-pos-x', ef.x || 0);
-                                efDivs[j].setAttribute('data-pos-y', ef.y || 0);
-                                efDivs[j].style.transform = `translate(${ef.x||0}px,${ef.y||0}px)`;
+                                var eit3 = efItems3[j]; var efDiv3 = eit3.querySelector('.efeito-box');
+                                if (efDiv3) efDiv3.innerHTML = ef.texto || '';
+                                eit3.setAttribute('data-pos-x', ef.x || 0); eit3.setAttribute('data-pos-y', ef.y || 0);
+                                eit3.style.transform = 'translate(' + (ef.x||0) + 'px,' + (ef.y||0) + 'px)';
+                                if (ef.w && efDiv3) efDiv3.style.width = ef.w;
                             }
                         } else {
                             var efeitos = (cartas[i].Efeito || '').split(/<br\\s*\\/?>|;|(?<=[.])\\s+(?=[A-ZÀ-Ý])/);
@@ -667,6 +657,13 @@ html += """
                         }
                         if (cartas[i].restauracoes) {
                             cartaDiv.dataset.restauracoes = JSON.stringify(cartas[i].restauracoes);
+                        }
+                        if (cartas[i].rank !== undefined) {
+                            var rankSel = cartaDiv.closest('.carta-container').querySelector('.rank-select');
+                            if (rankSel) {
+                                rankSel.value = cartas[i].rank;
+                                rankSel.dispatchEvent(new Event('change', {bubbles: true}));
+                            }
                         }
                     }
                 });
@@ -690,161 +687,95 @@ html += """
                         }
                     });
                 }
+                if (typeof syncAllClasseWidths === 'function') syncAllClasseWidths();
             })
             .catch(function(e) {
                 // arquivo não existe ou erro de fetch, não faz nada
             });
     })();
-    // --- Edição de posição dos efeitos ---
-    (function(){
-        // Edição dinâmica dos botões de posição do efeito
-        document.querySelectorAll('.efeito-box-wrapper').forEach(function(wrapper){
-            var editarBtn = wrapper.querySelector('.efeito-pos-editar-btn');
-            var box = wrapper.querySelector('.efeito-box');
-            var toolbar = wrapper.querySelector('.efeito-pos-toolbar');
-            var posBefore = {x:0, y:0};
-            function closeAll(){
-                document.querySelectorAll('.efeito-pos-action-btns').forEach(function(b){b.remove();});
-                document.querySelectorAll('.efeito-pos-arrows').forEach(function(b){b.remove();});
-                document.querySelectorAll('.efeito-pos-editar-btn').forEach(function(b){b.classList.remove('ativo');});
+    // --- Eventos de referência (tooltip) ---
+    document.querySelectorAll('.carta-container').forEach(function(container){
+        var refIcone = container.querySelector('.carta-ref-icone');
+        var refTooltip = container.querySelector('.carta-ref-tooltip');
+        if(refIcone && refTooltip) {
+            refIcone.addEventListener('mouseenter', function(){ refTooltip.style.display = 'block'; });
+            refIcone.addEventListener('mouseleave', function(){ refTooltip.style.display = 'none'; });
+        }
+    });
+    // --- Drag para mover o bloco de efeitos (stack inteiro) ---
+    document.querySelectorAll('.efeitos-drag-handle').forEach(function(handle) {
+        var stack = handle.closest('.efeitos-stack');
+        if (!stack) return;
+        var dragX = 0, dragY = 0;
+        handle.addEventListener('dblclick', function() {
+            dragX = 0; dragY = 0;
+            stack.setAttribute('data-drag-x', 0); stack.setAttribute('data-drag-y', 0);
+            stack.style.transform = '';
+        });
+        handle.addEventListener('mousedown', function(e) {
+            e.preventDefault();
+            var startX = e.clientX - dragX, startY = e.clientY - dragY;
+            handle.style.cursor = 'grabbing';
+            function onMove(ev) {
+                dragX = ev.clientX - startX; dragY = ev.clientY - startY;
+                stack.setAttribute('data-drag-x', dragX); stack.setAttribute('data-drag-y', dragY);
+                stack.style.transform = 'translate(' + dragX + 'px,' + dragY + 'px)';
             }
-            function move(dx,dy){
-                var x = parseInt(box.getAttribute('data-pos-x')||'0',10)+dx;
-                var y = parseInt(box.getAttribute('data-pos-y')||'0',10)+dy;
-                box.setAttribute('data-pos-x',x);
-                box.setAttribute('data-pos-y',y);
-                box.style.transform = `translate(${x}px,${y}px)`;
+            function onUp() {
+                handle.style.cursor = ''; document.removeEventListener('mousemove', onMove); document.removeEventListener('mouseup', onUp);
             }
-            editarBtn.addEventListener('click',function(e){
+            document.addEventListener('mousemove', onMove); document.addEventListener('mouseup', onUp);
+        });
+    });
+    // --- Drag individual de cada efeito ---
+    document.querySelectorAll('.efeito-item-handle').forEach(function(handle) {
+        var item = handle.closest('.efeito-item');
+        if (!item) return;
+        var dragX = parseFloat(item.getAttribute('data-pos-x')) || 0;
+        var dragY = parseFloat(item.getAttribute('data-pos-y')) || 0;
+        handle.addEventListener('dblclick', function(e) {
+            if (e.target.classList.contains('efeito-item-width-btn')) return;
+            dragX = 0; dragY = 0;
+            item.setAttribute('data-pos-x', 0); item.setAttribute('data-pos-y', 0);
+            item.style.transform = '';
+        });
+        handle.addEventListener('mousedown', function(e) {
+            if (e.target.classList.contains('efeito-item-width-btn')) return;
+            e.preventDefault();
+            var startX = e.clientX - dragX, startY = e.clientY - dragY;
+            function onMove(ev) {
+                dragX = ev.clientX - startX; dragY = ev.clientY - startY;
+                item.setAttribute('data-pos-x', dragX); item.setAttribute('data-pos-y', dragY);
+                item.style.transform = 'translate(' + dragX + 'px,' + dragY + 'px)';
+            }
+            function onUp() { document.removeEventListener('mousemove', onMove); document.removeEventListener('mouseup', onUp); }
+            document.addEventListener('mousemove', onMove); document.addEventListener('mouseup', onUp);
+        });
+        handle.querySelectorAll('.efeito-item-width-btn').forEach(function(btn) {
+            btn.addEventListener('click', function(e) {
                 e.stopPropagation();
-                closeAll();
-                editarBtn.classList.add('ativo');
-                // Cria os botões de ação e setas
-                var actionBtns = document.createElement('span');
-                actionBtns.className = 'efeito-pos-action-btns';
-                actionBtns.innerHTML = `
-                    <button class="reset" title="Resetar posição">🗑️</button>
-                    <button class="ok" title="Confirmar">✔</button>
-                    <button class="cancel" title="Cancelar">✖</button>
-                `;
-                var arrows = document.createElement('span');
-                arrows.className = 'efeito-pos-arrows';
-                arrows.innerHTML = `
-                    <button class="up" title="Mover para cima">↑</button>
-                    <button class="down" title="Mover para baixo">↓</button>
-                    <button class="left" title="Mover para a esquerda">←</button>
-                    <button class="right" title="Mover para a direita">→</button>
-                `;
-                toolbar.appendChild(actionBtns);
-                toolbar.appendChild(arrows);
-                posBefore.x = parseInt(box.getAttribute('data-pos-x')||'0',10);
-                posBefore.y = parseInt(box.getAttribute('data-pos-y')||'0',10);
-                // Eventos dos botões
-                actionBtns.querySelector('.reset').onclick = function(ev){
-                    ev.stopPropagation();
-                    box.setAttribute('data-pos-x',0);
-                    box.setAttribute('data-pos-y',0);
-                    box.style.transform = '';
-                };
-                actionBtns.querySelector('.ok').onclick = function(ev){
-                    ev.stopPropagation();
-                    closeAll();
-                };
-                actionBtns.querySelector('.cancel').onclick = function(ev){
-                    ev.stopPropagation();
-                    box.setAttribute('data-pos-x',posBefore.x);
-                    box.setAttribute('data-pos-y',posBefore.y);
-                    box.style.transform = `translate(${posBefore.x}px,${posBefore.y}px)`;
-                    closeAll();
-                };
-                // Eventos das setas
-                arrows.querySelector('.up').onclick = function(ev){ ev.stopPropagation(); move(0,-1); };
-                arrows.querySelector('.down').onclick = function(ev){ ev.stopPropagation(); move(0,1); };
-                arrows.querySelector('.left').onclick = function(ev){ ev.stopPropagation(); move(-1,0); };
-                arrows.querySelector('.right').onclick = function(ev){ ev.stopPropagation(); move(1,0); };
-            });
-            // Setas de movimentação com teclado
-            box.addEventListener('keydown', function(e){
-                if(!editarBtn.classList.contains('ativo')) return;
-                if(e.key==='ArrowUp'){ move(0,-1); e.preventDefault(); }
-                if(e.key==='ArrowDown'){ move(0,1); e.preventDefault(); }
-                if(e.key==='ArrowLeft'){ move(-1,0); e.preventDefault(); }
-                if(e.key==='ArrowRight'){ move(1,0); e.preventDefault(); }
+                var box = item.querySelector('.efeito-box');
+                box.style.width = Math.max(40, box.offsetWidth + parseInt(this.getAttribute('data-delta'))) + 'px';
             });
         });
-        // Fecha ao clicar fora
-        document.addEventListener('click', function(e){
-            document.querySelectorAll('.efeito-pos-action-btns').forEach(function(b){b.remove();});
-            document.querySelectorAll('.efeito-pos-editar-btn').forEach(function(b){b.classList.remove('ativo');});
-        });
-
-
-        // Corrige eventos dos botões de cada carta
-        document.querySelectorAll('.carta-container').forEach(function(container){
-            var refIcone = container.querySelector('.carta-ref-icone');
-            var refTooltip = container.querySelector('.carta-ref-tooltip');
-            if(refIcone && refTooltip) {
-                refIcone.addEventListener('mouseenter', function(e){
-                    refTooltip.style.display = 'block';
-                });
-                refIcone.addEventListener('mouseleave', function(e){
-                    refTooltip.style.display = 'none';
-                });
-            }
-            var restaurarBtn = container.querySelector('.restaurar-btn');
-            var canvas = container.querySelector('.restaurar-canvas');
-            var imgSemTexto = container.querySelector('.carta-img');
-            var imgOriginal = container.querySelector('.restaurar-preview');
-            var toolbar = container.querySelector('.restaurar-toolbar');
-            var drawing = false, startX = 0, startY = 0, endX = 0, endY = 0, rect = null;
-            var restauracoes = [];
-            if (container.dataset.restauracoes) {
-                restauracoes = JSON.parse(container.dataset.restauracoes);
-            }
-            function syncCanvasSize() {
-                canvas.width = imgSemTexto.naturalWidth;
-                canvas.height = imgSemTexto.naturalHeight;
-                canvas.style.width = imgSemTexto.offsetWidth + 'px';
-                canvas.style.height = imgSemTexto.offsetHeight + 'px';
-                imgOriginal.style.width = imgSemTexto.offsetWidth + 'px';
-                imgOriginal.style.height = imgSemTexto.offsetHeight + 'px';
-            }
-            function drawAllRestauracoes() {
-                var ctx = canvas.getContext('2d');
-                ctx.clearRect(0,0,canvas.width,canvas.height);
-                restauracoes.forEach(function(r) {
-                    ctx.drawImage(imgOriginal, r.x, r.y, r.w, r.h, r.x, r.y, r.w, r.h);
-                });
-            }
-            // Se já houver restaurações salvas, exibe o canvas com elas
-            if (restauracoes.length > 0) {
-                syncCanvasSize();
-                canvas.style.display = 'block';
-                drawAllRestauracoes();
-            }
-            if(restaurarBtn) {
-                restaurarBtn.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    syncCanvasSize();
-                    imgOriginal.style.display = 'block';
-                    imgOriginal.style.zIndex = 32;
-                    canvas.style.display = 'block';
-                    toolbar.style.display = 'flex';
-                    drawAllRestauracoes();
-                });
-            }
-            // Botão de lixeira para descartar todas as restaurações
-            var trashBtn = toolbar.querySelector('.restaurar-trash');
-            if(trashBtn) {
-                trashBtn.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    restauracoes = [];
-                    container.dataset.restauracoes = JSON.stringify(restauracoes);
-                    drawAllRestauracoes();
-                });
+    });
+    // --- Controles de largura do nome e efeitos ---
+    document.querySelectorAll('.width-ctrl-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            var container = this.closest('.carta-container');
+            var delta = parseInt(this.getAttribute('data-delta'));
+            var target = this.getAttribute('data-target');
+            if (target === 'nome') {
+                var faixa = container.querySelector('.nome-faixa');
+                var extra = (parseInt(faixa.dataset.wExtra || '0', 10)) + delta;
+                faixa.dataset.wExtra = extra;
+                syncNomeFaixa(container.querySelector('.edit-nome'));
+            } else if (target === 'efeito') {
+                var st = container.querySelector('.efeitos-stack');
+                st.style.width = Math.max(40, st.offsetWidth + delta) + 'px';
             }
         });
-    })();
+    });
     // Tradução automática de classes
     // Sincroniza input de tradução -> carta
     document.querySelectorAll('.classe-trad').forEach(function(input) {
@@ -854,6 +785,7 @@ html += """
             document.querySelectorAll('.edit-classe').forEach(function(ic) {
                 if (ic.getAttribute('data-orig') === orig) {
                     ic.value = trad;
+                    syncClasseWidth(ic);
                 }
             });
         });
@@ -911,13 +843,11 @@ html += """
         }
         var cartasEditadas = {};
         document.querySelectorAll('.carta').forEach(function(cartaDiv, idx) {
-            var imgOrig = cartaDiv.querySelector('.restaurar-preview').getAttribute('src');
+            var imgOrig = cartaDiv.dataset.imgOrig;
             var cartaOrig = mapaOrig[imgOrig] || {};
             var nome = cartaDiv.querySelector('.edit-nome').innerText;
-            // Para comparar classe, pega o valor original (data-orig) ignorando tradução global
             var classeInput = cartaDiv.querySelector('.edit-classe');
             var classe = classeInput.value;
-            var classeDataOrig = classeInput.getAttribute('data-orig') || '';
             var nomeOrig = cartaOrig.Nome || '';
             var classeOrig = cartaOrig.Classe || '';
             var alterado = false;
@@ -927,19 +857,21 @@ html += """
             // Efeitos: compara texto e posição, ignorando só tradução global
             var efeitos = [];
             var efeitosOrig = (cartaOrig.Efeitos || cartaOrig.effects || []);
-            var efDivs = cartaDiv.querySelectorAll('.efeito-box');
-            for (var j = 0; j < efDivs.length; j++) {
-                var efDiv = efDivs[j];
-                // Sempre salva o texto atual do efeito (innerHTML com edições do usuário)
-                var texto = efDiv.innerHTML;
-                var x = parseInt(efDiv.getAttribute('data-pos-x')||'0',10);
-                var y = parseInt(efDiv.getAttribute('data-pos-y')||'0',10);
+            var efItems = cartaDiv.querySelectorAll('.efeito-item');
+            for (var j = 0; j < efItems.length; j++) {
+                var eit = efItems[j];
+                var efDiv = eit.querySelector('.efeito-box');
+                var texto = efDiv ? efDiv.innerHTML : '';
+                var x = parseInt(eit.getAttribute('data-pos-x')||'0',10);
+                var y = parseInt(eit.getAttribute('data-pos-y')||'0',10);
+                var w = efDiv ? (efDiv.style.width || '') : '';
                 var textoOrig = '';
-                var xOrig = 0, yOrig = 0;
+                var xOrig = 0, yOrig = 0, wOrig = '';
                 if (efeitosOrig[j]) {
                     textoOrig = efeitosOrig[j].texto || efeitosOrig[j].html || efeitosOrig[j] || '';
                     xOrig = efeitosOrig[j].x == null ? 0 : efeitosOrig[j].x;
                     yOrig = efeitosOrig[j].y == null ? 0 : efeitosOrig[j].y;
+                    wOrig = efeitosOrig[j].w || '';
                 }
                 // Para ignorar tradução global, compara o texto puro ANTES da tradução
                 function textoSemTraduKeyword(html) {
@@ -959,29 +891,38 @@ html += """
                 if ((x||0) !== (xOrig||0) || (y||0) !== (yOrig||0)) {
                     alterado = true; motivos.push('efeito'+j+'_pos:('+xOrig+','+yOrig+') => ('+x+','+y+')');
                 }
-                efeitos.push({texto: texto, x: x, y: y});
-                if (textoComp !== textoOrigComp || (x||0)!==(xOrig||0) || (y||0)!==(yOrig||0)) {
+                if (w !== wOrig) { alterado = true; motivos.push('efeito'+j+'_w:' + wOrig + ' => ' + w); }
+                efeitos.push({texto: texto, x: x, y: y, w: w});
+                if (textoComp !== textoOrigComp || (x||0)!==(xOrig||0) || (y||0)!==(yOrig||0) || w !== wOrig) {
                     console.log('[DEBUG] Efeito carta', imgOrig, 'idx', j, {
-                        textoComp, textoOrigComp, x, xOrig, y, yOrig, texto, textoOrig
+                        textoComp, textoOrigComp, x, xOrig, y, yOrig, w, wOrig
                     });
                 }
             }
-            var cartaContainer = cartaDiv.closest('.carta-container');
-            var restauracoes = (cartaContainer && cartaContainer.dataset.restauracoes) ? JSON.parse(cartaContainer.dataset.restauracoes) : [];
-            var restOrig = cartaOrig.restauracoes || [];
-            var restVazia = (!restauracoes || restauracoes.length === 0);
-            var restOrigVazia = (!restOrig || restOrig.length === 0);
-            if (!restVazia || !restOrigVazia) {
-                if (JSON.stringify(restauracoes) !== JSON.stringify(restOrig)) {
-                    alterado = true; motivos.push('restauracoes:' + JSON.stringify(restOrig) + ' => ' + JSON.stringify(restauracoes));
-                }
-            }
+            var stack = cartaDiv.querySelector('.efeitos-stack');
+            var stackX = stack ? parseInt(stack.getAttribute('data-drag-x')||'0',10) : 0;
+            var stackY = stack ? parseInt(stack.getAttribute('data-drag-y')||'0',10) : 0;
+            if (stackX !== 0 || stackY !== 0) { alterado = true; motivos.push('stackPos:(' + stackX + ',' + stackY + ')'); }
+            var faixaEl = cartaDiv.querySelector('.nome-faixa');
+            var nomeWExtra = faixaEl ? (parseInt(faixaEl.dataset.wExtra || '0', 10)) : 0;
+            if (nomeWExtra !== 0) { alterado = true; motivos.push('nomeWExtra:' + nomeWExtra); }
+            // Verificar se rank mudou
+            var rankSelect = cartaDiv.closest('.carta-container').querySelector('.rank-select');
+            var rank = rankSelect ? parseInt(rankSelect.value) : 0;
+            var rankOrig = 0;
+            var tipoIconeOrig = cartaOrig.TipoIcone || '';
+            var rankOrigMatch = tipoIconeOrig.match(/rank(\\d+)/);
+            if (rankOrigMatch) rankOrig = parseInt(rankOrigMatch[1]);
+            if (rank !== rankOrig) { alterado = true; motivos.push('rank:' + rankOrig + ' => ' + rank); }
             if (alterado) {
                 cartasEditadas[imgOrig] = {
                     Nome: nome,
                     Classe: classe,
                     Efeitos: efeitos,
-                    restauracoes: restauracoes
+                    stackX: stackX,
+                    stackY: stackY,
+                    nomeWExtra: nomeWExtra,
+                    rank: rank
                 };
                 var nomeLog = nomeOrig || imgOrig;
                 console.log('[ALTERADA]', nomeLog, '|', motivos.join(' | '));
@@ -1024,23 +965,38 @@ html += """
             // Novo formato: cartas é um objeto {imgOrig: {dados...}}
             var cartasEditadas = data.cartas || {};
             document.querySelectorAll('.carta').forEach(function(cartaDiv) {
-                var imgOrig = cartaDiv.querySelector('.restaurar-preview').getAttribute('src');
+                var imgOrig = cartaDiv.dataset.imgOrig;
                 if (cartasEditadas[imgOrig]) {
                     var carta = cartasEditadas[imgOrig];
-                    if (carta.Nome !== undefined) cartaDiv.querySelector('.edit-nome').innerText = carta.Nome;
+                    if (carta.Nome !== undefined) { cartaDiv.querySelector('.edit-nome').innerText = carta.Nome; formatNome(cartaDiv.querySelector('.edit-nome')); }
                     if (carta.Classe !== undefined) cartaDiv.querySelector('.edit-classe').value = carta.Classe;
-                    var efDivs = cartaDiv.querySelectorAll('.efeito-box');
+                    var efItems2 = cartaDiv.querySelectorAll('.efeito-item');
                     if (Array.isArray(carta.Efeitos)) {
-                        for (var j = 0; j < efDivs.length; j++) {
-                            var ef = carta.Efeitos[j] || {};
-                            efDivs[j].innerHTML = ef.texto || '';
-                            efDivs[j].setAttribute('data-pos-x', ef.x || 0);
-                            efDivs[j].setAttribute('data-pos-y', ef.y || 0);
-                            efDivs[j].style.transform = `translate(${ef.x||0}px,${ef.y||0}px)`;
+                        for (var j = 0; j < efItems2.length; j++) {
+                            var eit2 = efItems2[j]; var efDiv2 = eit2.querySelector('.efeito-box');
+                            var ef2 = carta.Efeitos[j] || {};
+                            if (efDiv2 && ef2.texto !== undefined) efDiv2.innerHTML = ef2.texto;
+                            if (ef2.x || ef2.y) { var dx2=ef2.x||0, dy2=ef2.y||0; eit2.setAttribute('data-pos-x',dx2); eit2.setAttribute('data-pos-y',dy2); eit2.style.transform='translate('+dx2+'px,'+dy2+'px)'; }
+                            if (ef2.w && efDiv2) efDiv2.style.width = ef2.w;
                         }
                     }
-                    if (carta.restauracoes) {
-                        cartaDiv.dataset.restauracoes = JSON.stringify(carta.restauracoes);
+                    var stack = cartaDiv.querySelector('.efeitos-stack');
+                    if (stack && carta.stackX !== undefined) {
+                        var dx = carta.stackX || 0, dy = carta.stackY || 0;
+                        stack.setAttribute('data-drag-x', dx);
+                        stack.setAttribute('data-drag-y', dy);
+                        stack.style.transform = 'translate(' + dx + 'px,' + dy + 'px)';
+                    }
+                    if (carta.nomeWExtra !== undefined) {
+                        var faixaEl2 = cartaDiv.querySelector('.nome-faixa');
+                        if (faixaEl2) { faixaEl2.dataset.wExtra = carta.nomeWExtra; syncNomeFaixa(cartaDiv.querySelector('.edit-nome')); }
+                    }
+                    if (carta.rank !== undefined) {
+                        var rankSel = cartaDiv.closest('.carta-container').querySelector('.rank-select');
+                        if (rankSel) {
+                            rankSel.value = carta.rank;
+                            rankSel.dispatchEvent(new Event('change', {bubbles: true}));
+                        }
                     }
                 }
             });
@@ -1064,119 +1020,11 @@ html += """
                     }
                 });
             }
+            if (typeof syncAllClasseWidths === 'function') syncAllClasseWidths();
         };
         reader.readAsText(file);
     }
     window.importarJson = importarJson;
-    // Função de restauração visual (canvas)
-    document.querySelectorAll('.carta-container').forEach(function(container) {
-        var btn = container.querySelector('.restaurar-btn');
-        var canvas = container.querySelector('.restaurar-canvas');
-        var imgSemTexto = container.querySelector('.carta-img');
-        var imgOriginal = container.querySelector('.restaurar-preview');
-        var toolbar = container.querySelector('.restaurar-toolbar');
-        var drawing = false, startX = 0, startY = 0, endX = 0, endY = 0, rect = null;
-        var restauracoes = [];
-        if (container.dataset.restauracoes) {
-            restauracoes = JSON.parse(container.dataset.restauracoes);
-        }
-        // Garante que o canvas fique perfeitamente alinhado à imagem
-        function syncCanvasSize() {
-            canvas.width = imgSemTexto.naturalWidth;
-            canvas.height = imgSemTexto.naturalHeight;
-            canvas.style.width = imgSemTexto.offsetWidth + 'px';
-            canvas.style.height = imgSemTexto.offsetHeight + 'px';
-            imgOriginal.style.width = imgSemTexto.offsetWidth + 'px';
-            imgOriginal.style.height = imgSemTexto.offsetHeight + 'px';
-        }
-        function drawAllRestauracoes() {
-            var ctx = canvas.getContext('2d');
-            ctx.clearRect(0,0,canvas.width,canvas.height);
-            restauracoes.forEach(function(r) {
-                ctx.drawImage(imgOriginal, r.x, r.y, r.w, r.h, r.x, r.y, r.w, r.h);
-            });
-        }
-        if(btn) {
-            btn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                syncCanvasSize();
-                canvas.style.display = 'block';
-                canvas.classList.add('editing');
-                imgOriginal.style.display = 'block';
-                toolbar.style.display = 'flex';
-                drawAllRestauracoes();
-            });
-        }
-        if(canvas) {
-            canvas.addEventListener('mousedown', function(e) {
-                if (canvas.style.display !== 'block') return;
-                drawing = true;
-                var rectC = canvas.getBoundingClientRect();
-                var scaleX = canvas.width / rectC.width;
-                var scaleY = canvas.height / rectC.height;
-                startX = (e.clientX - rectC.left) * scaleX;
-                startY = (e.clientY - rectC.top) * scaleY;
-                endX = startX; endY = startY;
-            });
-            canvas.addEventListener('mousemove', function(e) {
-                if (!drawing) return;
-                var rectC = canvas.getBoundingClientRect();
-                var scaleX = canvas.width / rectC.width;
-                var scaleY = canvas.height / rectC.height;
-                endX = (e.clientX - rectC.left) * scaleX;
-                endY = (e.clientY - rectC.top) * scaleY;
-                var ctx = canvas.getContext('2d');
-                drawAllRestauracoes();
-                ctx.save();
-                ctx.strokeStyle = '#ffe066';
-                ctx.lineWidth = 3;
-                ctx.setLineDash([8,4]);
-                ctx.strokeRect(startX, startY, endX-startX, endY-startY);
-                ctx.restore();
-            });
-            canvas.addEventListener('mouseup', function(e) {
-                if (!drawing) return;
-                drawing = false;
-                rect = {x: Math.min(startX,endX), y: Math.min(startY,endY), w: Math.abs(endX-startX), h: Math.abs(endY-startY)};
-            });
-
-            var okBtn = toolbar.querySelector('.restaurar-ok');
-            if(okBtn) okBtn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                if (rect && rect.w > 0 && rect.h > 0) {
-                    restauracoes.push(rect);
-                    container.dataset.restauracoes = JSON.stringify(restauracoes);
-                    drawAllRestauracoes();
-                }
-                rect = null;
-                canvas.classList.remove('editing');
-                imgOriginal.style.display = 'none';
-                toolbar.style.display = 'none';
-                // Mantém o canvas visível se houver restaurações
-                if (restauracoes.length > 0) {
-                    canvas.style.display = 'block';
-                } else {
-                    canvas.style.display = 'none';
-                }
-            });
-            var cancelBtn = toolbar.querySelector('.restaurar-cancel');
-            if(cancelBtn) cancelBtn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                rect = null;
-                canvas.classList.remove('editing');
-                canvas.style.display = 'none';
-                imgOriginal.style.display = 'none';
-                toolbar.style.display = 'none';
-                drawAllRestauracoes();
-            });
-        }
-        window.addEventListener('resize', function() {
-            if (canvas && canvas.style.display === 'block') {
-                syncCanvasSize();
-                drawAllRestauracoes();
-            }
-        });
-    });
     document.querySelectorAll('.carta-ref-hover').forEach(function(ref) {
         var icone = ref.querySelector('.carta-ref-icone');
         var tooltip = ref.querySelector('.carta-ref-tooltip');
@@ -1275,7 +1123,7 @@ html += """
             });
         });
     });
-    // --- Sincroniza .nome-faixa com o bounding box real do .edit-nome ---
+    // --- Sincroniza .nome-faixa com o bounding box REAL do texto em .edit-nome ---
     function syncNomeFaixa(editNome) {
         var imgbox = editNome.closest('.carta-imgbox');
         if (!imgbox) return;
@@ -1283,13 +1131,66 @@ html += """
         if (!faixa) return;
         var boxRect = imgbox.getBoundingClientRect();
         var nomeRect = editNome.getBoundingClientRect();
-        faixa.style.top    = (nomeRect.top  - boxRect.top)  + 'px';
-        faixa.style.left   = (nomeRect.left - boxRect.left) + 'px';
-        faixa.style.width  = nomeRect.width  + 'px';
+        // Mede a largura real do texto (não do div inteiro) usando Range
+        var textLeft = nomeRect.left;
+        var textWidth = nomeRect.width;
+        try {
+            var range = document.createRange();
+            range.selectNodeContents(editNome);
+            var rects = range.getClientRects();
+            if (rects.length > 0) {
+                var minLeft = Infinity, maxRight = -Infinity;
+                for (var i = 0; i < rects.length; i++) {
+                    if (rects[i].width > 0) {
+                        minLeft = Math.min(minLeft, rects[i].left);
+                        maxRight = Math.max(maxRight, rects[i].right);
+                    }
+                }
+                if (minLeft < Infinity) { textLeft = minLeft; textWidth = maxRight - minLeft; }
+            }
+        } catch(e) {}
+        var top  = nomeRect.top  - boxRect.top;
+        var left = textLeft - boxRect.left;
+        var extra = parseInt(faixa.dataset.wExtra || '0', 10);
+        var finalLeft  = left - extra / 2;
+        var finalWidth = textWidth + extra;
+        faixa.style.top    = top  + 'px';
+        faixa.style.left   = finalLeft + 'px';
+        faixa.style.width  = finalWidth + 'px';
         faixa.style.height = nomeRect.height + 'px';
+        // Alinha a imagem de rank ao card: mostra o slice correspondente à posição da faixa
+        faixa.style.backgroundSize     = boxRect.width + 'px ' + boxRect.height + 'px';
+        faixa.style.backgroundPosition = (-finalLeft) + 'px ' + (-top) + 'px';
+    }
+    // Aplica tamanho reduzido ao resto do nome quando >20 chars
+    function formatNome(el) {
+        var text = el.innerText.trim();
+        el.innerHTML = '';
+        if (text.length > 20) {
+            var spaceIdx = text.indexOf(' ');
+            if (spaceIdx > 0) {
+                var s1 = document.createElement('span');
+                s1.textContent = text.slice(0, spaceIdx);
+                var s2 = document.createElement('span');
+                s2.style.fontSize = '0.9em';
+                s2.textContent = text.slice(spaceIdx);
+                el.appendChild(s1);
+                el.appendChild(s2);
+            } else {
+                el.textContent = text;
+            }
+        } else {
+            el.textContent = text;
+        }
+        syncNomeFaixa(el);
+    }
+    function flattenNome(el) {
+        var text = el.innerText;
+        el.innerHTML = '';
+        el.textContent = text;
     }
     function syncAllNomeFaixas() {
-        document.querySelectorAll('.edit-nome').forEach(syncNomeFaixa);
+        document.querySelectorAll('.edit-nome').forEach(formatNome);
     }
     // Aplica após fontes/layout renderizados
     if (document.fonts && document.fonts.ready) {
@@ -1299,7 +1200,68 @@ html += """
     window.addEventListener('resize', syncAllNomeFaixas);
     // Atualiza ao editar o nome
     document.querySelectorAll('.edit-nome').forEach(function(el) {
-        el.addEventListener('input', function() { syncNomeFaixa(el); });
+        el.addEventListener('focus', function() { flattenNome(this); });
+        el.addEventListener('blur', function() { formatNome(this); });
+        el.addEventListener('input', function() { syncNomeFaixa(this); });
+    });
+    // --- Sincroniza largura do edit-classe com o texto (clip dinâmico da imagem de classe) ---
+    var _classeMirror = document.createElement('span');
+    _classeMirror.style.cssText = 'position:absolute;visibility:hidden;white-space:nowrap;pointer-events:none;left:-9999px;top:-9999px;';
+    document.body.appendChild(_classeMirror);
+    var CLASSES_OCULTAS = ['provação', 'saga', 'altar', 'maison', 'capacidade', 'provacão', 'provacao'];
+    function syncClasseWidth(input) {
+        var val = input.value.trim();
+        if (!val || CLASSES_OCULTAS.indexOf(val.toLowerCase()) !== -1) {
+            input.style.display = 'none';
+            return;
+        }
+        input.style.display = '';
+        var cs = getComputedStyle(input);
+        _classeMirror.style.font = cs.font;
+        _classeMirror.style.fontSize = cs.fontSize;
+        _classeMirror.style.fontFamily = cs.fontFamily;
+        _classeMirror.style.fontStyle = cs.fontStyle;
+        _classeMirror.style.letterSpacing = cs.letterSpacing;
+        _classeMirror.style.padding = cs.paddingLeft + ' ' + cs.paddingRight;
+        _classeMirror.textContent = input.value || '\u00a0';
+        var textW = _classeMirror.offsetWidth;
+        var padding = parseFloat(cs.paddingLeft) + parseFloat(cs.paddingRight) + 16;
+        var newW = Math.max(40, textW + padding);
+        input.style.width = newW + 'px';
+        // Alinha a imagem de classe ao card dinamicamente (mesmo princípio do syncNomeFaixa)
+        var imgbox = input.closest('.carta-imgbox');
+        if (imgbox) {
+            var boxRect = imgbox.getBoundingClientRect();
+            var inputRect = input.getBoundingClientRect();
+            var leftOffset = inputRect.left - boxRect.left;
+            input.style.backgroundSize = boxRect.width + 'px auto';
+            input.style.backgroundPosition = (-leftOffset) + 'px center';
+        }
+    }
+    function syncAllClasseWidths() {
+        document.querySelectorAll('.edit-classe').forEach(syncClasseWidth);
+    }
+    window.addEventListener('load', syncAllClasseWidths);
+    window.addEventListener('resize', syncAllClasseWidths);
+    if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(syncAllClasseWidths);
+    }
+    // Atualiza largura ao editar a classe (além da sincronização de tradução já existente)
+    document.querySelectorAll('.edit-classe').forEach(function(input) {
+        input.addEventListener('input', function() { syncClasseWidth(this); });
+    });
+    // --- Rank-select: altera rank da carta visualmente ---
+    function aplicarRank(container, rank) {
+        var faixa = container.querySelector('.nome-faixa');
+        if (!faixa) return;
+        for (var r = 0; r <= 8; r++) faixa.classList.remove('rank' + r);
+        faixa.classList.add('rank' + rank);
+        faixa.dataset.rank = rank;
+    }
+    document.querySelectorAll('.rank-select').forEach(function(sel) {
+        sel.addEventListener('change', function() {
+            aplicarRank(this.closest('.carta-container'), parseInt(this.value));
+        });
     });
     </script>
 </body>
