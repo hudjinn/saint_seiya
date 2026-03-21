@@ -1097,7 +1097,7 @@ html += """
     // --- Firebase: configuração ---
     // ⚠️  Preencha abaixo com os valores do seu projeto Firebase (console.firebase.google.com)
     var FIREBASE_CONFIG = {
-        apiKey:            "AIzaSyDfSuZvHP4kkY26gdG6tUQp-ETD9-Af6zs",
+        apiKey:            "__FIREBASE_API_KEY__",
         authDomain:        "saint-seiya-deck.firebaseapp.com",
         databaseURL:       "https://saint-seiya-deck-default-rtdb.firebaseio.com",
         projectId:         "saint-seiya-deck",

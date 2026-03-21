@@ -1,0 +1,60 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Instalar dependências Python
+        run: pip install pillow 2>/dev/null || true
+
+      - name: Gerar index.html
+        run: python gerar_editor_html.py
+
+      - name: Injetar Firebase API Key
+        env:
+          FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY }}
+        run: |
+          python - <<'EOF'
+          import os
+          key = os.environ['FIREBASE_API_KEY']
+          with open('index.html', 'r', encoding='utf-8') as f:
+              content = f.read()
+          content = content.replace('__FIREBASE_API_KEY__', key)
+          with open('index.html', 'w', encoding='utf-8') as f:
+              f.write(content)
+          EOF
+
+      - name: Configurar Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artefato
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+      - name: Deploy para GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
