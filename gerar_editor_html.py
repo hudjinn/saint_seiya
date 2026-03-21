@@ -296,6 +296,10 @@ html = """<!DOCTYPE html>
         .efeito-item-handle:active { cursor: grabbing; }
         .efeito-item-width-btn { background: #2a2a2a; color: #ffe066; border: 1px solid #ffe066; border-radius: 3px; padding: 0 4px; font-size: 0.85em; cursor: pointer; line-height: 1.5; }
         .efeito-item-width-btn:hover { background: #ffe066; color: #222; }
+        .efeito-item-reset-btn { background: #2a2a2a; color: #aaa; border: 1px solid #666; border-radius: 3px; padding: 0 4px; font-size: 0.85em; cursor: pointer; line-height: 1.5; margin-left: 2px; }
+        .efeito-item-reset-btn:hover { background: #555; color: #fff; }
+        .efeito-reset-all-btn { background: #2a2a2a; color: #aaa; border: 1px solid #666; border-radius: 3px; padding: 0 4px; font-size: 0.8em; cursor: pointer; line-height: 1.5; margin-left: 4px; }
+        .efeito-reset-all-btn:hover { background: #555; color: #fff; }
         /* Ícones cosmos e forca: width 22px; demais: width conforme HTML do JSON */
         .effect img[alt="Cosmos"], .effect img[alt="Force"] {
             width: 15px !important;
@@ -569,7 +573,7 @@ for carta in cartas:
             <div contenteditable="true" class="edit-nome">{nome}</div>
             <input type="text" class="{edit_classe_class}" data-orig="{classe}" data-orientation="{'landscape' if aspect=='landscape' else 'portrait'}" value="{classe}">
             <div class="efeitos-stack" data-drag-x="0" data-drag-y="0">
-                <div class="efeitos-drag-handle" title="Arrastar para mover · duplo-clique para resetar">· · · · ·</div>
+                <div class="efeitos-drag-handle" title="Arrastar para mover · duplo-clique para resetar">· · · · · <button class="efeito-reset-all-btn" title="Redefinir posição de TODOS os efeitos">↺ todos</button></div>
 """
     # Adiciona os efeitos_html com wrapper individual para drag/resize
     for idx, ef_html in enumerate(efeitos_html):
@@ -579,6 +583,7 @@ for carta in cartas:
             f'<div class="efeito-item-handle" title="Arrastar · duplo-clique para resetar">⠿ '
             f'<button class="efeito-item-width-btn" data-delta="-5" title="Estreitar">E-</button>'
             f'<button class="efeito-item-width-btn" data-delta="5" title="Alargar">E+</button>'
+            f'<button class="efeito-item-reset-btn" title="Redefinir posição deste efeito">↺</button>'
             f'</div>'
             f'<div contenteditable="true" class="efeito-box" data-orig="{ef_html_escaped}">{ef_html}</div>'
             f'</div>'
@@ -706,18 +711,46 @@ html += """
     document.querySelectorAll('.efeitos-drag-handle').forEach(function(handle) {
         var stack = handle.closest('.efeitos-stack');
         if (!stack) return;
+        var imgbox = stack.closest('.carta-imgbox');
+        // botão reset-all
+        var resetAllBtn = handle.querySelector('.efeito-reset-all-btn');
+        if (resetAllBtn) {
+            resetAllBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                stack.setAttribute('data-drag-x', 0); stack.setAttribute('data-drag-y', 0);
+                stack.style.transform = '';
+                stack.querySelectorAll('.efeito-item').forEach(function(it) {
+                    it.setAttribute('data-pos-x', 0); it.setAttribute('data-pos-y', 0);
+                    it.style.transform = '';
+                });
+            });
+        }
         var dragX = 0, dragY = 0;
-        handle.addEventListener('dblclick', function() {
+        handle.addEventListener('dblclick', function(e) {
+            if (e.target !== handle && e.target.tagName !== 'DIV') return;
             dragX = 0; dragY = 0;
             stack.setAttribute('data-drag-x', 0); stack.setAttribute('data-drag-y', 0);
             stack.style.transform = '';
         });
         handle.addEventListener('mousedown', function(e) {
+            if (e.target !== handle && e.target.tagName !== 'DIV') return;
             e.preventDefault();
             var startX = e.clientX - dragX, startY = e.clientY - dragY;
             handle.style.cursor = 'grabbing';
             function onMove(ev) {
-                dragX = ev.clientX - startX; dragY = ev.clientY - startY;
+                var newX = ev.clientX - startX, newY = ev.clientY - startY;
+                if (imgbox) {
+                    var ib = imgbox.getBoundingClientRect(), sb = stack.getBoundingClientRect();
+                    var stackW = sb.width, stackH = sb.height;
+                    // posição original sem transform
+                    var origLeft = sb.left - ib.left - newX + dragX;
+                    var origTop  = sb.top  - ib.top  - newY + dragY;
+                    var minX = -origLeft, maxX = ib.width  - origLeft - stackW;
+                    var minY = -origTop,  maxY = ib.height - origTop  - stackH;
+                    newX = Math.max(minX, Math.min(maxX, newX));
+                    newY = Math.max(minY, Math.min(maxY, newY));
+                }
+                dragX = newX; dragY = newY;
                 stack.setAttribute('data-drag-x', dragX); stack.setAttribute('data-drag-y', dragY);
                 stack.style.transform = 'translate(' + dragX + 'px,' + dragY + 'px)';
             }
@@ -731,20 +764,47 @@ html += """
     document.querySelectorAll('.efeito-item-handle').forEach(function(handle) {
         var item = handle.closest('.efeito-item');
         if (!item) return;
+        var imgbox = item.closest('.carta-imgbox');
         var dragX = parseFloat(item.getAttribute('data-pos-x')) || 0;
         var dragY = parseFloat(item.getAttribute('data-pos-y')) || 0;
+        // botão reset individual
+        var resetBtn = handle.querySelector('.efeito-item-reset-btn');
+        if (resetBtn) {
+            resetBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                dragX = 0; dragY = 0;
+                item.setAttribute('data-pos-x', 0); item.setAttribute('data-pos-y', 0);
+                item.style.transform = '';
+            });
+        }
         handle.addEventListener('dblclick', function(e) {
-            if (e.target.classList.contains('efeito-item-width-btn')) return;
+            if (e.target.classList.contains('efeito-item-width-btn') || e.target.classList.contains('efeito-item-reset-btn')) return;
             dragX = 0; dragY = 0;
             item.setAttribute('data-pos-x', 0); item.setAttribute('data-pos-y', 0);
             item.style.transform = '';
         });
         handle.addEventListener('mousedown', function(e) {
-            if (e.target.classList.contains('efeito-item-width-btn')) return;
+            if (e.target.classList.contains('efeito-item-width-btn') || e.target.classList.contains('efeito-item-reset-btn')) return;
             e.preventDefault();
             var startX = e.clientX - dragX, startY = e.clientY - dragY;
             function onMove(ev) {
-                dragX = ev.clientX - startX; dragY = ev.clientY - startY;
+                var newX = ev.clientX - startX, newY = ev.clientY - startY;
+                if (imgbox) {
+                    var ib = imgbox.getBoundingClientRect(), it = item.getBoundingClientRect();
+                    var stk = item.closest('.efeitos-stack');
+                    var stkRect = stk ? stk.getBoundingClientRect() : ib;
+                    var origLeft = it.left - stkRect.left - newX + dragX;
+                    var origTop  = it.top  - stkRect.top  - newY + dragY;
+                    var ibRelLeft = ib.left - stkRect.left;
+                    var ibRelTop  = ib.top  - stkRect.top;
+                    var minX = ibRelLeft - origLeft;
+                    var maxX = ibRelLeft + ib.width  - origLeft - it.width;
+                    var minY = ibRelTop  - origTop;
+                    var maxY = ibRelTop  + ib.height - origTop  - it.height;
+                    newX = Math.max(minX, Math.min(maxX, newX));
+                    newY = Math.max(minY, Math.min(maxY, newY));
+                }
+                dragX = newX; dragY = newY;
                 item.setAttribute('data-pos-x', dragX); item.setAttribute('data-pos-y', dragY);
                 item.style.transform = 'translate(' + dragX + 'px,' + dragY + 'px)';
             }
