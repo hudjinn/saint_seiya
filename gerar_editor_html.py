@@ -348,6 +348,14 @@ html = """<!DOCTYPE html>
         .restaurar-toolbar .restaurar-trash {
             background: linear-gradient(90deg,#b71c1c 0%,#f44336 100%);
         }
+        /* --- Z-index correto para a toolbar de restauração --- */
+        .carta-toolbar { z-index: 200 !important; }
+        /* --- Botão restaurar, mesmo estilo que carta-ref-icone --- */
+        .restaurar-btn { display: inline-flex; align-items: center; justify-content: center;
+            width: 28px; height: 28px; background: #ffe066; border-radius: 50%;
+            box-shadow: 0 0 6px #000; cursor: pointer; font-size: 1.1em;
+            border: none; text-align: center; line-height: 28px; }
+        .restaurar-btn:hover { background: #ffeea0; box-shadow: 0 0 10px #ffe066; }
     </style>
     <!-- Firebase SDK (compat) -->
     <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
@@ -599,6 +607,12 @@ for carta in cartas:
                 <span class="carta-ref-tooltip-nome">{nome}</span>
             </span>
         </span>
+        <span class="restaurar-btn" title="Restaurar pedaço da imagem">✏️</span>
+        <div class="restaurar-toolbar" style="display:none;position:absolute;right:36px;top:0;flex-direction:column;gap:4px;background:#222;border:2px solid #ffe066;border-radius:8px;padding:6px;z-index:99;">
+            <button class="restaurar-ok" title="Salvar restauração" style="background:linear-gradient(90deg,#2ecc40,#27ae60);color:#fff;border:none;border-radius:7px;padding:4px 10px;font-weight:bold;cursor:pointer;">✔</button>
+            <button class="restaurar-cancel" title="Cancelar" style="background:linear-gradient(90deg,#e74c3c,#c0392b);color:#fff;border:none;border-radius:7px;padding:4px 10px;font-weight:bold;cursor:pointer;">✖</button>
+            <button class="restaurar-trash" title="Descartar todas as restaurações" style="background:linear-gradient(90deg,#b71c1c,#f44336);color:#fff;border:none;border-radius:7px;padding:4px 10px;font-weight:bold;cursor:pointer;">🗑️</button>
+        </div>
         <select class="rank-select" title="Rank da carta (clique para alterar)">
             <option value="0"{'  selected' if rank_num==0 else ''}>–</option>
             <option value="1"{'  selected' if rank_num==1 else ''}>Básico</option>
@@ -626,6 +640,8 @@ for carta in cartas:
     <div class="carta {aspect} {classe_css}" data-img-orig="{img_orig}">
         <div class="{carta_imgbox_class}">
             <img src="{img}" alt="{nome}" class="carta-img">
+            <img src="{img_orig}" class="restaurar-preview" style="display:none;position:absolute;left:0;top:0;width:100%;height:100%;object-fit:cover;z-index:10;pointer-events:auto;">
+            <canvas class="restaurar-canvas" style="display:none;position:absolute;left:0;top:0;width:100%;height:100%;z-index:20;pointer-events:none;"></canvas>
             <div class="nome-faixa {rank_class}" data-rank="{rank_num}"></div>
             <div contenteditable="true" class="edit-nome">{nome}</div>
             <input type="text" class="{edit_classe_class}" data-orig="{classe}" data-orientation="{'landscape' if aspect=='landscape' else 'portrait'}" style="background-image: url({classe_borda_url(classe, aspect)})" value="{classe}">
@@ -756,7 +772,7 @@ html += """
                 // arquivo não existe ou erro de fetch, não faz nada
             });
     })();
-    // --- Eventos de referência (tooltip) ---
+    // --- Eventos de referência (tooltip) + Restaurar pedaço ---
     document.querySelectorAll('.carta-container').forEach(function(container){
         var refIcone = container.querySelector('.carta-ref-icone');
         var refTooltip = container.querySelector('.carta-ref-tooltip');
@@ -764,6 +780,117 @@ html += """
             refIcone.addEventListener('mouseenter', function(){ refTooltip.style.display = 'block'; });
             refIcone.addEventListener('mouseleave', function(){ refTooltip.style.display = 'none'; });
         }
+        // --- Restaurar pedaço ---
+        var restaurarBtn = container.querySelector('.restaurar-btn');
+        var canvas = container.querySelector('.restaurar-canvas');
+        var imgSemTexto = container.querySelector('.carta-img');
+        var imgOriginal = container.querySelector('.restaurar-preview');
+        var toolbar = container.querySelector('.restaurar-toolbar');
+        if (!restaurarBtn || !canvas || !imgOriginal || !toolbar) return;
+        var drawing = false, startX = 0, startY = 0, endX = 0, endY = 0, rect = null;
+        var restauracoes = [];
+        if (container.dataset.restauracoes) {
+            try { restauracoes = JSON.parse(container.dataset.restauracoes); } catch(e) {}
+        }
+        function syncCanvasSize() {
+            canvas.width = imgSemTexto.naturalWidth || imgSemTexto.offsetWidth;
+            canvas.height = imgSemTexto.naturalHeight || imgSemTexto.offsetHeight;
+            canvas.style.width = imgSemTexto.offsetWidth + 'px';
+            canvas.style.height = imgSemTexto.offsetHeight + 'px';
+            imgOriginal.style.width = imgSemTexto.offsetWidth + 'px';
+            imgOriginal.style.height = imgSemTexto.offsetHeight + 'px';
+        }
+        function drawAllRestauracoes() {
+            var ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            restauracoes.forEach(function(r) {
+                ctx.drawImage(imgOriginal, r.x, r.y, r.w, r.h, r.x, r.y, r.w, r.h);
+            });
+        }
+        if (restauracoes.length > 0) {
+            imgOriginal.onload = function() { syncCanvasSize(); canvas.style.display = 'block'; drawAllRestauracoes(); };
+            if (imgOriginal.complete) { syncCanvasSize(); canvas.style.display = 'block'; drawAllRestauracoes(); }
+        }
+        restaurarBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            container.style.zIndex = '5000';
+            syncCanvasSize();
+            imgOriginal.style.display = 'block';
+            canvas.style.display = 'block';
+            canvas.style.pointerEvents = 'auto';
+            canvas.style.zIndex = '150';
+            toolbar.style.display = 'flex';
+            drawAllRestauracoes();
+        });
+        canvas.addEventListener('mousedown', function(e) {
+            if (canvas.style.pointerEvents !== 'auto') return;
+            drawing = true;
+            var rectC = canvas.getBoundingClientRect();
+            var scaleX = canvas.width / rectC.width;
+            var scaleY = canvas.height / rectC.height;
+            startX = (e.clientX - rectC.left) * scaleX;
+            startY = (e.clientY - rectC.top) * scaleY;
+            endX = startX; endY = startY;
+        });
+        canvas.addEventListener('mousemove', function(e) {
+            if (!drawing) return;
+            var rectC = canvas.getBoundingClientRect();
+            var scaleX = canvas.width / rectC.width;
+            var scaleY = canvas.height / rectC.height;
+            endX = (e.clientX - rectC.left) * scaleX;
+            endY = (e.clientY - rectC.top) * scaleY;
+            drawAllRestauracoes();
+            var ctx = canvas.getContext('2d');
+            ctx.save();
+            ctx.strokeStyle = '#ffe066';
+            ctx.lineWidth = 3;
+            ctx.setLineDash([8, 4]);
+            ctx.strokeRect(startX, startY, endX - startX, endY - startY);
+            ctx.restore();
+        });
+        canvas.addEventListener('mouseup', function(e) {
+            if (!drawing) return;
+            drawing = false;
+            rect = { x: Math.min(startX, endX), y: Math.min(startY, endY), w: Math.abs(endX - startX), h: Math.abs(endY - startY) };
+        });
+        var okBtn = toolbar.querySelector('.restaurar-ok');
+        if (okBtn) okBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            if (rect && rect.w > 0 && rect.h > 0) {
+                restauracoes.push(rect);
+                container.dataset.restauracoes = JSON.stringify(restauracoes);
+                drawAllRestauracoes();
+            }
+            rect = null;
+            canvas.style.pointerEvents = 'none';
+            canvas.style.zIndex = '20';
+            imgOriginal.style.display = 'none';
+            toolbar.style.display = 'none';
+            container.style.zIndex = '';
+            canvas.style.display = restauracoes.length > 0 ? 'block' : 'none';
+        });
+        var cancelBtn = toolbar.querySelector('.restaurar-cancel');
+        if (cancelBtn) cancelBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            rect = null;
+            canvas.style.pointerEvents = 'none';
+            canvas.style.zIndex = '20';
+            canvas.style.display = 'none';
+            imgOriginal.style.display = 'none';
+            toolbar.style.display = 'none';
+            container.style.zIndex = '';
+            drawAllRestauracoes();
+        });
+        var trashBtn = toolbar.querySelector('.restaurar-trash');
+        if (trashBtn) trashBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            restauracoes = [];
+            container.dataset.restauracoes = JSON.stringify(restauracoes);
+            drawAllRestauracoes();
+        });
+        window.addEventListener('resize', function() {
+            if (canvas.style.display === 'block') { syncCanvasSize(); drawAllRestauracoes(); }
+        });
     });
     // --- Drag para mover o bloco de efeitos (stack inteiro) ---
     document.querySelectorAll('.efeitos-drag-handle').forEach(function(handle) {
