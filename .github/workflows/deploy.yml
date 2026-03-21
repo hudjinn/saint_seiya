@@ -33,20 +33,6 @@ jobs:
       - name: Gerar index.html
         run: python gerar_editor_html.py
 
-      - name: Injetar Firebase API Key
-        env:
-          FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY }}
-        run: |
-          python - <<'EOF'
-          import os
-          key = os.environ['FIREBASE_API_KEY']
-          with open('index.html', 'r', encoding='utf-8') as f:
-              content = f.read()
-          content = content.replace('__FIREBASE_API_KEY__', key)
-          with open('index.html', 'w', encoding='utf-8') as f:
-              f.write(content)
-          EOF
-
       - name: Configurar Pages
         uses: actions/configure-pages@v5
 

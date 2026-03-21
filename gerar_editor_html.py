@@ -1095,9 +1095,8 @@ html += """
     }
     window.exportarJson = exportarJson;
     // --- Firebase: configuração ---
-    // ⚠️  Preencha abaixo com os valores do seu projeto Firebase (console.firebase.google.com)
     var FIREBASE_CONFIG = {
-        apiKey:            "__FIREBASE_API_KEY__",
+        apiKey:            "AIzaSyDfSuZvHP4kkY26gdG6tUQp-ETD9-Af6zs",
         authDomain:        "saint-seiya-deck.firebaseapp.com",
         databaseURL:       "https://saint-seiya-deck-default-rtdb.firebaseio.com",
         projectId:         "saint-seiya-deck",
@@ -1105,6 +1104,7 @@ html += """
         messagingSenderId: "18893229874",
         appId:             "1:18893229874:web:9be89069ecfea79e1fd12b"
     };
+    
     // Email fixo do usuário compartilhado (não é segredo — a senha/token nunca está no código)
     var FIREBASE_EMAIL = "editor@saint-seiya-deck.com";
     var fbAuth, fbDb;
