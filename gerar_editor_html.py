@@ -1103,7 +1103,7 @@ html += """
         projectId:         "saint-seiya-deck",
         storageBucket:     "saint-seiya-deck.firebasestorage.app",
         messagingSenderId: "18893229874",
-        appId:             "1:18893229874:web:50428be5e6d3299b1fd12b"
+        appId:             "1:18893229874:web:9be89069ecfea79e1fd12b"
     };
     // Email fixo do usuário compartilhado (não é segredo — a senha/token nunca está no código)
     var FIREBASE_EMAIL = "editor@saint-seiya-deck.com";
