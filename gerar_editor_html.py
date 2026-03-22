@@ -180,7 +180,7 @@ html = """<!DOCTYPE html>
         .carta.landscape .nome-faixa.rank8 { background-image: url(imagens/bordas/rank3-4_h.png); }
         .edit-nome {
             position: absolute;
-            top: 2px;
+            top: 4px;
             left: 0;
             right: 0;
             width: 90%;
