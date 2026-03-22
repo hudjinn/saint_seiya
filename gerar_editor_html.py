@@ -177,6 +177,7 @@ html = """<!DOCTYPE html>
         .carta.landscape .nome-faixa.rank5 { background-image: url(imagens/bordas/rank5_h.png); }
         .carta.landscape .nome-faixa.rank6 { background-image: url(imagens/bordas/rank2-3_h.png); }
         .carta.landscape .nome-faixa.rank7 { background-image: url(imagens/bordas/rank2-4_h.png); }
+        .carta.landscape .nome-faixa.rank8 { background-image: url(imagens/bordas/rank3-4_h.png); }
         .edit-nome {
             position: absolute;
             top: 2px;
