@@ -89,6 +89,20 @@ html = """<!DOCTYPE html>
         .firebase-login-btn { background: #333; color: #ffe066; border: 1px solid #ffe066; border-radius: 6px; padding: 8px 10px; font-size: 1em; cursor: pointer; }
         .firebase-login-btn:hover { background: #444; }
         .toolbar-box { text-align: center; margin-bottom: 24px; }
+        .preview-btn { background: linear-gradient(90deg,#444 0%,#222 100%); color: #ffe066; font-weight: bold; font-size: 1.25em; border: 2.5px solid #ffe066; border-radius: 10px; padding: 12px 32px; margin: 0 0 8px 18px; box-shadow: 0 2px 12px #0008; letter-spacing: 1px; cursor:pointer; transition: filter .2s; }
+        .preview-btn.active { background: linear-gradient(90deg,#ffe066 0%,#ffb347 100%); color: #222; border-color: #ffb347; }
+        body.preview-mode .carta-toolbar { display: none !important; }
+        body.preview-mode .efeito-item-handle { display: none !important; }
+        body.preview-mode .efeitos-drag-handle { display: none !important; }
+        body.preview-mode .classe-img-toggle-btn { display: none !important; }
+        body.preview-mode [contenteditable] { pointer-events: none; caret-color: transparent; outline: none !important; border: none !important; box-shadow: none !important; }
+        body.preview-mode .toolbar-box .export-btn,
+        body.preview-mode .toolbar-box .import-btn,
+        body.preview-mode .toolbar-box .firebase-save-btn,
+        body.preview-mode .toolbar-box .firebase-login-btn,
+        body.preview-mode .toolbar-box #firebase-user-status { display: none !important; }
+        body.preview-mode .classes-lista,
+        body.preview-mode #editar-pos-container { display: none !important; }
         .export-btn { background: linear-gradient(90deg,#ffe066 0%,#ffb347 100%); color: #222; font-weight: bold; font-size: 1.25em; border: 2.5px solid #ffb347; border-radius: 10px; padding: 12px 32px; margin: 0 18px 8px 0; box-shadow: 0 2px 12px #0008; letter-spacing: 1px; transition: filter .2s; cursor:pointer; }
         .import-btn { background: linear-gradient(90deg,#66e0ff 0%,#3ad29f 100%); color: #222; font-weight: bold; font-size: 1.25em; border: 2.5px solid #3ad29f; border-radius: 10px; padding: 12px 32px; margin: 0 0 8px 0; box-shadow: 0 2px 12px #0008; letter-spacing: 1px; transition: filter .2s; cursor:pointer; }
         .editar-pos-btn { background: #ffb347; color: #222; font-weight: bold; font-size: 1.1em; border: 2px solid #ffe066; border-radius: 8px; padding: 8px 22px; margin: 0 0 18px 0; box-shadow: 0 2px 12px #0008; letter-spacing: 1px; cursor:pointer; transition: filter .2s; }
@@ -375,6 +389,11 @@ html = """<!DOCTYPE html>
         }
         /* --- Z-index correto para a toolbar de restauração --- */
         .carta-toolbar { z-index: 200 !important; }
+        .efeitos-stack { z-index: 25; }
+        /* --- Lista de patches individuais --- */
+        .restaurar-patches-list { display: flex; flex-direction: column; gap: 3px; margin-top: 4px; max-height: 180px; overflow-y: auto; }
+        .restaurar-patch-item { display: flex; align-items: center; justify-content: space-between; background: #333; border-radius: 5px; padding: 2px 6px; font-size: 0.85em; color: #ffe066; gap: 6px; }
+        .restaurar-patch-del { background: #b71c1c; color: #fff; border: none; border-radius: 4px; padding: 1px 6px; cursor: pointer; font-size: 1em; line-height: 1.4; }
         /* --- Botão restaurar, mesmo estilo que carta-ref-icone --- */
         .restaurar-btn { display: inline-flex; align-items: center; justify-content: center;
             width: 28px; height: 28px; background: #ffe066; border-radius: 50%;
@@ -405,6 +424,7 @@ html = """<!DOCTYPE html>
             </span>
         </div>
         <div class="toolbar-box">
+            <button type="button" id="preview-btn" class="preview-btn" onclick="togglePreview(this)">👁 Preview</button>
             <button type="button" onclick="exportarJson()" class="export-btn">⬇ Exportar JSON</button>
             <button type="button" onclick="document.getElementById('importar-arquivo').click()" class="import-btn">⬆ Importar JSON</button>
             <input type="file" id="importar-arquivo" style="display:none" accept="application/json" onchange="importarJson(event)">
@@ -635,10 +655,11 @@ for carta in cartas:
             </span>
         </span>
         <span class="restaurar-btn" title="Restaurar pedaço da imagem">✏️</span>
-        <div class="restaurar-toolbar" style="display:none;position:absolute;right:36px;top:0;flex-direction:column;gap:4px;background:#222;border:2px solid #ffe066;border-radius:8px;padding:6px;z-index:99;">
+        <div class="restaurar-toolbar" style="display:none;position:absolute;right:36px;top:0;flex-direction:column;gap:4px;background:#222;border:2px solid #ffe066;border-radius:8px;padding:6px;z-index:99;min-width:120px;">
             <button class="restaurar-ok" title="Salvar restauração" style="background:linear-gradient(90deg,#2ecc40,#27ae60);color:#fff;border:none;border-radius:7px;padding:4px 10px;font-weight:bold;cursor:pointer;">✔</button>
             <button class="restaurar-cancel" title="Cancelar" style="background:linear-gradient(90deg,#e74c3c,#c0392b);color:#fff;border:none;border-radius:7px;padding:4px 10px;font-weight:bold;cursor:pointer;">✖</button>
-            <button class="restaurar-trash" title="Descartar todas as restaurações" style="background:linear-gradient(90deg,#b71c1c,#f44336);color:#fff;border:none;border-radius:7px;padding:4px 10px;font-weight:bold;cursor:pointer;">🗑️</button>
+            <button class="restaurar-trash" title="Descartar todas as restaurações" style="background:linear-gradient(90deg,#b71c1c,#f44336);color:#fff;border:none;border-radius:7px;padding:4px 10px;font-weight:bold;cursor:pointer;">🗑️ todos</button>
+            <div class="restaurar-patches-list"></div>
         </div>
         <select class="rank-select" title="Rank da carta (clique para alterar)">
             <option value="0"{'  selected' if rank_num==0 else ''}>–</option>
@@ -846,8 +867,31 @@ html += """
             imgOriginal.onload = function() { syncCanvasSize(); canvas.style.display = 'block'; drawAllRestauracoes(); };
             if (imgOriginal.complete) { syncCanvasSize(); canvas.style.display = 'block'; drawAllRestauracoes(); }
         }
+        var patchesList = toolbar.querySelector('.restaurar-patches-list');
+        function renderPatchList() {
+            if (!patchesList) return;
+            patchesList.innerHTML = '';
+            restauracoes.forEach(function(r, i) {
+                var item = document.createElement('div');
+                item.className = 'restaurar-patch-item';
+                item.innerHTML = '<span>#' + (i+1) + '</span><button class="restaurar-patch-del" title="Remover este pedaço">🗑</button>';
+                item.querySelector('.restaurar-patch-del').addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    restauracoes.splice(i, 1);
+                    container.dataset.restauracoes = JSON.stringify(restauracoes);
+                    drawAllRestauracoes();
+                    renderPatchList();
+                    if (restauracoes.length === 0) canvas.style.display = 'none';
+                });
+                patchesList.appendChild(item);
+            });
+        }
         restaurarBtn.addEventListener('click', function(e) {
             e.stopPropagation();
+            // Re-sync from dataset in case aplicarDados updated it externally
+            if (container.dataset.restauracoes) {
+                try { restauracoes = JSON.parse(container.dataset.restauracoes); } catch(_e) {}
+            } else { restauracoes = []; }
             container.style.zIndex = '5000';
             syncCanvasSize();
             imgOriginal.style.display = 'block';
@@ -856,6 +900,7 @@ html += """
             canvas.style.zIndex = '150';
             toolbar.style.display = 'flex';
             drawAllRestauracoes();
+            renderPatchList();
         });
         canvas.addEventListener('mousedown', function(e) {
             if (canvas.style.pointerEvents !== 'auto') return;
@@ -895,6 +940,7 @@ html += """
                 restauracoes.push(rect);
                 container.dataset.restauracoes = JSON.stringify(restauracoes);
                 drawAllRestauracoes();
+                renderPatchList();
             }
             rect = null;
             canvas.style.pointerEvents = 'none';
@@ -922,6 +968,8 @@ html += """
             restauracoes = [];
             container.dataset.restauracoes = JSON.stringify(restauracoes);
             drawAllRestauracoes();
+            renderPatchList();
+            canvas.style.display = 'none';
         });
         window.addEventListener('resize', function() {
             if (canvas.style.display === 'block') { syncCanvasSize(); drawAllRestauracoes(); }
@@ -1215,7 +1263,9 @@ html += """
                     alterado = true; motivos.push('efeito'+j+'_pos:('+xOrig+','+yOrig+') => ('+x+','+y+')');
                 }
                 if (w !== wOrig) { alterado = true; motivos.push('efeito'+j+'_w:' + wOrig + ' => ' + w); }
-                efeitos.push({texto: texto, x: x, y: y, w: w});
+                var fontSize = parseFloat(eit.dataset.fontSize || '1');
+                if (fontSize !== 1) { alterado = true; motivos.push('efeito'+j+'_fs:' + fontSize); }
+                efeitos.push({texto: texto, x: x, y: y, w: w, fontSize: fontSize});
                 if (textoComp !== textoOrigComp || (x||0)!==(xOrig||0) || (y||0)!==(yOrig||0) || w !== wOrig) {
                     console.log('[DEBUG] Efeito carta', imgOrig, 'idx', j, {
                         textoComp, textoOrigComp, x, xOrig, y, yOrig, w, wOrig
@@ -1226,6 +1276,8 @@ html += """
             var stackX = stack ? parseInt(stack.getAttribute('data-drag-x')||'0',10) : 0;
             var stackY = stack ? parseInt(stack.getAttribute('data-drag-y')||'0',10) : 0;
             if (stackX !== 0 || stackY !== 0) { alterado = true; motivos.push('stackPos:(' + stackX + ',' + stackY + ')'); }
+            var stackWidth = stack ? (stack.style.width || '') : '';
+            if (stackWidth) { alterado = true; motivos.push('stackWidth:' + stackWidth); }
             var faixaEl = cartaDiv.querySelector('.nome-faixa');
             var nomeWExtra = faixaEl ? (parseInt(faixaEl.dataset.wExtra || '0', 10)) : 0;
             if (nomeWExtra !== 0) { alterado = true; motivos.push('nomeWExtra:' + nomeWExtra); }
@@ -1242,6 +1294,12 @@ html += """
             var rankOrigMatch = tipoIconeOrig.match(/rank(\\d+)/);
             if (rankOrigMatch) rankOrig = parseInt(rankOrigMatch[1]);
             if (rank !== rankOrig) { alterado = true; motivos.push('rank:' + rankOrig + ' => ' + rank); }
+            var containerEl = cartaDiv.closest('.carta-container');
+            var restauracoesExp = [];
+            if (containerEl && containerEl.dataset.restauracoes) {
+                try { restauracoesExp = JSON.parse(containerEl.dataset.restauracoes); } catch(_e) {}
+            }
+            if (restauracoesExp.length > 0) { alterado = true; motivos.push('restauracoes:' + restauracoesExp.length); }
             if (alterado) {
                 cartasEditadas[imgOrig] = {
                     Nome: nome,
@@ -1249,10 +1307,12 @@ html += """
                     Efeitos: efeitos,
                     stackX: stackX,
                     stackY: stackY,
+                    stackWidth: stackWidth,
                     nomeWExtra: nomeWExtra,
                     classeWExtra: classeWExtra,
                     classeImgAlt: classeImgAlt,
-                    rank: rank
+                    rank: rank,
+                    restauracoes: restauracoesExp
                 };
                 var nomeLog = nomeOrig || imgOrig;
                 console.log('[ALTERADA]', nomeLog, '|', motivos.join(' | '));
@@ -1279,6 +1339,12 @@ html += """
             efeitos_trad: efeitos_trad
         };
         return exportData;
+    }
+    // Preview mode
+    function togglePreview(btn) {
+        var active = document.body.classList.toggle('preview-mode');
+        btn.classList.toggle('active', active);
+        btn.textContent = active ? '✏️ Editar' : '👁 Preview';
     }
     // Exportar JSON
     function exportarJson() {
@@ -1404,6 +1470,7 @@ html += """
                         if (efDiv2 && ef2.texto !== undefined) efDiv2.innerHTML = ef2.texto;
                         if (ef2.x || ef2.y) { var dx2=ef2.x||0, dy2=ef2.y||0; eit2.setAttribute('data-pos-x',dx2); eit2.setAttribute('data-pos-y',dy2); eit2.style.transform='translate('+dx2+'px,'+dy2+'px)'; }
                         if (ef2.w && efDiv2) efDiv2.style.width = ef2.w;
+                        if (ef2.fontSize && efDiv2) { efDiv2.style.fontSize = ef2.fontSize + 'em'; eit2.dataset.fontSize = String(ef2.fontSize); }
                     }
                 }
                 var stack = cartaDiv.querySelector('.efeitos-stack');
@@ -1413,6 +1480,7 @@ html += """
                     stack.setAttribute('data-drag-y', dy);
                     stack.style.transform = 'translate(' + dx + 'px,' + dy + 'px)';
                 }
+                if (carta.stackWidth && stack) stack.style.width = carta.stackWidth;
                 if (carta.nomeWExtra !== undefined) {
                     var faixaEl2 = cartaDiv.querySelector('.nome-faixa');
                     if (faixaEl2) { faixaEl2.dataset.wExtra = carta.nomeWExtra; syncNomeFaixa(cartaDiv.querySelector('.edit-nome')); }
@@ -1435,6 +1503,29 @@ html += """
                         classeEl3.dataset.imgAlt = '1';
                         var toggleBtn = cartaDiv.closest('.carta-container').querySelector('.classe-img-toggle-btn');
                         if (toggleBtn) toggleBtn.classList.add('active');
+                    }
+                }
+                if (carta.restauracoes && carta.restauracoes.length > 0) {
+                    var cont2 = cartaDiv.closest('.carta-container');
+                    cont2.dataset.restauracoes = JSON.stringify(carta.restauracoes);
+                    var canvas2 = cont2.querySelector('.restaurar-canvas');
+                    var imgOrig2 = cont2.querySelector('.restaurar-preview');
+                    var imgSem2 = cont2.querySelector('.carta-img');
+                    if (canvas2 && imgOrig2 && imgSem2) {
+                        (function(c2, io2, is2, rests) {
+                            var _doRedraw = function() {
+                                c2.width = is2.naturalWidth || is2.offsetWidth;
+                                c2.height = is2.naturalHeight || is2.offsetHeight;
+                                c2.style.width = is2.offsetWidth + 'px';
+                                c2.style.height = is2.offsetHeight + 'px';
+                                var ctx2 = c2.getContext('2d');
+                                ctx2.clearRect(0, 0, c2.width, c2.height);
+                                rests.forEach(function(r) { ctx2.drawImage(io2, r.x, r.y, r.w, r.h, r.x, r.y, r.w, r.h); });
+                                c2.style.display = 'block';
+                            };
+                            if (io2.complete && io2.naturalWidth) { _doRedraw(); }
+                            else { io2.addEventListener('load', _doRedraw, {once: true}); }
+                        })(canvas2, imgOrig2, imgSem2, carta.restauracoes);
                     }
                 }
             }
@@ -1590,14 +1681,15 @@ html += """
         var finalLeft   = left - extra / 2;
         var finalWidth  = textWidth + extra;
         var finalHeight = textBottom - textTop;
-        faixa.style.top    = top  + 'px';
+        var padTop = 3;
+        faixa.style.top    = (top - padTop) + 'px';
         faixa.style.left   = finalLeft + 'px';
         faixa.style.width  = finalWidth + 'px';
-        faixa.style.height = finalHeight + 'px';
+        faixa.style.height = (finalHeight + padTop) + 'px';
         // Alinha a imagem de rank ao card: mostra o slice correspondente à posição da faixa
         var bgYOffset = imgbox.classList.contains('landscape-imgbox') ? 2 : 0;
         faixa.style.backgroundSize     = boxRect.width + 'px ' + boxRect.height + 'px';
-        faixa.style.backgroundPosition = (-finalLeft) + 'px ' + (-top + bgYOffset) + 'px';
+        faixa.style.backgroundPosition = (-finalLeft) + 'px ' + (-top + padTop + bgYOffset) + 'px';
     }
     // Aplica tamanho reduzido ao resto do nome quando >20 chars
     function formatNome(el) {
