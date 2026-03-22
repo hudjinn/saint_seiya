@@ -30,6 +30,15 @@ def classe_borda_url(classe, aspect):
         return filepath.replace('\\', '/')
     return 'imagens/bordas/clean_card.png'
 
+def classe_borda_alt_url(classe, aspect):
+    slug = unicodedata.normalize('NFD', classe.lower())
+    slug = ''.join(c for c in slug if unicodedata.category(c) != 'Mn')
+    slug = re.sub(r'[^a-z0-9]+', '_', slug).strip('_')
+    filepath = os.path.join('imagens', 'bordas', slug + '_1.png')
+    if os.path.exists(filepath):
+        return filepath.replace('\\', '/')
+    return ''
+
 # Coletar keywords de efeitos a partir dos <em class="keyword ...">...</em> presentes nos efeitos das cartas
 import html as htmlmod
 efeito_keywords = set()
@@ -156,9 +165,18 @@ html = """<!DOCTYPE html>
         .nome-faixa.rank3 { background-image: url(imagens/bordas/rank3.png); }
         .nome-faixa.rank4 { background-image: url(imagens/bordas/rank4.png); }
         .nome-faixa.rank5 { background-image: url(imagens/bordas/rank5.png); }
-        .nome-faixa.rank6 { background-image: url(imagens/bordas/rank6.png); }
-        .nome-faixa.rank7 { background-image: url(imagens/bordas/rank7.png); }
-        .nome-faixa.rank8 { background-image: url(imagens/bordas/rank8.png); }
+        .nome-faixa.rank6 { background-image: url(imagens/bordas/rank2-3.png); }
+        .nome-faixa.rank7 { background-image: url(imagens/bordas/rank2-4.png); }
+        .nome-faixa.rank8 { background-image: url(imagens/bordas/rank3-4.png); }
+        .nome-faixa.rank9 { background-image: url(imagens/bordas/rank1-2.png); }
+        /* Cartas horizontais usam variante _h da borda */
+        .carta.landscape .nome-faixa.rank1 { background-image: url(imagens/bordas/rank1_h.png); }
+        .carta.landscape .nome-faixa.rank2 { background-image: url(imagens/bordas/rank2_h.png); }
+        .carta.landscape .nome-faixa.rank3 { background-image: url(imagens/bordas/rank3_h.png); }
+        .carta.landscape .nome-faixa.rank4 { background-image: url(imagens/bordas/rank4_h.png); }
+        .carta.landscape .nome-faixa.rank5 { background-image: url(imagens/bordas/rank5_h.png); }
+        .carta.landscape .nome-faixa.rank6 { background-image: url(imagens/bordas/rank2-3_h.png); }
+        .carta.landscape .nome-faixa.rank7 { background-image: url(imagens/bordas/rank2-4_h.png); }
         .edit-nome {
             position: absolute;
             top: 2px;
@@ -181,6 +199,7 @@ html = """<!DOCTYPE html>
     .edit-classe { font-style: italic; }
     /* Imagem de classe: background-image definido inline por carta no Python; posição por orientação */
     .portrait-imgbox .edit-classe { left: 50%; transform: translateX(-50%); }
+    .carta.landscape .edit-nome { top: 4px; }
     .landscape-imgbox .edit-classe { max-width: 50%; left: 5px; }
     .landscape-imgbox .edit-classe[data-orig="Renégat"],
     .landscape-imgbox .edit-classe[data-orig="Armure"] { left: 20px; }
@@ -314,8 +333,13 @@ html = """<!DOCTYPE html>
         .efeito-item-width-btn:hover { background: #ffe066; color: #222; }
         .efeito-item-reset-btn { background: #2a2a2a; color: #aaa; border: 1px solid #666; border-radius: 3px; padding: 0 4px; font-size: 0.85em; cursor: pointer; line-height: 1.5; margin-left: 2px; }
         .efeito-item-reset-btn:hover { background: #555; color: #fff; }
+        .efeito-font-btn { background: #2a2a2a; color: #b0e0ff; border: 1px solid #7ab; border-radius: 3px; padding: 0 4px; font-size: 0.85em; cursor: pointer; line-height: 1.5; margin-left: 1px; }
+        .efeito-font-btn:hover { background: #7ab; color: #fff; }
         .efeito-reset-all-btn { background: #2a2a2a; color: #aaa; border: 1px solid #666; border-radius: 3px; padding: 0 4px; font-size: 0.8em; cursor: pointer; line-height: 1.5; margin-left: 4px; }
         .efeito-reset-all-btn:hover { background: #555; color: #fff; }
+        .classe-img-toggle-btn { background: #2a2a2a; color: #ffe066; border: 1px solid #ffe066; border-radius: 4px; padding: 2px 5px; font-size: 0.75em; cursor: pointer; line-height: 1.6; }
+        .classe-img-toggle-btn:hover { background: #ffe066; color: #222; }
+        .classe-img-toggle-btn.active { background: #ffe066; color: #222; }
         /* Ícones cosmos e forca: 14x14; rank: 11x11 */
         .effect img[alt="Cosmos"], .effect img[alt="Force"] {
             width: 14px !important;
@@ -598,6 +622,8 @@ for carta in cartas:
     edit_classe_class = f"edit-classe {'edit-classe-landscape' if aspect=='landscape' else 'edit-classe-portrait'}"
     # Classe normalizada para uso em CSS (ex: cavaleiro_de_ouro)
     classe_css = re.sub(r'[^a-z0-9]+', '_', classe.lower()).strip('_') if classe else ''
+    _classe_alt_img = classe_borda_alt_url(classe, aspect)
+    classe_alt_img_attr = f'data-alt-img="{_classe_alt_img}"' if _classe_alt_img else ''
     html += f"""
 <div class='carta-container' style='position:relative; display:inline-block;'>
     <div class='carta-toolbar' style='position:absolute; top:23px; right:-6px; left:auto; z-index:30; display:flex; flex-direction:column; gap:8px;'>
@@ -621,8 +647,9 @@ for carta in cartas:
             <option value="4"{'  selected' if rank_num==4 else ''}>Ouro</option>
             <option value="5"{'  selected' if rank_num==5 else ''}>Divino</option>
             <option value="6"{'  selected' if rank_num==6 else ''}>B/P</option>
-            <option value="7">B/O</option>
-            <option value="8">P/O</option>
+            <option value="7"{'  selected' if rank_num==7 else ''}>B/O</option>
+            <option value="8"{'  selected' if rank_num==8 else ''}>P/O</option>
+            <option value="9"{'  selected' if rank_num==9 else ''}>B/B</option>
         </select>
         <div style="display:flex;gap:2px;">
           <button class="width-ctrl-btn" data-target="nome" data-delta="-10" title="Estreitar nome">N-</button>
@@ -636,6 +663,11 @@ for carta in cartas:
           <button class="width-ctrl-btn" data-target="efeito" data-delta="-10" title="Estreitar efeitos">E-</button>
           <button class="width-ctrl-btn" data-target="efeito" data-delta="10" title="Alargar efeitos">E+</button>
         </div>
+        <div style="display:flex;gap:2px;">
+          <button class="width-ctrl-btn" data-target="fonte" data-delta="-1" title="Diminuir fonte dos efeitos">F-</button>
+          <button class="width-ctrl-btn" data-target="fonte" data-delta="1" title="Aumentar fonte dos efeitos">F+</button>
+        </div>
+        <button class="classe-img-toggle-btn" title="Alternar imagem da classe" style="display:none;">🔄</button>
     </div>
     <div class="carta {aspect} {classe_css}" data-img-orig="{img_orig}">
         <div class="{carta_imgbox_class}">
@@ -644,7 +676,7 @@ for carta in cartas:
             <canvas class="restaurar-canvas" style="display:none;position:absolute;left:0;top:0;width:100%;height:100%;z-index:20;pointer-events:none;"></canvas>
             <div class="nome-faixa {rank_class}" data-rank="{rank_num}"></div>
             <div contenteditable="true" class="edit-nome">{nome}</div>
-            <input type="text" class="{edit_classe_class}" data-orig="{classe}" data-orientation="{'landscape' if aspect=='landscape' else 'portrait'}" style="background-image: url({classe_borda_url(classe, aspect)})" value="{classe}">
+            <input type="text" class="{edit_classe_class}" data-orig="{classe}" data-orientation="{'landscape' if aspect=='landscape' else 'portrait'}" style="background-image: url({classe_borda_url(classe, aspect)})" {classe_alt_img_attr} value="{classe}">
             <div class="efeitos-stack" data-drag-x="0" data-drag-y="0">
                 <div class="efeitos-drag-handle" title="Arrastar para mover · duplo-clique para resetar">· · · · · <button class="efeito-reset-all-btn" title="Redefinir posição de TODOS os efeitos">↺ todos</button></div>
 """
@@ -653,10 +685,12 @@ for carta in cartas:
         ef_html_escaped = ef_html.replace('"', '&quot;').replace("'", "&#39;")
         pv_class = ' efeito-item-pv' if ef_tipo == 'pv' else ''
         html += (
-            f'<div class="efeito-item{pv_class}" data-idx="{idx}" data-pos-x="0" data-pos-y="0">'
+            f'<div class="efeito-item{pv_class}" data-idx="{idx}" data-pos-x="0" data-pos-y="0" data-font-size="1">'
             f'<div class="efeito-item-handle" title="Arrastar · duplo-clique para resetar">⠿ '
             f'<button class="efeito-item-width-btn" data-delta="-5" title="Estreitar">E-</button>'
             f'<button class="efeito-item-width-btn" data-delta="5" title="Alargar">E+</button>'
+            f'<button class="efeito-font-btn" data-fdelta="-1" title="Diminuir fonte">T-</button>'
+            f'<button class="efeito-font-btn" data-fdelta="1" title="Aumentar fonte">T+</button>'
             f'<button class="efeito-item-reset-btn" title="Redefinir posição deste efeito">↺</button>'
             f'</div>'
             f'<div contenteditable="true" class="efeito-box" data-orig="{ef_html_escaped}">{ef_html}</div>'
@@ -965,13 +999,13 @@ html += """
             });
         }
         handle.addEventListener('dblclick', function(e) {
-            if (e.target.classList.contains('efeito-item-width-btn') || e.target.classList.contains('efeito-item-reset-btn')) return;
+            if (e.target.classList.contains('efeito-item-width-btn') || e.target.classList.contains('efeito-item-reset-btn') || e.target.classList.contains('efeito-font-btn')) return;
             dragX = 0; dragY = 0;
             item.setAttribute('data-pos-x', 0); item.setAttribute('data-pos-y', 0);
             item.style.transform = '';
         });
         handle.addEventListener('mousedown', function(e) {
-            if (e.target.classList.contains('efeito-item-width-btn') || e.target.classList.contains('efeito-item-reset-btn')) return;
+            if (e.target.classList.contains('efeito-item-width-btn') || e.target.classList.contains('efeito-item-reset-btn') || e.target.classList.contains('efeito-font-btn')) return;
             e.preventDefault();
             var startX = e.clientX - dragX, startY = e.clientY - dragY;
             // Captura limites UMA VEZ no mousedown para evitar glitch de recalculo
@@ -1009,6 +1043,17 @@ html += """
                 box.style.width = Math.max(40, box.offsetWidth + parseInt(this.getAttribute('data-delta'))) + 'px';
             });
         });
+        handle.querySelectorAll('.efeito-font-btn').forEach(function(btn) {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                var fdelta = parseInt(this.getAttribute('data-fdelta'));
+                var box = item.querySelector('.efeito-box');
+                var cur = parseFloat(item.dataset.fontSize || '1');
+                var novo = Math.max(0.4, Math.min(3, Math.round((cur + fdelta * 0.05) * 100) / 100));
+                item.dataset.fontSize = novo;
+                box.style.fontSize = novo + 'em';
+            });
+        });
     });
     // --- Controles de largura do nome e efeitos ---
     document.querySelectorAll('.width-ctrl-btn').forEach(function(btn) {
@@ -1030,6 +1075,14 @@ html += """
             } else if (target === 'efeito') {
                 var st = container.querySelector('.efeitos-stack');
                 st.style.width = Math.max(40, st.offsetWidth + delta) + 'px';
+            } else if (target === 'fonte') {
+                container.querySelectorAll('.efeito-item').forEach(function(item) {
+                    var box = item.querySelector('.efeito-box');
+                    var cur = parseFloat(item.dataset.fontSize || '1');
+                    var novo = Math.max(0.4, Math.min(3, Math.round((cur + delta * 0.05) * 100) / 100));
+                    item.dataset.fontSize = novo;
+                    box.style.fontSize = novo + 'em';
+                });
             }
         });
     });
@@ -1178,6 +1231,8 @@ html += """
             var classeEl = cartaDiv.querySelector('.edit-classe');
             var classeWExtra = classeEl ? (parseInt(classeEl.dataset.wExtra || '0', 10)) : 0;
             if (classeWExtra !== 0) { alterado = true; motivos.push('classeWExtra:' + classeWExtra); }
+            var classeImgAlt = classeEl ? (classeEl.dataset.imgAlt === '1') : false;
+            if (classeImgAlt) { alterado = true; motivos.push('classeImgAlt:true'); }
             // Verificar se rank mudou
             var rankSelect = cartaDiv.closest('.carta-container').querySelector('.rank-select');
             var rank = rankSelect ? parseInt(rankSelect.value) : 0;
@@ -1195,6 +1250,7 @@ html += """
                     stackY: stackY,
                     nomeWExtra: nomeWExtra,
                     classeWExtra: classeWExtra,
+                    classeImgAlt: classeImgAlt,
                     rank: rank
                 };
                 var nomeLog = nomeOrig || imgOrig;
@@ -1371,6 +1427,15 @@ html += """
                         rankSel.dispatchEvent(new Event('change', {bubbles: true}));
                     }
                 }
+                if (carta.classeImgAlt) {
+                    var classeEl3 = cartaDiv.querySelector('.edit-classe');
+                    if (classeEl3 && classeEl3.dataset.altImg) {
+                        classeEl3.style.backgroundImage = 'url(' + classeEl3.dataset.altImg + ')';
+                        classeEl3.dataset.imgAlt = '1';
+                        var toggleBtn = cartaDiv.closest('.carta-container').querySelector('.classe-img-toggle-btn');
+                        if (toggleBtn) toggleBtn.classList.add('active');
+                    }
+                }
             }
         });
         if (data.classes_trad) {
@@ -1491,36 +1556,47 @@ html += """
         if (!faixa) return;
         var boxRect = imgbox.getBoundingClientRect();
         var nomeRect = editNome.getBoundingClientRect();
-        // Mede a largura real do texto (não do div inteiro) usando Range
+        // Mede o bounding box real do texto (largura E altura) usando Range
         var textLeft = nomeRect.left;
+        var textTop = nomeRect.top;
         var textWidth = nomeRect.width;
+        var textBottom = nomeRect.bottom;
         try {
             var range = document.createRange();
             range.selectNodeContents(editNome);
             var rects = range.getClientRects();
             if (rects.length > 0) {
-                var minLeft = Infinity, maxRight = -Infinity;
+                var minLeft = Infinity, maxRight = -Infinity, minTop = Infinity, maxBottom = -Infinity;
                 for (var i = 0; i < rects.length; i++) {
                     if (rects[i].width > 0) {
-                        minLeft = Math.min(minLeft, rects[i].left);
+                        minLeft  = Math.min(minLeft,  rects[i].left);
                         maxRight = Math.max(maxRight, rects[i].right);
+                        minTop   = Math.min(minTop,   rects[i].top);
+                        maxBottom = Math.max(maxBottom, rects[i].bottom);
                     }
                 }
-                if (minLeft < Infinity) { textLeft = minLeft; textWidth = maxRight - minLeft; }
+                if (minLeft < Infinity) {
+                    textLeft   = minLeft;
+                    textWidth  = maxRight - minLeft;
+                    textTop    = minTop;
+                    textBottom = maxBottom;
+                }
             }
         } catch(e) {}
-        var top  = nomeRect.top  - boxRect.top;
+        var top  = textTop  - boxRect.top;
         var left = textLeft - boxRect.left;
         var extra = parseInt(faixa.dataset.wExtra || '0', 10);
-        var finalLeft  = left - extra / 2;
-        var finalWidth = textWidth + extra;
+        var finalLeft   = left - extra / 2;
+        var finalWidth  = textWidth + extra;
+        var finalHeight = textBottom - textTop;
         faixa.style.top    = top  + 'px';
         faixa.style.left   = finalLeft + 'px';
         faixa.style.width  = finalWidth + 'px';
-        faixa.style.height = nomeRect.height + 'px';
+        faixa.style.height = finalHeight + 'px';
         // Alinha a imagem de rank ao card: mostra o slice correspondente à posição da faixa
+        var bgYOffset = imgbox.classList.contains('landscape-imgbox') ? 2 : 0;
         faixa.style.backgroundSize     = boxRect.width + 'px ' + boxRect.height + 'px';
-        faixa.style.backgroundPosition = (-finalLeft) + 'px ' + (-top) + 'px';
+        faixa.style.backgroundPosition = (-finalLeft) + 'px ' + (-top + bgYOffset) + 'px';
     }
     // Aplica tamanho reduzido ao resto do nome quando >20 chars
     function formatNome(el) {
@@ -1618,13 +1694,39 @@ html += """
     function aplicarRank(container, rank) {
         var faixa = container.querySelector('.nome-faixa');
         if (!faixa) return;
-        for (var r = 0; r <= 8; r++) faixa.classList.remove('rank' + r);
+        for (var r = 0; r <= 9; r++) faixa.classList.remove('rank' + r);
         faixa.classList.add('rank' + rank);
         faixa.dataset.rank = rank;
     }
     document.querySelectorAll('.rank-select').forEach(function(sel) {
         sel.addEventListener('change', function() {
             aplicarRank(this.closest('.carta-container'), parseInt(this.value));
+        });
+    });
+    // --- Toggle de imagem alternativa da classe (ex: chevalier_d_argent) ---
+    document.querySelectorAll('.carta-container').forEach(function(container) {
+        var classeEl = container.querySelector('.edit-classe');
+        if (classeEl && classeEl.dataset.altImg) {
+            var btn = container.querySelector('.classe-img-toggle-btn');
+            if (btn) btn.style.display = 'inline-block';
+        }
+    });
+    document.querySelectorAll('.classe-img-toggle-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            var container = this.closest('.carta-container');
+            var classeEl = container.querySelector('.edit-classe');
+            if (!classeEl || !classeEl.dataset.altImg) return;
+            if (classeEl.dataset.imgAlt === '1') {
+                var origUrl = classeEl.dataset.altImg.replace(/_1\.png$/, '.png');
+                classeEl.style.backgroundImage = 'url(' + origUrl + ')';
+                delete classeEl.dataset.imgAlt;
+                this.classList.remove('active');
+            } else {
+                classeEl.style.backgroundImage = 'url(' + classeEl.dataset.altImg + ')';
+                classeEl.dataset.imgAlt = '1';
+                this.classList.add('active');
+            }
+            syncClasseWidth(classeEl);
         });
     });
     </script>
