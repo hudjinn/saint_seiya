@@ -348,6 +348,8 @@ html = """<!DOCTYPE html>
         .efeito-item-width-btn:hover { background: #ffe066; color: #222; }
         .efeito-item-reset-btn { background: #2a2a2a; color: #aaa; border: 1px solid #666; border-radius: 3px; padding: 0 4px; font-size: 0.85em; cursor: pointer; line-height: 1.5; margin-left: 2px; }
         .efeito-item-reset-btn:hover { background: #555; color: #fff; }
+        .efeito-html-reset-btn { background: #1a2a1a; color: #7f7; border: 1px solid #4a4; border-radius: 3px; padding: 0 4px; font-size: 0.75em; cursor: pointer; line-height: 1.5; margin-left: 2px; }
+        .efeito-html-reset-btn:hover { background: #4a4; color: #fff; }
         .efeito-font-btn { background: #2a2a2a; color: #b0e0ff; border: 1px solid #7ab; border-radius: 3px; padding: 0 4px; font-size: 0.85em; cursor: pointer; line-height: 1.5; margin-left: 1px; }
         .efeito-font-btn:hover { background: #7ab; color: #fff; }
         .efeito-reset-all-btn { background: #2a2a2a; color: #aaa; border: 1px solid #666; border-radius: 3px; padding: 0 4px; font-size: 0.8em; cursor: pointer; line-height: 1.5; margin-left: 4px; }
@@ -611,6 +613,11 @@ for carta in cartas:
             html_efeito = None
             ef_type = ef.get("type", "") if isinstance(ef, dict) else ""
             if isinstance(ef, dict):
+                # Pula slots vazios: sem text E html é apenas "<div class="effect out"></div>"
+                ef_text = ef.get("text", "").strip()
+                ef_html_raw = ef.get("html", "").strip()
+                if not ef_text and (not ef_html_raw or ef_html_raw == '<div class="effect out"></div>'):
+                    continue
                 if ef.get("html"):
                     html_efeito = ef["html"]
                 elif ef.get("text"):
@@ -695,7 +702,7 @@ for carta in cartas:
         <div class="{carta_imgbox_class}">
             <img src="{img}" alt="{nome}" class="carta-img">
             <img src="{img_orig}" class="restaurar-preview" style="display:none;position:absolute;left:0;top:0;width:100%;height:100%;object-fit:cover;z-index:10;pointer-events:auto;">
-            <canvas class="restaurar-canvas" style="display:none;position:absolute;left:0;top:0;width:100%;height:100%;z-index:20;pointer-events:none;"></canvas>
+            <canvas class="restaurar-canvas" style="display:none;position:absolute;left:0;top:0;width:100%;height:100%;z-index:30;pointer-events:none;"></canvas>
             <div class="nome-faixa {rank_class}" data-rank="{rank_num}"></div>
             <div contenteditable="true" class="edit-nome">{nome}</div>
             <input type="text" class="{edit_classe_class}" data-orig="{classe}" data-orientation="{'landscape' if aspect=='landscape' else 'portrait'}" style="background-image: url({classe_borda_url(classe, aspect)})" {classe_alt_img_attr} value="{classe}">
@@ -714,6 +721,7 @@ for carta in cartas:
             f'<button class="efeito-font-btn" data-fdelta="-1" title="Diminuir fonte">T-</button>'
             f'<button class="efeito-font-btn" data-fdelta="1" title="Aumentar fonte">T+</button>'
             f'<button class="efeito-item-reset-btn" title="Redefinir posição deste efeito">↺</button>'
+            f'<button class="efeito-html-reset-btn" title="Restaurar HTML original do efeito">HTML↺</button>'
             f'</div>'
             f'<div contenteditable="true" class="efeito-box" data-orig="{ef_html_escaped}">{ef_html}</div>'
             f'</div>'
@@ -944,7 +952,7 @@ html += """
             }
             rect = null;
             canvas.style.pointerEvents = 'none';
-            canvas.style.zIndex = '20';
+            canvas.style.zIndex = '30';
             imgOriginal.style.display = 'none';
             toolbar.style.display = 'none';
             container.style.zIndex = '';
@@ -955,7 +963,7 @@ html += """
             e.stopPropagation();
             rect = null;
             canvas.style.pointerEvents = 'none';
-            canvas.style.zIndex = '20';
+            canvas.style.zIndex = '30';
             canvas.style.display = 'none';
             imgOriginal.style.display = 'none';
             toolbar.style.display = 'none';
@@ -1047,14 +1055,24 @@ html += """
                 item.style.transform = '';
             });
         }
+        var htmlResetBtn = handle.querySelector('.efeito-html-reset-btn');
+        if (htmlResetBtn) {
+            htmlResetBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                var box = item.querySelector('.efeito-box');
+                if (box && box.dataset.orig) {
+                    box.innerHTML = box.dataset.orig;
+                }
+            });
+        }
         handle.addEventListener('dblclick', function(e) {
-            if (e.target.classList.contains('efeito-item-width-btn') || e.target.classList.contains('efeito-item-reset-btn') || e.target.classList.contains('efeito-font-btn')) return;
+            if (e.target.classList.contains('efeito-item-width-btn') || e.target.classList.contains('efeito-item-reset-btn') || e.target.classList.contains('efeito-font-btn') || e.target.classList.contains('efeito-html-reset-btn')) return;
             dragX = 0; dragY = 0;
             item.setAttribute('data-pos-x', 0); item.setAttribute('data-pos-y', 0);
             item.style.transform = '';
         });
         handle.addEventListener('mousedown', function(e) {
-            if (e.target.classList.contains('efeito-item-width-btn') || e.target.classList.contains('efeito-item-reset-btn') || e.target.classList.contains('efeito-font-btn')) return;
+            if (e.target.classList.contains('efeito-item-width-btn') || e.target.classList.contains('efeito-item-reset-btn') || e.target.classList.contains('efeito-font-btn') || e.target.classList.contains('efeito-html-reset-btn')) return;
             e.preventDefault();
             var startX = e.clientX - dragX, startY = e.clientY - dragY;
             // Captura limites UMA VEZ no mousedown para evitar glitch de recalculo
