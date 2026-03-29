@@ -6,12 +6,20 @@
       "Efeitos": [
         {
           "texto": "<div class=\"effect play\"><em>Reforçar Seiya com a Armadura de Pégasus.</em></div>",
-          "x": 0,
-          "y": 1
+          "x": 11,
+          "y": -9,
+          "w": "",
+          "fontSize": 1
         }
       ],
-      "restauracoes": [],
-      "rank": 1
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 1,
+      "restauracoes": []
     },
     "imagens/shiryu.webp": {
       "Nome": "Shiryu de Dragão",
@@ -19,12 +27,20 @@
       "Efeitos": [
         {
           "texto": "<div class=\"effect play\"><em>Reforçar Shiryu com a Armadura de Dragão.</em></div>",
-          "x": 0,
-          "y": -7
+          "x": 6,
+          "y": -8,
+          "w": "216px",
+          "fontSize": 1
         }
       ],
-      "restauracoes": [],
-      "rank": 1
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 20,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 1,
+      "restauracoes": []
     },
     "imagens/hyoga.webp": {
       "Nome": "Hyoga de Cisne",
@@ -32,12 +48,20 @@
       "Efeitos": [
         {
           "texto": "<div class=\"effect play\"><em>Reforçar Hyoga com a Armadura de Cisne.</em></div>",
-          "x": 0,
-          "y": -7
+          "x": 7,
+          "y": -7,
+          "w": "",
+          "fontSize": 1
         }
       ],
-      "restauracoes": [],
-      "rank": 1
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 20,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 1,
+      "restauracoes": []
     },
     "imagens/shun.webp": {
       "Nome": "Shun de Andrômeda",
@@ -46,11 +70,19 @@
         {
           "texto": "<div class=\"effect play\"><em>Reforçar Shun com a Armadura de Andrômeda.</em></div>",
           "x": 0,
-          "y": 0
+          "y": 0,
+          "w": "",
+          "fontSize": 1
         }
       ],
-      "restauracoes": [],
-      "rank": 1
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 1,
+      "restauracoes": []
     },
     "imagens/ikki.webp": {
       "Nome": "Ikki de Fênix",
@@ -58,48 +90,4801 @@
       "Efeitos": [
         {
           "texto": "<div class=\"effect play\"><em>Reforçar Ikki com a Armadura de Fênix.</em></div>",
-          "x": 0,
-          "y": -7
+          "x": 7,
+          "y": -7,
+          "w": "",
+          "fontSize": 1
         }
       ],
-      "restauracoes": [],
-      "rank": 1
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 40,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 1,
+      "restauracoes": []
     },
     "imagens/pegase.webp": {
       "Nome": "Armadura de Pégasus",
       "Classe": "Armadura de Bronze",
       "Efeitos": [
         {
-          "texto": "<div class=\"effect play\"><font color=\"#ff0000\"><b><i>Descartar&nbsp;</i></b></font>- Destrua 2 <em>Seiya</em> idênticos de sua mão para adicionar ao&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;seu Descarte 1 <em>Seiya</em> de ranque imediatamente superior.</div>",
-          "x": -4,
-          "y": 4
+          "texto": "<div class=\"effect play\"><font color=\"#ff0000\"><b><i>Descartar&nbsp;</i></b></font>- Destrua 2 <em>Seiya</em> idênticos de sua mão para adicionar ao seu Descarte 1 <em>Seiya</em> de nível imediatamente superior.</div>",
+          "x": 8,
+          "y": 3,
+          "w": "385px",
+          "fontSize": 1
         }
       ],
-      "restauracoes": [],
-      "rank": 2
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 2,
+      "restauracoes": []
+    },
+    "imagens/dragon.webp": {
+      "Nome": "Armadura de Dragão",
+      "Classe": "Armadura de Bronze",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><b style=\"color: rgb(255, 0, 0); font-size: 11.2px;\"><i>Descartar&nbsp;</i></b>-&nbsp;<span style=\"font-size: 11.2px;\">Destrua&nbsp;</span>2 <em>Shiryu</em><span style=\"font-size: 11.2px;\">&nbsp;idênticos de sua mão para adicionar ao seu Descarte</span>&nbsp;1 <em>Shiryu</em>&nbsp;de nível imediatamente superior.</div>",
+          "x": 10,
+          "y": 4,
+          "w": "380px",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 2,
+      "restauracoes": []
+    },
+    "imagens/cygne.webp": {
+      "Nome": "Armadura de Cisne",
+      "Classe": "Armadura de Bronze",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><b style=\"color: rgb(255, 0, 0); font-size: 11.2px;\"><i>Descartar&nbsp;</i></b>-&nbsp;<span style=\"font-size: 11.2px;\">Destrua&nbsp;</span>2 <em>Hyoga</em>&nbsp;<span style=\"font-size: 11.2px;\">idênticos de sua mão para adicionar ao seu Descarte</span>&nbsp;1 <em>Hyoga</em> de nível imediatamente superior.</div>",
+          "x": 9,
+          "y": 4,
+          "w": "375px",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 2,
+      "restauracoes": []
+    },
+    "imagens/andromede.webp": {
+      "Nome": "Armadura de Andrômeda",
+      "Classe": "Armadura de Bronze",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><b style=\"color: rgb(255, 0, 0); font-size: 11.2px;\"><i>Descartar&nbsp;</i></b>-&nbsp;<span style=\"font-size: 11.2px;\">Destrua&nbsp;</span>2 <em>Shun</em>&nbsp;<span style=\"font-size: 11.2px;\">idênticos de sua mão para adicionar ao seu Descarte</span>&nbsp;1 <em>Shun</em>&nbsp;de nível imediatamente superior.</div>",
+          "x": 8,
+          "y": 4,
+          "w": "375px",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 2,
+      "restauracoes": []
+    },
+    "imagens/phoenix.webp": {
+      "Nome": "Armadura de Fênix",
+      "Classe": "Armadura de Bronze",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><b style=\"color: rgb(255, 0, 0); font-size: 11.2px;\"><i>Descartar&nbsp;</i></b>-&nbsp;<span style=\"font-size: 11.2px;\">Destrua&nbsp;</span>2 <em>Ikki</em>&nbsp;<span style=\"font-size: 11.2px;\">idênticos de sua mão para adicionar ao seu Descarte</span>&nbsp;1 <em>Ikki</em> de nível imediatamente superior.</div>",
+          "x": 6,
+          "y": 3,
+          "w": "370px",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 20,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 2,
+      "restauracoes": []
+    },
+    "imagens/seiya-bronze.webp": {
+      "Nome": "Seiya de Pégasus",
+      "Classe": "Herói - Cavaleiro de Bronze",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><em class=\"keyword miseenjeu\">Ao Jogar</em> - Se tiver ao menos 1 <em>Seiya</em>&nbsp;no Descarte, compre 1 carta.</div>",
+          "x": -5,
+          "y": 2,
+          "w": "230px",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 2,
+      "restauracoes": []
+    },
+    "imagens/shiryu-bronze.webp": {
+      "Nome": "Shiryu de Dragão",
+      "Classe": "Herói - Cavaleiro de Bronze",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><em class=\"keyword miseenjeu\" style=\"font-size: 11.2px;\">Ao Jogar</em>&nbsp;- Ferir 1 <em>Shiryu</em> de sua mão, compre 1 carta.</div>",
+          "x": -7,
+          "y": 1,
+          "w": "235px",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 10,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 2,
+      "restauracoes": []
+    },
+    "imagens/hyoga-bronze.webp": {
+      "Nome": "Hyoga de Cisne",
+      "Classe": "Herói - Cavaleiro de Bronze",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><em class=\"keyword miseenjeu\" style=\"font-size: 11.2px;\">Ao Jogar&nbsp;</em>- Se jogar ao menos 1 outro&nbsp;<em>Hyoga</em>&nbsp;<br>junto a este, compre 1 carta.</div>",
+          "x": -3,
+          "y": 1,
+          "w": "245px",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 20,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 2,
+      "restauracoes": []
+    },
+    "imagens/shun-bronze.webp": {
+      "Nome": "Shun de Andrômeda",
+      "Classe": "Herói - Cavaleiro de Bronze",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><em class=\"keyword miseenjeu\" style=\"font-size: 11.2px;\">Ao Jogar</em>&nbsp;- Se&nbsp;<em>Shun</em> utilizar o seu&nbsp;<span class=\"stat cosmos\" title=\"Cosmos\"><img alt=\"Cosmos\" class=\"stat\" height=\"16\" src=\"imagens/cosmos.webp\" width=\"16\"></span>&nbsp;para adquirir um&nbsp;<em>Personagem</em>, compre 1 carta.</div>",
+          "x": 0,
+          "y": 2,
+          "w": "250px",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 2,
+      "restauracoes": []
+    },
+    "imagens/ikki-bronze.webp": {
+      "Nome": "Ikki de Fênix",
+      "Classe": "Herói - Cavaleiro de Bronze",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><em class=\"keyword miseenjeu\" style=\"font-size: 11.2px;\">Ao Jogar</em>&nbsp;- Destrua 1 <em>Personagem</em> do seu Descarte, compre 1 carta.</div>",
+          "x": -6,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 50,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 2,
+      "restauracoes": []
+    },
+    "imagens/athena.webp": {
+      "Nome": "Atena",
+      "Classe": "",
+      "Efeitos": [
+        {
+          "texto": "<strong>1 PV</strong> para cada grupo de 10 cartas no seu jogo.",
+          "x": -2,
+          "y": 18,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect ground\"><font color=\"#007dc6\"><b><i>Entrada&nbsp;</i></b></font>- Todos os jogadores compram 1 carta&nbsp; e curam todos os seus&nbsp;<em>Personagens</em>&nbsp;feridos.</div>",
+          "x": -9,
+          "y": 14,
+          "w": "230px",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 30,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 5,
+      "restauracoes": []
+    },
+    "imagens/pope.webp": {
+      "Nome": "Grande Mestre",
+      "Classe": "",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect ground\"><font color=\"#007dc6\"><b><i>Entrada&nbsp;</i></b></font>- <i>Grande Mestre&nbsp;</i>e todos os&nbsp;<em>Cavaleiros de Ouro</em>&nbsp;removidos de jogo são reembaralhados à reserva.</div>",
+          "x": 7,
+          "y": -3,
+          "w": "265px",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 5,
+      "restauracoes": []
+    },
+    "imagens/belier.webp": {
+      "Nome": "Armadura de Áries",
+      "Classe": "Armadura de Ouro",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><b style=\"font-size: 11.2px; color: rgb(255, 0, 0);\"><i>Descartar&nbsp;</i></b>- Pesquise 1 <em>Personagem</em>&nbsp;no seu Deck e adicione à Mão. Reembaralhe o deck.</div>",
+          "x": -8,
+          "y": 4,
+          "w": "340px",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 20,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 4,
+      "restauracoes": []
+    },
+    "imagens/taureau.webp": {
+      "Nome": "Armadura de Touro",
+      "Classe": "Armadura de Ouro",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><b style=\"font-size: 11.2px; color: rgb(255, 0, 0);\"><i>Descartar&nbsp;</i></b>- Um&nbsp;<em>Personagem</em> <img alt=\"Très Commun (vert)\" class=\"rank\" height=\"16\" src=\"imagens/rank1.webp\" title=\"Très Commun (vert)\" width=\"16\"> ou <img alt=\"Commun (bronze)\" class=\"rank\" height=\"16\" src=\"imagens/rank2.webp\" title=\"Commun (bronze)\" width=\"16\">&nbsp;em jogo ganha&nbsp;<span class=\"stat force\" title=\"Force\">+2<img alt=\"Force\" class=\"stat\" height=\"16\" src=\"imagens/force.webp\" width=\"16\"></span>.&nbsp;&nbsp;</div>",
+          "x": 0,
+          "y": 0,
+          "w": "361px",
+          "fontSize": 1
+        }
+      ],
+      "stackX": -20,
+      "stackY": -2,
+      "stackWidth": "",
+      "nomeWExtra": 20,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 4,
+      "restauracoes": []
+    },
+    "imagens/gemeaux.webp": {
+      "Nome": "Armadura de Gêmeos",
+      "Classe": "Armadura de Ouro",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><em class=\"keyword miseenjeu\" style=\"font-size: 11.2px;\">Ao Jogar</em>&nbsp;- Troque a <em>Armadura de Gêmeos</em>&nbsp;com uma&nbsp;<em>Armadura de Ouro</em> em jogo de um oponente.</div>",
+          "x": -6,
+          "y": 5,
+          "w": "345px",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 10,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 4,
+      "restauracoes": []
+    },
+    "imagens/cancer.webp": {
+      "Nome": "Armadura de Câncer",
+      "Classe": "Armadura de Ouro",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><b style=\"font-size: 11.2px; color: rgb(255, 0, 0);\"><i>Descartar&nbsp;</i></b>- Revele 3 cartas de sua Pilha de Compra, um oponente escolhe um 1 <em>Personagem</em>&nbsp;dentre as cartas reveladas para ferir. Coloque as outras cartas reveladas na mão.</div>",
+          "x": -10,
+          "y": 10,
+          "w": "335px",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": -1,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 4,
+      "restauracoes": []
+    },
+    "imagens/lion.webp": {
+      "Nome": "Armadura de Leão",
+      "Classe": "Armadura de Ouro",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><b style=\"font-size: 11.2px; color: rgb(255, 0, 0);\"><i>Descartar&nbsp;</i></b>- Ferir 1&nbsp;<em>Cavaleiro </em>na sua mão. Um&nbsp;<em>Cavaleiro</em> em jogo ganhe <span class=\"stat force\" title=\"Force\">+4<img alt=\"Force\" class=\"stat\" height=\"16\" src=\"imagens/force.webp\" width=\"16\"></span>.</div>",
+          "x": -7,
+          "y": 5,
+          "w": "345px",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 4,
+      "restauracoes": []
+    },
+    "imagens/vierge.webp": {
+      "Nome": "Armure de la Vierge",
+      "Classe": "Armadura de Ouro",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><b style=\"font-size: 11.2px; color: rgb(255, 0, 0);\"><i>Descartar&nbsp;</i></b>- Compre 2 cartas.&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div>",
+          "x": -20,
+          "y": -2,
+          "w": "325px",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 4,
+      "restauracoes": []
+    },
+    "imagens/balance.webp": {
+      "Nome": "Armadura de Libra",
+      "Classe": "Armadura de Ouro",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><b style=\"font-size: 11.2px; color: rgb(255, 0, 0);\"><i>Descartar&nbsp;</i></b>- Descarte 1 <em>Personagem</em>&nbsp;da mão: Todos os seus&nbsp;<em>Personagens</em> ganham&nbsp;<span class=\"stat force\" title=\"Force\">+1<img alt=\"Force\" class=\"stat\" height=\"16\" src=\"imagens/force.webp\" width=\"16\"></span>&nbsp;neste turno.<em>&nbsp;</em></div>",
+          "x": -11,
+          "y": 4,
+          "w": "345px",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 40,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 4,
+      "restauracoes": []
+    },
+    "imagens/scorpion.webp": {
+      "Nome": "Armadura de Escorpião",
+      "Classe": "Armadura de Ouro",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><b style=\"font-size: 11.2px; color: rgb(255, 0, 0);\"><i>Descartar&nbsp;</i></b>- Destrua 1 <em>Personagem</em>&nbsp;ferido.&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div>",
+          "x": -20,
+          "y": -3,
+          "w": "323px",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 4,
+      "restauracoes": []
+    },
+    "imagens/sagittaire.webp": {
+      "Nome": "Armadura de Sagitário",
+      "Classe": "Armadura de Ouro",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><em class=\"keyword miseenjeu\" style=\"font-size: 11.2px;\">Ao Jogar</em>&nbsp;- Destrua um&nbsp;<em>Personagem </em>da mão: Coloque um&nbsp;<em>Personagem</em> do Campo de Batalha no seu Descarte. Embaralhe a Armadura de Sagitário à Reserva <br>do Campo de Batalha.</div>",
+          "x": -1,
+          "y": 10,
+          "w": "370px",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 4,
+      "restauracoes": []
+    },
+    "imagens/capricorne.webp": {
+      "Nome": "Armadura de Capricórnio",
+      "Classe": "Armadura de Ouro",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><b style=\"font-size: 11.2px; color: rgb(255, 0, 0);\"><i>Descartar&nbsp;</i></b>- Todas as cartas <img alt=\"Très Commun (vert)\" class=\"rank\" height=\"16\" src=\"imagens/rank1.webp\" title=\"Très Commun (vert)\" width=\"16\">, <img alt=\"Commun (bronze)\" class=\"rank\" height=\"16\" src=\"imagens/rank2.webp\" title=\"Commun (bronze)\" width=\"16\"> e&nbsp;<img alt=\"Peu Commun (argent)\" class=\"rank\" height=\"16\" src=\"imagens/rank3.webp\" title=\"Peu Commun (argent)\" width=\"16\"> presentes no Campo de Batalha são retiras do Campo de Batalha, complete o Campo de Batalha com novas cartas da Reserva.</div>",
+          "x": 1,
+          "y": 11,
+          "w": "370px",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 4,
+      "restauracoes": []
+    },
+    "imagens/verseau.webp": {
+      "Nome": "Armadura de Aquário",
+      "Classe": "Armadura de Ouro",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><b style=\"font-size: 11.2px; color: rgb(255, 0, 0);\"><i>Descartar&nbsp;</i></b>- Cure todos os seus&nbsp;<em>Cavaleiros</em>&nbsp;feridos.&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</div>",
+          "x": -20,
+          "y": -3,
+          "w": "321px",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 4,
+      "restauracoes": []
+    },
+    "imagens/poissons.webp": {
+      "Nome": "Armadura de Peixes",
+      "Classe": "Armadura de Ouro",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><b style=\"font-size: 11.2px; color: rgb(255, 0, 0);\"><i>Descartar&nbsp;</i></b>- Um jogador a sua escolha fere todos os&nbsp;<em>Personagens</em> da sua mão e compra do Deck a mesma quantidade de&nbsp;<em>Personagens</em> assim feridos.</div>",
+          "x": -11,
+          "y": 10,
+          "w": "340px",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 20,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 4,
+      "restauracoes": []
+    },
+    "imagens/mu.webp": {
+      "Nome": "Mu de Áries",
+      "Classe": "Cavaleiro de Ouro",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><font color=\"#ff0000\"><b><i>Ferir&nbsp;</i></b></font>- Coloque na sua mão 1 <em>Armadura</em>&nbsp;que esteja em seu Descarte.</div>",
+          "x": 10,
+          "y": 23,
+          "w": "215px",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect out\"></div>",
+          "x": -15,
+          "y": -85,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 20,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 4,
+      "restauracoes": []
+    },
+    "imagens/aldebaran.webp": {
+      "Nome": "Aldebaran de Touro",
+      "Classe": "Cavaleiro de Ouro",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><i>Aldebaran de Touro ganha</i>&nbsp;<span class=\"stat force\" title=\"Force\">+2<img alt=\"Force\" class=\"stat\" height=\"16\" src=\"imagens/force.webp\" width=\"16\"></span>&nbsp;lutando contra a primeira carta do campo de batalhas.</div>",
+          "x": 11,
+          "y": 30,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect out\"></div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 30,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 4,
+      "restauracoes": []
+    },
+    "imagens/saga.webp": {
+      "Nome": "Saga de Gêmeos",
+      "Classe": "Cavaleiro de Ouro",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><i>Saga de Gêmeos ganha</i>&nbsp;<span class=\"stat force\" title=\"Force\">+2<img alt=\"Force\" class=\"stat\" height=\"16\" src=\"imagens/force.webp\" width=\"16\"></span>&nbsp;se o relógio mostrar um número par de&nbsp;<img alt=\"Flamme\" class=\"stat\" height=\"16\" src=\"imagens/flamme.webp\" title=\"Flamme\" width=\"12\">.&nbsp;<i style=\"font-size: 11.2px;\">Saga de Gêmeos ganha</i>&nbsp;<span class=\"stat cosmos\" title=\"Cosmos\">+2<img alt=\"Cosmos\" class=\"stat\" height=\"16\" src=\"imagens/cosmos.webp\" width=\"16\"></span>&nbsp;se o relógio mostrar um número ímpar de&nbsp;<img alt=\"Flamme\" class=\"stat\" height=\"16\" src=\"imagens/flamme.webp\" title=\"Flamme\" width=\"12\">.</div>",
+          "x": 10,
+          "y": 39,
+          "w": "260px",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect ground\"><font color=\"#ff0000\"><b><i>Derrotado&nbsp;</i></b></font>- Fere todos os personagens que lutaram contra ele.</div>",
+          "x": 9,
+          "y": 27,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect out\"></div>",
+          "x": 4,
+          "y": -1,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 30,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 4,
+      "restauracoes": []
+    },
+    "imagens/deathmask.webp": {
+      "Nome": "Máscara da morte de Câncer",
+      "Classe": "Cavaleiro de Ouro",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect ground\"><font color=\"#ff0000\"><b><i>Derrotado&nbsp;</i></b></font>- Destrua um dos personagens que lutaram contra ele</div>",
+          "x": 11,
+          "y": 27,
+          "w": "195px",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect out\"></div>",
+          "x": -25,
+          "y": -137,
+          "w": "40px",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": -40,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 4,
+      "restauracoes": []
+    },
+    "imagens/aiolia.webp": {
+      "Nome": "Aiolia de Leão",
+      "Classe": "Cavaleiro de Ouro",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><i>Aiolia de Leão ganha</i>&nbsp;<span class=\"stat force\" title=\"Force\">+1<img alt=\"Force\" class=\"stat\" height=\"16\" src=\"imagens/force.webp\" width=\"16\"></span>&nbsp;e&nbsp;<span class=\"stat cosmos\" title=\"Cosmos\">+1<img alt=\"Cosmos\" class=\"stat\" height=\"16\" src=\"imagens/cosmos.webp\" width=\"16\"></span>&nbsp;quando enfrentar a última carta do campo de batalha.</div>",
+          "x": 16,
+          "y": 29,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect out\"></div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 4,
+      "restauracoes": []
+    },
+    "imagens/shaka.webp": {
+      "Nome": "Shaka de Virgem",
+      "Classe": "Cavaleiro de Ouro",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><em class=\"keyword miseenjeu\" style=\"font-size: 11.2px;\">Ao Jogar</em>&nbsp;- Fere um personagem da pilha de descartes de algum jogador.</div>",
+          "x": 12,
+          "y": 25,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect out\"></div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 20,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 4,
+      "restauracoes": []
+    },
+    "imagens/doko.webp": {
+      "Nome": "Dohko de Libra",
+      "Classe": "Cavaleiro de Ouro",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><em>Shiryu tem sua</em>&nbsp;<span class=\"stat force\" title=\"Force\"><img alt=\"Force\" class=\"stat\" height=\"16\" src=\"imagens/force.webp\" width=\"16\"></span> e&nbsp;<span class=\"stat cosmos\" title=\"Cosmos\"><img alt=\"Cosmos\" class=\"stat\" height=\"16\" src=\"imagens/cosmos.webp\" width=\"16\"></span>&nbsp;dobrados se ele é jogado junto com Dohko de Libra.</div>",
+          "x": 7,
+          "y": 46,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect ground\"><font color=\"#007dc6\"><b><i>Entrada&nbsp;</i></b></font>- Cada jogador pode colocar um Héroi de sua própria pilha de descartes em sua mão.</div>",
+          "x": 11,
+          "y": 36,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect out\"></div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 50,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 4,
+      "restauracoes": []
+    },
+    "imagens/milo.webp": {
+      "Nome": "Milo de Escorpião",
+      "Classe": "Cavaleiro de Ouro",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><em class=\"keyword miseenjeu\" style=\"font-size: 11.2px;\">Ao Jogar</em>&nbsp;- Um oponente descarta uma carta da mão dele.</div>",
+          "x": 4,
+          "y": 29,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect out\"></div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 4,
+      "restauracoes": []
+    },
+    "imagens/aiolos.webp": {
+      "Nome": "Aiolos de Sagitário",
+      "Classe": "Cavaleiro de Ouro",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><i>Aiolos de Sagitário ganha</i>&nbsp;<span class=\"stat cosmos\" title=\"Cosmos\">+1<img alt=\"Cosmos\" class=\"stat\" height=\"16\" src=\"imagens/cosmos.webp\" width=\"16\"></span> para cada Cavaleiro de Ouro&nbsp; no campo de batalha.</div>",
+          "x": 3,
+          "y": 50,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect ground\"><font color=\"#007dc6\"><b><i>Entrada&nbsp;</i></b></font>- Se algum outro Cavaleiro de Ouro está presente no campo de batalha; remova 1<img alt=\"Flamme\" class=\"stat\" height=\"16\" src=\"imagens/flamme.webp\" title=\"Flamme\" width=\"12\">.</div>",
+          "x": 10,
+          "y": 43,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect out\"></div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 20,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 4,
+      "restauracoes": []
+    },
+    "imagens/shura.webp": {
+      "Nome": "Shura de Capricórnio",
+      "Classe": "Cavaleiro de Ouro",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect ground\"><font color=\"#ff0000\"><b><i>Derrotado&nbsp;</i></b></font>-Adquira um personagem adjacente a Shura de Capricórnio sem custo.</div>",
+          "x": 11,
+          "y": 36,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect out\"></div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 4,
+      "restauracoes": []
+    },
+    "imagens/camus.webp": {
+      "Nome": "Camus de Aquário",
+      "Classe": "Cavaleiro de Ouro",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect ground\"><font color=\"#ff0000\"><b><i>Derrotado&nbsp;</i></b></font>- Camus de Aquário é ferido.</div>",
+          "x": -9,
+          "y": 32,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect ground\"><i>Hyoga pode adquirir Camus de Aquário pelo custo&nbsp;</i>de <span class=\"stat cosmos\" title=\"Cosmos\">8<img alt=\"Cosmos\" class=\"stat\" height=\"16\" src=\"imagens/cosmos.webp\" width=\"16\"></span>.</div>",
+          "x": 9,
+          "y": 29,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect out\"></div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 4,
+      "restauracoes": []
+    },
+    "imagens/aphrodite.webp": {
+      "Nome": "Afrodite de Peixes",
+      "Classe": "Cavaleiro de Ouro",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect ground\"><font color=\"#ff0000\"><b><i>Derrotado&nbsp;</i></b></font>-Cada oponente fere 2 personagens de suas próprias mãos.</div>",
+          "x": 8,
+          "y": 27,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect out\"></div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 40,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 4,
+      "restauracoes": []
+    },
+    "imagens/marine.webp": {
+      "Nome": "Marin de Águia",
+      "Classe": "Cavaleiro de Prata",
+      "Efeitos": [
+        {
+          "texto": "<strong>+ 1 PV</strong> se você é jogador com mais Hérois no seu deck.",
+          "x": 3,
+          "y": 10,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect play\"><em>Seiya</em> ganha&nbsp;<span class=\"stat cosmos\" title=\"Cosmos\">+1<img alt=\"Cosmos\" class=\"stat\" height=\"16\" src=\"imagens/cosmos.webp\" width=\"16\"></span>&nbsp;quando ele jogado junto com&nbsp; Marin de Águia.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 30,
+      "classeWExtra": 0,
+      "classeImgAlt": true,
+      "rank": 3,
+      "restauracoes": []
+    },
+    "imagens/shaina.webp": {
+      "Nome": "Shina de Cobra",
+      "Classe": "Cavaleiro de Prata",
+      "Efeitos": [
+        {
+          "texto": "<strong>+ 1 PV</strong>&nbsp;se você for o jogador com mais cavaleiros de prata no seu deck.",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect ground\"><font color=\"#007dc6\"><b><i>Entrada&nbsp;</i></b></font>- Todos os jogadores descartam suas armaduras em jogo.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 50,
+      "classeWExtra": 0,
+      "classeImgAlt": true,
+      "rank": 3,
+      "restauracoes": []
+    },
+    "imagens/misty.webp": {
+      "Nome": "Misty de Lagarto",
+      "Classe": "Cavaleiro de Prata",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><em class=\"keyword defausser\">Descartar</em>&nbsp;- Destrua um de seus personagens feridos para comprar&nbsp;2 cartas.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect ground\"><font color=\"#007dc6\"><b><i>Entrada&nbsp;</i></b></font>- Cada jogador destrói um de seus personagens feridos.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": true,
+      "rank": 3,
+      "restauracoes": []
+    },
+    "imagens/algol.webp": {
+      "Nome": "Algol de Persée",
+      "Classe": "Cavaleiro de Prata",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect ground\"><font color=\"#ff0000\"><b><i>Derrotado&nbsp;</i></b></font>- Blesser tous les <em>Personnages</em> <img alt=\"Très Commun (vert)\" class=\"rank\" height=\"16\" src=\"imagens/rank1.webp\" title=\"Très Commun (vert)\" width=\"16\"> ou <img alt=\"Commun (bronze)\" class=\"rank\" height=\"16\" src=\"imagens/rank2.webp\" title=\"Commun (bronze)\" width=\"16\"> utilisés pour le combattre.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": true,
+      "rank": 3,
+      "restauracoes": []
+    },
+    "imagens/jamian.webp": {
+      "Nome": "Jamian de Corvo",
+      "Classe": "Cavaleiro de Prata",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><em class=\"keyword miseenjeu\" style=\"font-size: 11.2px;\">Ao Jogar</em>&nbsp;- Mude a posição de 2 cartas no campo de batalha.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 40,
+      "classeWExtra": 0,
+      "classeImgAlt": true,
+      "rank": 3,
+      "restauracoes": []
+    },
+    "imagens/babel.webp": {
+      "Nome": "Babel de Centauro",
+      "Classe": "Cavaleiro de Prata",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect ground\"><font color=\"#ff0000\"><b><i>Derrotado&nbsp;</i></b></font>- Destrua um personagem ferido.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 10,
+      "classeWExtra": 0,
+      "classeImgAlt": true,
+      "rank": 3,
+      "restauracoes": []
+    },
+    "imagens/asterion.webp": {
+      "Nome": "Astérion de Cães de caça",
+      "Classe": "Cavaleiro de Prata",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><em class=\"keyword defausser\">Descartar</em>&nbsp;- Olhe a mão de um oponente e cause um ferimento a um personagem dela.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": true,
+      "rank": 3,
+      "restauracoes": []
+    },
+    "imagens/moses.webp": {
+      "Nome": "Moses de Baleia",
+      "Classe": "Cavaleiro de Prata",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect ground\"><font color=\"#ff0000\"><b><i>Derrotado&nbsp;</i></b></font>- Todas as cartas&nbsp;<img alt=\"Très Commun (vert)\" class=\"rank\" height=\"16\" src=\"imagens/rank1.webp\" title=\"Très Commun (vert)\" width=\"16\">, <img alt=\"Commun (bronze)\" class=\"rank\" height=\"16\" src=\"imagens/rank2.webp\" title=\"Commun (bronze)\" width=\"16\">&nbsp;e<img alt=\"Peu Commun (argent)\" class=\"rank\" height=\"16\" src=\"imagens/rank3.webp\" title=\"Peu Commun (argent)\" width=\"16\">&nbsp;são descartadas do campo de batalha, então complete o campo de batalha.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 50,
+      "classeWExtra": 0,
+      "classeImgAlt": true,
+      "rank": 3,
+      "restauracoes": []
+    },
+    "imagens/capella.webp": {
+      "Nome": "Capella de Auriga",
+      "Classe": "Cavaleiro de Prata",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><em class=\"keyword detruire\">Destrua</em>&nbsp;- O custo de um personagem é reduzido em&nbsp;<span class=\"stat force\" title=\"Force\">-3<img alt=\"Force\" class=\"stat\" height=\"16\" src=\"imagens/force.webp\" width=\"16\"></span> <em>(custo mínimo de&nbsp;<span class=\"stat force\" title=\"Force\">1<img alt=\"Force\" class=\"stat\" height=\"16\" src=\"imagens/force.webp\" width=\"16\"></span>)</em>.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 20,
+      "classeWExtra": 0,
+      "classeImgAlt": true,
+      "rank": 3,
+      "restauracoes": []
+    },
+    "imagens/albior.webp": {
+      "Nome": "Albion de Cefeu",
+      "Classe": "Cavaleiro de Prata",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\">Shun ganha&nbsp;<span class=\"stat cosmos\" title=\"Cosmos\">+1<img alt=\"Cosmos\" class=\"stat\" height=\"16\" src=\"imagens/cosmos.webp\" width=\"16\"></span>&nbsp;quando ele é jogado junto com Albion de Cefeu.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect play\"><b style=\"font-size: 11.2px; color: rgb(255, 0, 0);\"><i>Descartar&nbsp;</i></b>- Coloque na sua mão um personagem da sua pilha de descartes.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 20,
+      "classeWExtra": 0,
+      "classeImgAlt": true,
+      "rank": 3,
+      "restauracoes": []
+    },
+    "imagens/ptolemy.webp": {
+      "Nome": "Tremy de Sagita",
+      "Classe": "Cavaleiro de Prata",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><font color=\"#ff0000\"><b><i>Ferir</i></b></font> - Cada oponente embaralha1 carta de Atena da mão deles para a reserva.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect ground\"><font color=\"#007dc6\"><b><i>Entrada&nbsp;</i></b></font>- Remova 1 <img alt=\"Flamme\" class=\"stat\" height=\"16\" src=\"imagens/flamme.webp\" title=\"Flamme\" width=\"12\"> do relógio.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 50,
+      "classeWExtra": 0,
+      "classeImgAlt": true,
+      "rank": 3,
+      "restauracoes": []
+    },
+    "imagens/sirius.webp": {
+      "Nome": "Sirius de Cão maior",
+      "Classe": "Cavaleiro de Prata",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><font color=\"#ff0000\"><b><i>Ferir</i></b></font> - D<i>estrua 1 Héroi</i>&nbsp;<img alt=\"Très Commun (vert)\" class=\"rank\" height=\"16\" src=\"imagens/rank1.webp\" title=\"Très Commun (vert)\" width=\"16\">&nbsp;da sua mão para adicionar um de seus Hérois<img alt=\"Commun (bronze)\" class=\"rank\" height=\"16\" src=\"imagens/rank2.webp\" title=\"Commun (bronze)\" width=\"16\">&nbsp;a sua pilha de descarte.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 30,
+      "classeWExtra": 0,
+      "classeImgAlt": true,
+      "rank": 3,
+      "restauracoes": []
+    },
+    "imagens/algethi.webp": {
+      "Nome": "Algethi de Hércules",
+      "Classe": "Cavaleiro de Prata",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><b style=\"font-size: 11.2px; color: rgb(255, 0, 0);\"><i>Descartar&nbsp;</i></b>-Armaduras no campo de batalha podem ser adquiridas com sua&nbsp;<span class=\"stat force\" title=\"Force\"><img alt=\"Force\" class=\"stat\" height=\"16\" src=\"imagens/force.webp\" width=\"16\"></span>&nbsp;por um custo igual ao custo delas em&nbsp;<span class=\"stat cosmos\" title=\"Cosmos\"><img alt=\"Cosmos\" class=\"stat\" height=\"16\" src=\"imagens/cosmos.webp\" width=\"16\"></span>.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": true,
+      "rank": 3,
+      "restauracoes": []
+    },
+    "imagens/dante.webp": {
+      "Nome": "Dante de Cérbero",
+      "Classe": "Cavaleiro de Prata",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect ground\"><font color=\"#ff0000\"><b><i>Derrotado&nbsp;</i></b></font>- <i>Compre uma carta da reserva e adicione à sua pilha de descartes (seus efeitos não são aplicados)</i>.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 20,
+      "classeWExtra": 0,
+      "classeImgAlt": true,
+      "rank": 3,
+      "restauracoes": []
+    },
+    "imagens/dio.webp": {
+      "Nome": "Dio de Mosca",
+      "Classe": "Cavaleiro de Prata",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><em class=\"keyword detruire\">Destrua</em>&nbsp;- Adquira 1 armadura do campo de batalha (A armadura é colocada no campo de batalha).</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 50,
+      "classeWExtra": 0,
+      "classeImgAlt": true,
+      "rank": 3,
+      "restauracoes": []
+    },
+    "imagens/shiva.webp": {
+      "Nome": "Shiva de pavão",
+      "Classe": "Cavaleiro de Prata",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect ground\"><font color=\"#ff0000\"><b><i>Derrotado&nbsp;</i></b></font>- Fere todos os personagens com&nbsp;<span class=\"stat cosmos\" title=\"Cosmos\"><img alt=\"Cosmos\" class=\"stat\" height=\"16\" src=\"imagens/cosmos.webp\" width=\"16\">&nbsp;que lutaram contra ele</span>.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": true,
+      "rank": 3,
+      "restauracoes": []
+    },
+    "imagens/aghora.webp": {
+      "Nome": "Àgora de Lotus",
+      "Classe": "Cavaleiro de Prata",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect ground\"><font color=\"#ff0000\"><b><i>Derrotado&nbsp;</i></b></font><span style=\"font-size: 11.2px;\">- Fere todos os personagens sem</span><span style=\"font-size: 11.2px;\">&nbsp;</span><span class=\"stat cosmos\" title=\"Cosmos\" style=\"font-size: 11.2px;\"><img alt=\"Cosmos\" class=\"stat\" height=\"16\" src=\"https://hudjinn.github.io/saint_seiya/imagens/cosmos.webp\" width=\"16\">&nbsp;que lutaram contra ele</span>.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 30,
+      "classeWExtra": 0,
+      "classeImgAlt": true,
+      "rank": 3,
+      "restauracoes": []
+    },
+    "imagens/arachne.webp": {
+      "Nome": "Aracne de Tarântula",
+      "Classe": "Cavaleiro de Prata",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect ground\"><font color=\"#ff0000\"><b><i>Derrotado&nbsp;</i></b></font>- Cada oponente descarta todas as armaduras de suas respectivas mãos.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 20,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 3,
+      "restauracoes": []
+    },
+    "imagens/guilty.webp": {
+      "Nome": "Guilty",
+      "Classe": "Cavaleiro sem Constelação",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><em>Ikki</em> ganha<span class=\"stat cosmos\" title=\"Cosmos\">+1<img alt=\"Cosmos\" class=\"stat\" height=\"16\" src=\"imagens/cosmos.webp\" width=\"16\"></span>&nbsp;quando ele é jogado junto&nbsp;<em>Guilty</em>.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect play\"><em class=\"keyword miseenjeu\" style=\"font-size: 11.2px;\">Ao Jogar&nbsp;</em>-Embaralhe as cartas da sua pilha de descartes na sua pilha de compra.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 3,
+      "restauracoes": []
+    },
+    "imagens/docrates.webp": {
+      "Nome": "Dócrates",
+      "Classe": "Cavaleiro sem Constelação",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><b style=\"font-size: 11.2px; color: rgb(255, 0, 0);\"><i>Descartar&nbsp;</i></b>- Todas as cartas&nbsp;<img alt=\"Très Commun (vert)\" class=\"rank\" height=\"16\" src=\"imagens/rank1.webp\" title=\"Très Commun (vert)\" width=\"16\"> e&nbsp;<img alt=\"Commun (bronze)\" class=\"rank\" height=\"16\" src=\"imagens/rank2.webp\" title=\"Commun (bronze)\" width=\"16\">&nbsp;no campo de batalha são descartadas, então complete o campo de batalhas.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 3,
+      "restauracoes": []
+    },
+    "imagens/cristal.webp": {
+      "Nome": "Cavaleiro de Cristal",
+      "Classe": "Cavaleiro sem Constelação",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><em>Hyoga</em>&nbsp;ganha&nbsp;<span class=\"stat cosmos\" title=\"Cosmos\">+1<img alt=\"Cosmos\" class=\"stat\" height=\"16\" src=\"imagens/cosmos.webp\" width=\"16\"></span>&nbsp;quando ele é jogado junto com cavaleiro de Cristal.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect play\"><em class=\"keyword miseenjeu\" style=\"font-size: 11.2px;\">Ao Jogar</em>&nbsp;- Compre 1 carta e depois descarte 1 carta.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 20,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 3,
+      "restauracoes": []
+    },
+    "imagens/geist.webp": {
+      "Nome": "Jisty",
+      "Classe": "Cavaleiro Fantasma",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><b style=\"font-size: 11.2px; color: rgb(255, 0, 0);\"><i>Descartar&nbsp;</i></b>- Adquira, sem custo, 1 Cavaleiro Fantasma do campo de batalha.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect ground\"><font color=\"#007dc6\"><b><i>Entrada&nbsp;</i></b></font>- Cada jogador destrói um personagem de suas mãos.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 20,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 2,
+      "restauracoes": []
+    },
+    "imagens/serpent-mers.webp": {
+      "Nome": "Serpente marinha",
+      "Classe": "Cavaleiro Fantasma",
+      "Efeitos": [
+        {
+          "texto": "<font color=\"#ffffff\" face=\"NeoSansW01, sans-serif\"><span style=\"background-color: rgb(29, 21, 1);\"><i>Serpente Marinha só pode ser enfrentado por no mínimo 3 personagens.</i></span></font>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 2,
+      "restauracoes": []
+    },
+    "imagens/dauphin.webp": {
+      "Nome": "Golfinho",
+      "Classe": "Cavaleiro Fantasma",
+      "Efeitos": [
+        {
+          "texto": "<font color=\"#ffffff\" face=\"NeoSansW01, sans-serif\"><span style=\"background-color: rgb(29, 21, 1);\">Descarte uma carta de sua mão para lutar contra Golfinho.</span></font>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 2,
+      "restauracoes": []
+    },
+    "imagens/kuraggu.webp": {
+      "Nome": "Medusa",
+      "Classe": "Cavaleiro Fantasma",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect ground\">Nenhum outro Cavaleiro pode ser adquirido enquanto Medusa estiver presente no campo de batalha.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 2,
+      "restauracoes": []
+    },
+    "imagens/flammes.webp": {
+      "Nome": "Cavaleiro de Fogo",
+      "Classe": "Cavaleiro sem Constelação",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><em class=\"keyword miseenjeu\" style=\"font-size: 11.2px;\">Ao Jogar</em>&nbsp;- Um jogador a sua escolha coloca um dos Hérois&nbsp;<img alt=\"Très Commun (vert)\" class=\"rank\" height=\"16\" src=\"imagens/rank1.webp\" title=\"Très Commun (vert)\" width=\"16\">&nbsp;destruídos dele na própria pilha de compras.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 40,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 2,
+      "restauracoes": []
+    },
+    "imagens/spartan.webp": {
+      "Nome": "Spartan",
+      "Classe": "Cavaleiro sem Constelação",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect ground\"><font color=\"#007dc6\"><b><i>Entrada&nbsp;</i></b></font>- Cada jogador pode ferir um personagem de suas respectivas mãos para comprar 1 carta.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 2,
+      "restauracoes": []
+    },
+    "imagens/leda.webp": {
+      "Nome": "Leda",
+      "Classe": "Cavaleiro sem Constelação",
+      "Efeitos": [
+        {
+          "texto": "<strong>2 PV</strong> se você tiver pelo menos uma carta de Spica no seu Deck.",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect play\"><em>Leda</em>&nbsp;ganha&nbsp;<span class=\"stat force\" title=\"Force\">+1<img alt=\"Force\" class=\"stat\" height=\"16\" src=\"imagens/force.webp\" width=\"16\"></span>&nbsp;quando ele está lutando junto com o Spica.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 2,
+      "restauracoes": []
+    },
+    "imagens/spica.webp": {
+      "Nome": "Spica",
+      "Classe": "Cavaleiro sem Constelação",
+      "Efeitos": [
+        {
+          "texto": "<strong>2 PV</strong><span style=\"font-size: 11.2px;\">se você tiver pelo menos uma carta de Leda no seu Deck.</span>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect play\"><em>Spica</em> ganha&nbsp;<span class=\"stat force\" title=\"Force\">+1<img alt=\"Force\" class=\"stat\" height=\"16\" src=\"imagens/force.webp\" width=\"16\"></span>&nbsp;quando ele está lutando junto com Leda.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 2,
+      "restauracoes": []
+    },
+    "imagens/jango.webp": {
+      "Nome": "Jango",
+      "Classe": "Cavaleiro Negro",
+      "Efeitos": [
+        {
+          "texto": "<strong>1 PV</strong>&nbsp;para cada cavaleiro Negro, com um nome diferente, presente no seu Deck.",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect play\"><b style=\"font-size: 11.2px; color: rgb(255, 0, 0);\"><i>Descartar&nbsp;</i></b>- Coloquena sua pilha de descartes um cavaleiro Negro vindo da pilha de descartes de algum oponente (Exceto Jango)</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 2,
+      "restauracoes": []
+    },
+    "imagens/pegase-noir.webp": {
+      "Nome": "Pégaso Negro",
+      "Classe": "Cavaleiro Negro",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect ground\">Se&nbsp;<em>Seiya</em>&nbsp;lutar contra Pégaso Negro, o custo dele é reduzido em&nbsp;<span class=\"stat force\" title=\"Force\">-2<img alt=\"Force\" class=\"stat\" height=\"16\" src=\"imagens/force.webp\" width=\"16\"></span>.</div><span style=\"color: rgb(255, 255, 255); font-family: NeoSansW01, sans-serif; font-size: 11.2px; background-color: rgb(29, 21, 1);\">&nbsp;</span>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 2,
+      "restauracoes": []
+    },
+    "imagens/dragon-noir.webp": {
+      "Nome": "Dragão Negro",
+      "Classe": "Cavaleiro Negro",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect ground\"><span style=\"font-size: 11.2px;\">Se&nbsp;</span><em style=\"font-size: 11.2px;\">Shiryu</em><span style=\"font-size: 11.2px;\">&nbsp;lutar contra Dragão Negro, o custo dele é reduzido em</span>&nbsp;<span class=\"stat force\" title=\"Force\">-2<img alt=\"Force\" class=\"stat\" height=\"16\" src=\"imagens/force.webp\" width=\"16\"></span>.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 2,
+      "restauracoes": []
+    },
+    "imagens/cygne-noir.webp": {
+      "Nome": "Cisne Negro",
+      "Classe": "Cavaleiro Negro",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect ground\"><span style=\"font-size: 11.2px;\">Se <i>Hyoga</i></span><span style=\"font-size: 11.2px;\">&nbsp;lutar contra Cisne Negro, o custo dele é reduzido em</span>&nbsp;<span class=\"stat force\" title=\"Force\">-2<img alt=\"Force\" class=\"stat\" height=\"16\" src=\"imagens/force.webp\" width=\"16\"></span>.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 2,
+      "restauracoes": []
+    },
+    "imagens/andromede-noir.webp": {
+      "Nome": "Andrômeda Negro",
+      "Classe": "Cavaleiro Negro",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect ground\"><span style=\"font-size: 11.2px;\">Se&nbsp;</span><em style=\"font-size: 11.2px;\">Shun</em><span style=\"font-size: 11.2px;\">&nbsp;lutar contra Andrômeda Negro, o custo dele é reduzido em</span>&nbsp;<span class=\"stat force\" title=\"Force\">-2<img alt=\"Force\" class=\"stat\" height=\"16\" src=\"imagens/force.webp\" width=\"16\"></span>.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 2,
+      "restauracoes": []
+    },
+    "imagens/phoenix-noir.webp": {
+      "Nome": "Fênix Negro",
+      "Classe": "Cavaleiro Negro",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect ground\"><span style=\"font-size: 11.2px;\">Se <i>IkkI&nbsp;</i></span><span style=\"font-size: 11.2px;\">lutar contra Fênix Negro, o custo dele é reduzido em</span>&nbsp;<span class=\"stat force\" title=\"Force\">-2<img alt=\"Force\" class=\"stat\" height=\"16\" src=\"imagens/force.webp\" width=\"16\"></span>.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 20,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 2,
+      "restauracoes": []
+    },
+    "imagens/sho.webp": {
+      "Nome": "Shô da Armadura do Céu",
+      "Classe": "Cavaleiro de Aço",
+      "Efeitos": [
+        {
+          "texto": "<font color=\"#302d29\" face=\"NeoSansW01, sans-serif\"><span style=\"background-color: rgb(222, 204, 187);\">Cavaleiros lutando junto com Shô não podem ser feridos</span></font>",
+          "x": -3,
+          "y": 3,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 2,
+      "restauracoes": []
+    },
+    "imagens/ushio.webp": {
+      "Nome": "Ushio da Armadura do Mar",
+      "Classe": "Cavaleiro de Aço",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><em>Ushio</em> ganha&nbsp;<span class=\"stat force\" title=\"Force\">+1<img alt=\"Force\" class=\"stat\" height=\"16\" src=\"imagens/force.webp\" width=\"16\"></span>&nbsp;para cada herói&nbsp;<img alt=\"Commun (bronze)\" class=\"rank\" height=\"16\" src=\"imagens/rank2.webp\" title=\"Commun (bronze)\" width=\"16\">&nbsp;lutando junto com ele.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 2,
+      "restauracoes": []
+    },
+    "imagens/daichi.webp": {
+      "Nome": "Daichi da Armadura da Terra",
+      "Classe": "Cavaleiro de Aço",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\">O custo do cavaleiro que Daichi enfrente é reduzido em -<span class=\"stat cosmos\" title=\"Cosmos\">1<img alt=\"Cosmos\" class=\"stat\" height=\"16\" src=\"imagens/cosmos.webp\" width=\"16\"></span>&nbsp;para cada Herói jogado junto com ele.&nbsp;<em>(Custo mínimo de&nbsp;<span class=\"stat cosmos\" title=\"Cosmos\">1<img alt=\"Cosmos\" class=\"stat\" height=\"16\" src=\"imagens/cosmos.webp\" width=\"16\"></span>)</em>.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 2,
+      "restauracoes": []
+    },
+    "imagens/jabu.webp": {
+      "Nome": "Jabu de Unicórnio",
+      "Classe": "Cavaleiro de Bronze",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><b style=\"font-size: 11.2px; color: rgb(255, 0, 0);\"><i>Descartar&nbsp;</i></b>- Cada oponente descarta 1 Herói de suas mãos.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 2,
+      "restauracoes": []
+    },
+    "imagens/ichi.webp": {
+      "Nome": "Ichi de Hidra",
+      "Classe": "Cavaleiro de Bronze",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><b style=\"font-size: 11.2px; color: rgb(255, 0, 0);\"><i>Descartar&nbsp;</i></b>- Cada adversário fere todos os Heróis&nbsp;<img alt=\"Commun (bronze)\" class=\"rank\" height=\"16\" src=\"imagens/rank2.webp\" title=\"Commun (bronze)\" width=\"16\"> de suas respectivas pilhas de descartes.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 50,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 2,
+      "restauracoes": []
+    },
+    "imagens/nachi.webp": {
+      "Nome": "Nachi de Lobo",
+      "Classe": "Cavaleiro de Bronze",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><b style=\"font-size: 11.2px; color: rgb(255, 0, 0);\"><i>Descartar&nbsp;</i></b>- Cada oponente descarta a armadura dele em jogo.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 2,
+      "restauracoes": []
+    },
+    "imagens/ban.webp": {
+      "Nome": "Ban de Leão menor",
+      "Classe": "Cavaleiro de Bronze",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><font color=\"#ff0000\"><b><i>Ferir&nbsp;</i></b></font>- Cada oponente fere um cavaleiro de suas respectivas mãos.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 2,
+      "restauracoes": []
+    },
+    "imagens/geki.webp": {
+      "Nome": "Geki de Urso",
+      "Classe": "Cavaleiro de Bronze",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><b style=\"font-size: 11.2px; color: rgb(255, 0, 0);\"><i>Descartar&nbsp;</i></b>- <i>Troque um Herói</i>&nbsp;<img alt=\"Commun (bronze)\" class=\"rank\" height=\"16\" src=\"imagens/rank2.webp\" title=\"Commun (bronze)\" width=\"16\"> da pilha de descartes de um jogador por um dos Hérois&nbsp;<img alt=\"Très Commun (vert)\" class=\"rank\" height=\"16\" src=\"imagens/rank1.webp\" title=\"Très Commun (vert)\" width=\"16\"> destruídos dele.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 30,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 2,
+      "restauracoes": []
+    },
+    "imagens/june.webp": {
+      "Nome": "June du Caméléon",
+      "Classe": "Cavaleiro de Bronze",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><em class=\"keyword miseenjeu\" style=\"font-size: 11.2px;\">Ao Jogar</em>&nbsp;- Cure um de seus personagens feridos.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect ground\">Nenhum personagem pode ser curado enquanto June estiver no campo de batalha.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 2,
+      "restauracoes": []
+    },
+    "imagens/cassios.webp": {
+      "Nome": "Cássios",
+      "Classe": "",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><em class=\"keyword detruire\">Destrua</em>- O custo de um cavaleiro no campo de batalha é reduzido em&nbsp;<span class=\"stat force\" title=\"Force\">-2<img alt=\"Force\" class=\"stat\" height=\"16\" src=\"imagens/force.webp\" width=\"16\"></span> e -<span class=\"stat cosmos\" title=\"Cosmos\">2<img alt=\"Cosmos\" class=\"stat\" height=\"16\" src=\"imagens/cosmos.webp\" width=\"16\"></span> <em>(custo mínimo de <span class=\"stat force\" title=\"Force\">1<img alt=\"Force\" class=\"stat\" height=\"16\" src=\"imagens/force.webp\" width=\"16\"></span> e&nbsp;<span class=\"stat cosmos\" title=\"Cosmos\">1<img alt=\"Cosmos\" class=\"stat\" height=\"16\" src=\"imagens/cosmos.webp\" width=\"16\"></span>)</em>.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 1,
+      "restauracoes": []
+    },
+    "imagens/gigas.webp": {
+      "Nome": "Gigars",
+      "Classe": "",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><b style=\"font-size: 11.2px; color: rgb(255, 0, 0);\"><i>Descartar&nbsp;</i></b>- Descarte um personagem do campo de batalha e então revele no local dele a primeira carta da reserva.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect ground\"><font color=\"#007dc6\"><b><i>Entrada&nbsp;</i></b></font>- O jogador ativo coloca Gigars na pilha de descartes de um jogador a sua escolha.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 1,
+      "restauracoes": []
+    },
+    "imagens/phaeton.webp": {
+      "Nome": "Píton",
+      "Classe": "",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><em class=\"keyword miseenjeu\" style=\"font-size: 11.2px;\">Ao Jogar</em>&nbsp;- Destrua um personagem da sua mão para comprar 2 cartas.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 40,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 1,
+      "restauracoes": []
+    },
+    "imagens/oko.webp": {
+      "Nome": "Ohko",
+      "Classe": "",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><em class=\"keyword detruire\">Destrua</em>&nbsp;- Cada oponente destrói 1 cavaleiro das suas mãos.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 1,
+      "restauracoes": []
+    },
+    "imagens/jaki.webp": {
+      "Nome": "Jaki",
+      "Classe": "",
+      "Efeitos": [
+        {
+          "texto": "<strong>1 PV</strong> par groupe de 5 cartes détruites.",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect play\"><em class=\"keyword detruire\">Détruire</em> - Placer dans votre défausse 1 de vos cartes détruites.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 1,
+      "restauracoes": []
+    },
+    "imagens/seiya-argent-a.webp": {
+      "Nome": "Seiya de Pégasus",
+      "Classe": "Herói - Cavaleiro de Bronze",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><em class=\"keyword miseenjeu\" style=\"font-size: 11.2px;\">Ao Jogar</em>&nbsp;- Compre cartas igual ao número de Seiya na sua pilha de descarte.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect passive\"><em class=\"keyword marque\">Marcado</em> - Ganhe&nbsp;<span class=\"stat energy\" title=\"Energie\">1<span class=\"icon-flash\"><svg viewBox=\"0 0 24 28\"><polygon points=\"13,2 3,16 11,16 9,26 21,10 13,10\" fill=\"#ffe066\" stroke=\"#ffed00\" stroke-width=\"2\" filter=\"drop-shadow(1px 1px 0 #000)\"></polygon></svg></span></span>.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 3,
+      "restauracoes": []
+    },
+    "imagens/shiryu-argent-a.webp": {
+      "Nome": "Shiryu de Dragão",
+      "Classe": "Herói - Cavaleiro de Bronze",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><em class=\"keyword miseenjeu\" style=\"font-size: 11.2px;\">Ao Jogar</em>&nbsp;- Ferir&nbsp;<img alt=\"Commun (bronze)\" class=\"rank\" height=\"16\" src=\"imagens/rank2.webp\" title=\"Commun (bronze)\" width=\"16\"> um personagem comum (bronze) da sua mão para comprar 2 cartas.</div>",
+          "x": 3,
+          "y": 8,
+          "w": "240px",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect passive\"><em class=\"keyword marque\">Marcado</em>&nbsp;- Recupere para a mão outro Shiryu ferido.</div>",
+          "x": -2,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 20,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 3,
+      "restauracoes": []
+    },
+    "imagens/hyoga-argent-a.webp": {
+      "Nome": "Hyoga de Cisne",
+      "Classe": "Herói - Cavaleiro de Bronze",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><em class=\"keyword miseenjeu\" style=\"font-size: 11.2px;\">Ao Jogar</em>&nbsp;- Compre 1 carta para cada outro Hyoga lutando ao seu lado.</div>",
+          "x": 2,
+          "y": 7,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect passive\"><em class=\"keyword marque\">Marcado</em>&nbsp;- Recupere para a mão um Hyoga da sua pilha de descarte..</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 3,
+      "restauracoes": []
+    },
+    "imagens/shun-argent-a.webp": {
+      "Nome": "Shun de Andrômeda",
+      "Classe": "Herói - Cavaleiro de Bronze",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><em class=\"keyword miseenjeu\" style=\"font-size: 11.2px;\">Ao Jogar</em>&nbsp;- Se Shun enfrentar uma carta do campo de batalha que possua custo de&nbsp;<span class=\"stat cosmos\" title=\"Cosmos\" style=\"font-size: 11.2px;\"><img alt=\"Cosmos\" class=\"stat\" height=\"16\" src=\"https://hudjinn.github.io/saint_seiya/imagens/cosmos.webp\" width=\"16\"></span><span style=\"font-size: 11.2px;\">&nbsp;;</span>&nbsp;compre 1 carta.</div>",
+          "x": 0,
+          "y": 14,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect passive\"><em class=\"keyword marque\">Marcado</em>&nbsp;- Coloque em jogo uma Armadura Comum&nbsp;<img alt=\"Commun (bronze)\" class=\"rank\" height=\"16\" src=\"https://hudjinn.github.io/saint_seiya/imagens/rank2.webp\" title=\"Commun (bronze)\" width=\"16\" style=\"font-size: 11.2px;\">&nbsp;ou&nbsp;<img alt=\"Peu Commun (argent)\" class=\"rank\" height=\"16\" src=\"https://hudjinn.github.io/saint_seiya/imagens/rank3.webp\" title=\"Peu Commun (argent)\" width=\"16\" style=\"font-size: 11.2px;\">&nbsp;da sua pilha de descarte.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 10,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 3,
+      "restauracoes": []
+    },
+    "imagens/ikki-argent-a.webp": {
+      "Nome": "Ikki de Fênix",
+      "Classe": "Herói - Cavaleiro de Bronze",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><em class=\"keyword miseenjeu\" style=\"font-size: 11.2px;\">Ao Jogar</em>&nbsp;- Destrua um Personagem da sua pilha de descarte para comprar 2 cartas.</div>",
+          "x": 5,
+          "y": 8,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect passive\"><em class=\"keyword marque\">Marqué</em> - Coloque um dos seus&nbsp;<img alt=\"Très Commun (vert)\" class=\"rank\" height=\"16\" src=\"https://hudjinn.github.io/saint_seiya/imagens/rank1.webp\" title=\"Très Commun (vert)\" width=\"16\" style=\"font-size: 11.2px;\">destruídos&nbsp;na sua pilha de descarte.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 30,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 3,
+      "restauracoes": []
+    },
+    "imagens/pegase-v2.webp": {
+      "Nome": "Armadura de Pégasus",
+      "Classe": "Armadura de Bronze",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><b style=\"font-size: 11.2px; color: rgb(255, 0, 0);\"><i>Descartar&nbsp;</i></b>- Destrua 2 Seiya idênticos da sua mão. Em seguida, adicione à sua mão 1 Seiya de nível imediatamente superior.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 10,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 6,
+      "restauracoes": []
+    },
+    "imagens/dragon-v2.webp": {
+      "Nome": "Armadura de Dragão",
+      "Classe": "Armadura de Bronze",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><b style=\"font-size: 11.2px; color: rgb(255, 0, 0);\"><i>Descartar&nbsp;</i></b>-&nbsp;</div><span style=\"color: rgb(48, 45, 41); font-family: NeoSansW01, sans-serif; font-size: 11.2px; background-color: rgb(222, 204, 187);\">Destrua 2 Shiryu idênticos da sua mão. Em seguida, adicione à sua mão 1 Shiryu de nível imediatamente superior</span>",
+          "x": -5,
+          "y": 1,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 6,
+      "restauracoes": []
+    },
+    "imagens/cygne-v2.webp": {
+      "Nome": "Armadura de Cisne",
+      "Classe": "Armadura de Bronze",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><b style=\"font-size: 11.2px; color: rgb(255, 0, 0);\"><i>Descartar&nbsp;</i></b>-&nbsp;</div><span style=\"color: rgb(48, 45, 41); font-family: NeoSansW01, sans-serif; font-size: 11.2px; background-color: rgb(222, 204, 187);\">Destrua 2 Hyoga idênticos da sua mão. Em seguida, adicione à sua mão 1 Hyoga de nível imediatamente superior.</span>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 6,
+      "restauracoes": []
+    },
+    "imagens/andromede-v2.webp": {
+      "Nome": "Armadura de Andrômeda",
+      "Classe": "Armadura de Bronze",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><b style=\"font-size: 11.2px; color: rgb(255, 0, 0);\"><i>Descartar&nbsp;</i></b>-&nbsp;</div><span style=\"color: rgb(48, 45, 41); font-family: NeoSansW01, sans-serif; font-size: 11.2px; background-color: rgb(222, 204, 187);\">Destrua 2 Shun idênticos da sua mão. Em seguida, adicione à sua mão 1 Shun de nível imediatamente superior.</span>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 10,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 6,
+      "restauracoes": []
+    },
+    "imagens/phoenix-v2.webp": {
+      "Nome": "Armadura de Fênix",
+      "Classe": "Armadura de Bronze",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><b style=\"font-size: 11.2px; color: rgb(255, 0, 0);\"><i>Descartar&nbsp;</i></b>-&nbsp;</div><span style=\"color: rgb(48, 45, 41); font-family: NeoSansW01, sans-serif; font-size: 11.2px; background-color: rgb(222, 204, 187);\">Destrua 2 Ikki idênticos da sua mão. Em seguida, adicione à sua mão 1 Ikki de nível imediatamente superior.</span>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 6,
+      "restauracoes": []
+    },
+    "imagens/anneau.webp": {
+      "Nome": "Anel de Nibelungo",
+      "Classe": "Relíquia",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><em class=\"keyword miseenjeu\" style=\"font-size: 11.2px;\">Ao Jogar</em>&nbsp;-&nbsp;<span class=\"stat force\" title=\"Force\">Coloque esta carta na área de jogo de um adversário. Ele não pode equipar Armaduras enquanto não a enfrentar com 5&nbsp;<img alt=\"Force\" class=\"stat\" height=\"16\" src=\"https://hudjinn.github.io/saint_seiya/imagens/force.webp\" width=\"16\" style=\"font-size: 11.2px;\">&nbsp;para descartá-la.</span></div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect ground\"><font color=\"#007dc6\"><b><i>Entrada&nbsp;</i></b></font>- O jogador ativo aplica o efeito de \"Ao jogar\".</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 20,
+      "classeImgAlt": false,
+      "rank": 5,
+      "restauracoes": []
+    },
+    "imagens/balmung.webp": {
+      "Nome": "Balmung",
+      "Classe": "Relíquia",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><em class=\"keyword geler\">Congelar</em> - Destrua uma Relíquia em jogo ou&nbsp;uma Armadura&nbsp;<img alt=\"Rare (or)\" class=\"rank\" height=\"16\" src=\"imagens/rank4.webp\" title=\"Rare (or)\" width=\"16\">&nbsp;na pilha de descarte. Coloque Balmung na área de jogo do jogador afetado pelo efeito.</div>",
+          "x": 12,
+          "y": 14,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect ground\">Seu custo é reduzido em&nbsp;<span class=\"stat cosmos\" title=\"Cosmos\">1<img alt=\"Cosmos\" class=\"stat\" height=\"16\" src=\"imagens/cosmos.webp\" width=\"16\"></span>&nbsp;para cada Safira de Odin presente na Estátua de Odin.</div>",
+          "x": -1,
+          "y": -1,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 40,
+      "classeWExtra": 25,
+      "classeImgAlt": false,
+      "rank": 5,
+      "restauracoes": []
+    },
+    "imagens/athena-a.webp": {
+      "Nome": "Athéna",
+      "Classe": "",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\">Le <em>Chevalier</em> qu'<em>Athéna</em> affronte peut s'acquérir avec du <span class=\"stat cosmos\" title=\"Cosmos\"><img alt=\"Cosmos\" class=\"stat\" height=\"16\" src=\"imagens/cosmos.webp\" width=\"16\"></span> pour un coût identique à son coût en <span class=\"stat force\" title=\"Force\"><img alt=\"Force\" class=\"stat\" height=\"16\" src=\"imagens/force.webp\" width=\"16\"></span>.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect ground\"><font color=\"#007dc6\"><b><i>Entrada&nbsp;</i></b></font>- Chaque joueur récupère en main tous ses <em>Héros</em> marqués.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 5,
+      "restauracoes": []
+    },
+    "imagens/hilda.webp": {
+      "Nome": "Hilda",
+      "Classe": "",
+      "Efeitos": [
+        {
+          "texto": "<strong>2 PV</strong> par <em>Robe divine</em> dans votre deck.",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect ground\"><font color=\"#007dc6\"><b><i>Entrada&nbsp;</i></b></font>- S'il n'y a aucun <em>Guerrier</em> sur le terrain, défausser des cartes de la réserve jusqu'à révéler un <em>Personnage</em> <img alt=\"Rare (or)\" class=\"rank\" height=\"16\" src=\"imagens/rank4.webp\" title=\"Rare (or)\" width=\"16\"> qui remplace <em>Hilda</em> sur le terrain. Puis mélanger <em>Hilda</em> dans la réserve.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 5,
+      "restauracoes": []
+    },
+    "imagens/alpha.webp": {
+      "Nome": "Robe Divine Alpha (Dubhe)",
+      "Classe": "Armadura",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><b style=\"font-size: 11.2px; color: rgb(255, 0, 0);\"><i>Descartar&nbsp;</i></b>- Récupérer en main une <em>Armure de Bronze</em> de votre défausse.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 3,
+      "restauracoes": []
+    },
+    "imagens/beta.webp": {
+      "Nome": "Robe Divine Beta (Merak)",
+      "Classe": "Armadura",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><em class=\"keyword geler\">Geler</em> - Récupérer en main un de vos <em>Personnages</em> gelé.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 8,
+      "restauracoes": []
+    },
+    "imagens/gamma.webp": {
+      "Nome": "Robe Divine Gamma (Phecda)",
+      "Classe": "Armadura",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><em class=\"keyword geler\">Geler</em> - Défausser 1 carte puis jouer l'une après l'autre les 2 premières cartes de votre pioche. Les <em>Guerriers</em> ainsi joués gagnent <span class=\"stat force\" title=\"Force\">+2<img alt=\"Force\" class=\"stat\" height=\"16\" src=\"imagens/force.webp\" width=\"16\"></span>.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 8,
+      "restauracoes": []
+    },
+    "imagens/delta.webp": {
+      "Nome": "Robe Divine Delta (Megrez)",
+      "Classe": "Armadura",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><em class=\"keyword geler\">Geler</em> - Jouer 1 carte au hasard depuis la main d'un adversaire. A la fin du tour, la carte est placée dans la défausse de cet adversaire.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 8,
+      "restauracoes": []
+    },
+    "imagens/epsilon.webp": {
+      "Nome": "Robe Divine Epsilon (Alioth)",
+      "Classe": "Armadura",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><b style=\"font-size: 11.2px; color: rgb(255, 0, 0);\"><i>Descartar&nbsp;</i></b>- Geler 1 carte au hasard de la main d'un adversaire.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 8,
+      "restauracoes": []
+    },
+    "imagens/eta.webp": {
+      "Nome": "Robe Divine Eta (Benetnash)",
+      "Classe": "Armadura",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><em class=\"keyword geler\">Geler</em> - Retirer toutes les cartes du terrain. Seuls vos adversaires sont affectés par leurs effets de <span class=\"keyword sortie\">Sortie</span>.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 8,
+      "restauracoes": []
+    },
+    "imagens/zeta-mizar.webp": {
+      "Nome": "Robe Divine Zeta (Mizar)",
+      "Classe": "Armadura",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><b style=\"font-size: 11.2px; color: rgb(255, 0, 0);\"><i>Descartar&nbsp;</i></b>- Chaque adversaire blesse un <em>Personnage</em> <img alt=\"Peu Commun (argent)\" class=\"rank\" height=\"16\" src=\"imagens/rank3.webp\" title=\"Peu Commun (argent)\" width=\"16\"> de sa main.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 8,
+      "restauracoes": []
+    },
+    "imagens/zeta-alcor.webp": {
+      "Nome": "Robe Divine Zeta (Alcor)",
+      "Classe": "Armadura",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><em class=\"keyword geler\">Geler</em> - Détruire une <em>Armure</em> <img alt=\"Rare (or)\" class=\"rank\" height=\"16\" src=\"imagens/rank4.webp\" title=\"Rare (or)\" width=\"16\"> gelée.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 8,
+      "restauracoes": []
+    },
+    "imagens/siegfried.webp": {
+      "Nome": "Siegfried de Dubhe",
+      "Classe": "Guerreiro Deus",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><em class=\"keyword geler\">Geler</em> - Chaque adversaire gèle toutes les <em>Robes Divines</em> de sa main, sa défausse et en jeu.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect ground\"><em class=\"keyword sortie\">Sortie</em> - Chaque joueur gèle la première carte de sa pioche.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect out\"></div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 8,
+      "restauracoes": []
+    },
+    "imagens/hagen.webp": {
+      "Nome": "Hagen de Merak",
+      "Classe": "Guerreiro Deus",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><em class=\"keyword geler\">Geler</em> - Détruire un <em>Personnage</em> gelé.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect ground\"><em class=\"keyword sortie\">Sortie</em> - Chaque joueur détruit 1 de ses cartes gelée ou défausse 1 <em>Hyōga</em> en main.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect out\"></div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 8,
+      "restauracoes": []
+    },
+    "imagens/thor.webp": {
+      "Nome": "Thor de Phecda",
+      "Classe": "Guerreiro Deus",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><em class=\"keyword geler\">Geler</em> - Placer dans votre défausse tous les <em>Personnages</em> <img alt=\"Très Commun (vert)\" class=\"rank\" height=\"16\" src=\"imagens/rank1.webp\" title=\"Très Commun (vert)\" width=\"16\"> du terrain.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect ground\"><em class=\"keyword sortie\">Sortie</em> - Chaque joueur détruit 1 de ses <em>Personnages</em> marqué ou défausse 1 <em>Seiya</em> en main.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect out\"></div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 8,
+      "restauracoes": []
+    },
+    "imagens/alberich.webp": {
+      "Nome": "Albérich de Megrez",
+      "Classe": "Guerreiro Deus",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><em class=\"keyword geler\">Geler</em> - Chaque adversaire gèle tous les <em>Héros</em> de sa main, puis pioche 1 carte.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect ground\"><em class=\"keyword sortie\">Sortie</em> - Chaque joueur gèle 1 carte <img alt=\"Rare (or)\" class=\"rank\" height=\"16\" src=\"imagens/rank4.webp\" title=\"Rare (or)\" width=\"16\"> ou <img alt=\"Très Rare (bleu)\" class=\"rank\" height=\"16\" src=\"imagens/rank5.webp\" title=\"Très Rare (bleu)\" width=\"16\"> de sa main.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect out\"></div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 8,
+      "restauracoes": []
+    },
+    "imagens/fenrir.webp": {
+      "Nome": "Fenrir d'Alioth",
+      "Classe": "Guerreiro Deus",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><em class=\"keyword geler\">Geler</em> - Geler 1 carte de la défausse de chaque adversaire.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect ground\"><em class=\"keyword sortie\">Sortie</em> - Chaque joueur gèle 1 carte de sa main ou défausse un <em>Shiryu</em> en main.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect out\"></div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 8,
+      "restauracoes": []
+    },
+    "imagens/mime.webp": {
+      "Nome": "Mime de Benetnash",
+      "Classe": "Guerreiro Deus",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><em class=\"keyword geler\">Geler</em> - Défausser autant de cartes que souhaité puis piocher le même nombre de cartes +1.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect ground\"><em class=\"keyword sortie\">Sortie</em> - Chaque joueur gèle une <em>Armure</em> en main ou défausse un <em>Ikki</em> en main.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect out\"></div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 8,
+      "restauracoes": []
+    },
+    "imagens/syd.webp": {
+      "Nome": "Syd de Mizar",
+      "Classe": "Guerreiro Deus",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><em class=\"keyword geler\">Geler</em> - Chaque adversaire gèle toutes les <em>Armures</em> <img alt=\"Rare (or)\" class=\"rank\" height=\"16\" src=\"imagens/rank4.webp\" title=\"Rare (or)\" width=\"16\"> de sa défausse.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect ground\"><em class=\"keyword sortie\">Sortie</em> - Chaque joueur gèle tous les <em>Personnages</em> <img alt=\"Rare (or)\" class=\"rank\" height=\"16\" src=\"imagens/rank4.webp\" title=\"Rare (or)\" width=\"16\"> de sa défausse ou défausse un <em>Shun</em> en main.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect out\"></div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 8,
+      "restauracoes": []
+    },
+    "imagens/bud.webp": {
+      "Nome": "Bud d'Alcor",
+      "Classe": "Guerreiro",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><em class=\"keyword geler\">Geler</em> - Placer dans votre défausse une <em>Robe divine</em> en jeu d'un adversaire.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect ground\"><em class=\"keyword sortie\">Sortie</em> - Chaque joueur détruit ses <em>Guerriers divins</em> marqués.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 8,
+      "restauracoes": []
+    },
+    "imagens/freya.webp": {
+      "Nome": "Freya",
+      "Classe": "",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><em class=\"keyword miseenjeu\" style=\"font-size: 11.2px;\">Ao Jogar</em>&nbsp;- Piocher 1 carte.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect passive\"><em class=\"keyword marque\">Marqué</em> - Gagner <span class=\"stat energy\" title=\"Energie\">1<span class=\"icon-flash\"><svg viewBox=\"0 0 24 28\"><polygon points=\"13,2 3,16 11,16 9,26 21,10 13,10\" fill=\"#ffe066\" stroke=\"#ffed00\" stroke-width=\"2\" filter=\"drop-shadow(1px 1px 0 #000)\"></polygon></svg></span></span>.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 1,
+      "restauracoes": []
+    },
+    "imagens/seiya-argent-p.webp": {
+      "Nome": "Seiya de Pégasus",
+      "Classe": "Herói - Cavaleiro de Bronze",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><em class=\"keyword miseenjeu\" style=\"font-size: 11.2px;\">Ao Jogar</em>&nbsp;- Piocher autant de cartes que de <em>Seiya</em> dans votre défausse.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect passive\"><em class=\"keyword marque\">Marqué</em> - Ajouter <em>Seiya Transcendé</em> à votre main.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 3,
+      "restauracoes": []
+    },
+    "imagens/shiryu-argent-p.webp": {
+      "Nome": "Shiryu de Dragão",
+      "Classe": "Herói - Cavaleiro de Bronze",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><em class=\"keyword miseenjeu\" style=\"font-size: 11.2px;\">Ao Jogar</em>&nbsp;- Blesser un <em>Personnage</em> <img alt=\"Commun (bronze)\" class=\"rank\" height=\"16\" src=\"imagens/rank2.webp\" title=\"Commun (bronze)\" width=\"16\"> de votre main pour piocher 2 cartes.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect passive\"><em class=\"keyword marque\">Marqué</em> - Ajouter <em>Shiryu Transcendé</em> à votre main.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 3,
+      "restauracoes": []
+    },
+    "imagens/hyoga-argent-p.webp": {
+      "Nome": "Hyoga de Cisne",
+      "Classe": "Herói - Cavaleiro de Bronze",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><em class=\"keyword miseenjeu\" style=\"font-size: 11.2px;\">Ao Jogar</em>&nbsp;- Piocher 1 carte pour chaque autre <em>Hyoga</em> combattant à ses côtés.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect passive\"><em class=\"keyword marque\">Marqué</em> - Ajouter <em>Hyoga Transcendé</em> à votre main.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 3,
+      "restauracoes": []
+    },
+    "imagens/shun-argent-p.webp": {
+      "Nome": "Shun de Andrômeda",
+      "Classe": "Herói - Cavaleiro de Bronze",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><em class=\"keyword miseenjeu\" style=\"font-size: 11.2px;\">Ao Jogar</em>&nbsp;- Si <em>Shun</em> affronte une carte du terrain possédant un coût en <span class=\"stat cosmos\" title=\"Cosmos\"><img alt=\"Cosmos\" class=\"stat\" height=\"16\" src=\"imagens/cosmos.webp\" width=\"16\"></span> ; piocher 1 carte.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect passive\"><em class=\"keyword marque\">Marqué</em> - Ajouter <em>Shun Transcendé</em> à votre main.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 3,
+      "restauracoes": []
+    },
+    "imagens/ikki-argent-p.webp": {
+      "Nome": "Ikki de Fênix",
+      "Classe": "Herói - Cavaleiro de Bronze",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><em class=\"keyword miseenjeu\" style=\"font-size: 11.2px;\">Ao Jogar</em>&nbsp;- Détruire un <em>Personnage</em> de votre défausse pour piocher 2 cartes.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect passive\"><em class=\"keyword marque\">Marqué</em> - Ajouter <em>Ikki Transcendé</em> à votre main.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 3,
+      "restauracoes": []
+    },
+    "imagens/seiya-trans.webp": {
+      "Nome": "Seiya de Pégasus",
+      "Classe": "Herói Transcendido - Cavaleiro de Bronze",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\">Quando esta carta for marcada, descartada ou destruída coloque-a fora da área de jogo.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 0.95
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 4,
+      "restauracoes": []
+    },
+    "imagens/shiryu-trans.webp": {
+      "Nome": "Shiryu de Dragão",
+      "Classe": "Herói Transcendido - Cavaleiro de Bronze",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\">Quando esta carta for marcada, descartada ou destruída coloque-a fora da área de jogo.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 0.95
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 4,
+      "restauracoes": []
+    },
+    "imagens/hyoga-trans.webp": {
+      "Nome": "Hyoga de Cisne",
+      "Classe": "Herói Transcendido - Cavaleiro de Bronze",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\">Quando esta carta for marcada, descartada ou destruída coloque-a fora da área de jogo.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 0.95
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 4,
+      "restauracoes": []
+    },
+    "imagens/shun-trans.webp": {
+      "Nome": "Shun de Andrômeda",
+      "Classe": "Herói Transcendido - Cavaleiro de Bronze",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\">Quando esta carta for marcada, descartada ou destruída coloque-a fora da área de jogo.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 0.95
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 4,
+      "restauracoes": []
+    },
+    "imagens/ikki-trans.webp": {
+      "Nome": "Ikki de Fênix",
+      "Classe": "Herói Transcendido - Cavaleiro de Bronze",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\">Quando esta carta for marcada, descartada ou destruída coloque-a fora da área de jogo.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 0.95
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 4,
+      "restauracoes": []
+    },
+    "imagens/athena-p.webp": {
+      "Nome": "Atena",
+      "Classe": "",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect passive\"><em class=\"keyword marque\">Marcar</em>&nbsp;- Você pode pegar um Herói marcado de um oponente para a sua mão.</div>",
+          "x": 6,
+          "y": 7,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect ground\"><font color=\"#007dc6\"><b><i>Entrada&nbsp;</i></b></font>- Cada jogador pode embaralhar sua pilha de descarte com seu deck adicionando também seu Herói Transcendido.</div>",
+          "x": 2,
+          "y": -2,
+          "w": "",
+          "fontSize": 0.95
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 5,
+      "restauracoes": []
+    },
+    "imagens/poseidon.webp": {
+      "Nome": "Poseidon",
+      "Classe": "",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><font color=\"#ff0000\"><b><i>Ferir&nbsp;</i></b></font>- Destrua um Herói&nbsp;<img alt=\"Très Commun (vert)\" class=\"rank\" height=\"16\" src=\"https://hudjinn.github.io/saint_seiya/imagens/rank1.webp\" title=\"Très Commun (vert)\" width=\"16\" style=\"font-size: 11.2px;\">&nbsp;da sua mão. Em seguida, recupere um Herói&nbsp;<img alt=\"Peu Commun (argent)\" class=\"rank\" height=\"16\" src=\"https://hudjinn.github.io/saint_seiya/imagens/rank3.webp\" title=\"Peu Commun (argent)\" width=\"16\" style=\"font-size: 11.2px;\">&nbsp;da sua pilha de descarte.</div>",
+          "x": 5,
+          "y": 12,
+          "w": "",
+          "fontSize": 0.9
+        },
+        {
+          "texto": "<div class=\"effect ground\"><em class=\"keyword vaincu\">Derrotado</em> - Recupere para a sua mão&nbsp;todas as cartas&nbsp;<img alt=\"Très Rare (bleu)\" class=\"rank\" height=\"16\" src=\"imagens/rank5.webp\" title=\"Très Rare (bleu)\" width=\"16\">&nbsp;do campo de batalha e da pilha de descarte do campo, bem como todas as Relíquias em jogo.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "230px",
+          "fontSize": 0.9
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 5,
+      "restauracoes": []
+    },
+    "imagens/kanon.webp": {
+      "Nome": "Kanon de Dragão Marinho",
+      "Classe": "General Marina",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><em class=\"keyword blesser\" data-orig=\"Blesser\">Ferir</em>&nbsp;- Coloque na sua pilha de descarte uma Relíquia em jogo.</div>",
+          "x": 3,
+          "y": 34,
+          "w": "",
+          "fontSize": 0.95
+        },
+        {
+          "texto": "<div class=\"effect ground\"><em class=\"keyword sortie\" data-orig=\"Sortie\">Saída</em> - Adicione um marcador de -1 PV a cada Pilar em jogo.</div>",
+          "x": 11,
+          "y": 25,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect pilier\"></div>",
+          "x": 23,
+          "y": -271,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 4,
+      "restauracoes": []
     },
     "imagens/sorento.webp": {
       "Nome": "Sorento de Sirene",
       "Classe": "General Marina",
       "Efeitos": [
         {
-          "texto": "<div class=\"effect play\"><em class=\"keyword miseenjeu\">Mise en jeu</em> - Désigner un autre joueur, ce joueur peut se défausser d'un <em>Héros</em>. S'il ne se défausse pas, piocher une carte.</div>",
-          "x": 0,
-          "y": 0
+          "texto": "<div class=\"effect play\"><em class=\"keyword miseenjeu\" style=\"font-size: 11.2px;\">Ao Jogar</em>&nbsp;- Indique outro jogador; este jogador pode descartar um Herói. Se não descartar, compre uma carta.</div>",
+          "x": 2,
+          "y": 21,
+          "w": "",
+          "fontSize": 1
         },
         {
-          "texto": "<div class=\"effect ground\">Ses coûts ne peuvent pas être réduits.</div>",
-          "x": 0,
-          "y": 0
+          "texto": "<div class=\"effect ground\">Seus custos não podem ser reduzidos.</div>",
+          "x": 9,
+          "y": 19,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect pilier\"></div>",
+          "x": -25,
+          "y": -315,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 50,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 4,
+      "restauracoes": []
+    },
+    "imagens/isaak.webp": {
+      "Nome": "Isaak de Kraken",
+      "Classe": "General Marina",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\">Todos os Guardas lutando ao seu lado ficam congelados em vez de serem descartados.</div>",
+          "x": 4,
+          "y": 35,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect play\"><em class=\"keyword geler\">Congelar</em>&nbsp;- Coloque na sua pilha de descarte um Guarda marcado.</div>",
+          "x": 13,
+          "y": 27,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect pilier\"></div>",
+          "x": 3,
+          "y": -314,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 4,
+      "restauracoes": []
+    },
+    "imagens/kassa.webp": {
+      "Nome": "Kasa de Lymnades",
+      "Classe": "General Marina",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><i>Kasa ganha +1&nbsp;</i><img alt=\"Force\" class=\"stat\" height=\"16\" src=\"https://hudjinn.github.io/saint_seiya/imagens/force.webp\" width=\"16\" style=\"font-size: 11.2px;\">&nbsp;<i>para cada Armadura&nbsp;</i><img alt=\"Rare (or)\" class=\"rank\" height=\"16\" src=\"https://hudjinn.github.io/saint_seiya/imagens/rank4.webp\" title=\"Rare (or)\" width=\"16\" style=\"font-size: 11.2px;\">&nbsp;<i>na sua pilha de descarte</i>.</div>",
+          "x": 6,
+          "y": 38,
+          "w": "",
+          "fontSize": 0.95
+        },
+        {
+          "texto": "<div class=\"effect ground\">Seu custo aumenta em +1&nbsp;<img alt=\"Force\" class=\"stat\" height=\"16\" src=\"https://hudjinn.github.io/saint_seiya/imagens/force.webp\" width=\"16\" style=\"font-size: 11.2px;\">&nbsp;para cada Personagem que o enfrenta.</div>",
+          "x": 5,
+          "y": 29,
+          "w": "210px",
+          "fontSize": 1
         },
         {
           "texto": "<div class=\"effect pilier\"></div>",
           "x": 0,
-          "y": 0
+          "y": -313,
+          "w": "",
+          "fontSize": 1
         }
       ],
-      "restauracoes": [],
-      "rank": 4
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 4,
+      "restauracoes": []
+    },
+    "imagens/krishna.webp": {
+      "Nome": "Krishna de Chrysaor",
+      "Classe": "General Marina",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><em class=\"keyword defausser\">Descartar</em> - Você pode enfrentar uma carta marcada.</div>",
+          "x": 4,
+          "y": 32,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect ground\"><em class=\"keyword sortie\">Saída</em> - Cada jogador congela um Herói da sua mão ou destrói uma de suas cartas marcadas.</div>",
+          "x": 11,
+          "y": 26,
+          "w": "210px",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect pilier\"></div>",
+          "x": -25,
+          "y": -308,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 10,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 4,
+      "restauracoes": []
+    },
+    "imagens/io.webp": {
+      "Nome": "Io de Scylla",
+      "Classe": "General Marina",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect passive\"><em class=\"keyword marque\">Marcado</em> - Cada adversário fere um Personagem da sua mão com, no mínimo, 2<span class=\"stat force\" title=\"Force\"><img alt=\"Force\" class=\"stat\" height=\"16\" src=\"imagens/force.webp\" width=\"16\"></span>.</div>",
+          "x": 4,
+          "y": 36,
+          "w": "240px",
+          "fontSize": 0.9
+        },
+        {
+          "texto": "<div class=\"effect ground\"><font color=\"#ff0000\"><b><i>Derrotado&nbsp;</i></b></font>- Destrua todos os Personagens usados para combatê-lo com menos de 2<span class=\"stat force\" title=\"Force\"><img alt=\"Force\" class=\"stat\" height=\"16\" src=\"imagens/force.webp\" width=\"16\"></span>.</div>",
+          "x": 9,
+          "y": 28,
+          "w": "225px",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect pilier\"></div>",
+          "x": 2,
+          "y": -297,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 4,
+      "restauracoes": []
+    },
+    "imagens/bian.webp": {
+      "Nome": "Bian de Cavalo Marinho",
+      "Classe": "General Marina",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect passive\"><em class=\"keyword marque\">Marcado</em> -&nbsp;<span class=\"stat cosmos\" title=\"Cosmos\">Cada adversário deve ferir um Personagem da sua mão que possua, no mínimo, 2&nbsp;<img alt=\"Cosmos\" class=\"stat\" height=\"16\" src=\"imagens/cosmos.webp\" width=\"16\"></span>.</div>",
+          "x": 5,
+          "y": 37,
+          "w": "245px",
+          "fontSize": 0.85
+        },
+        {
+          "texto": "<div class=\"effect ground\">Fira um Personagem da sua mão que possua&nbsp;<img alt=\"Cosmos\" class=\"stat\" height=\"16\" src=\"https://hudjinn.github.io/saint_seiya/imagens/cosmos.webp\" width=\"16\" style=\"font-size: 11.2px;\">&nbsp;para reduzir em 2&nbsp;<img alt=\"Force\" class=\"stat\" height=\"16\" src=\"https://hudjinn.github.io/saint_seiya/imagens/force.webp\" width=\"16\" style=\"font-size: 11.2px;\">&nbsp;de Bian de Cavalo Marinho.</div>",
+          "x": 11,
+          "y": 30,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect pilier\"></div>",
+          "x": 4,
+          "y": -317,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 4,
+      "restauracoes": []
+    },
+    "imagens/thetis.webp": {
+      "Nome": "Thetis de Sereia",
+      "Classe": "Marina",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><em class=\"keyword miseenjeu\" style=\"font-size: 11.2px;\">Ao Jogar</em>&nbsp;- <em>Thetis</em> ganha&nbsp;<span class=\"stat force\" title=\"Force\">+1<img alt=\"Force\" class=\"stat\" height=\"16\" src=\"imagens/force.webp\" width=\"16\"></span> para cada Guarda lutando ao seu lado.</div>",
+          "x": 3,
+          "y": 20,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect ground\">Os Heróis não podem enfrentar outro Personagem enquanto Thetis estiver no campo de batalha.</div>",
+          "x": 0,
+          "y": 9,
+          "w": "250px",
+          "fontSize": 0.95
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 3,
+      "restauracoes": []
+    },
+    "imagens/soldat-1.webp": {
+      "Nome": "Soldado Marina",
+      "Classe": "Guarda Marina",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect passive\"><em class=\"keyword marque\">Marcado</em> - Pegue um marcador&nbsp;<em>Arme de la Balance</em> de outro jogador.</div>",
+          "x": 8,
+          "y": -4,
+          "w": "230px",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect ground\">Descarte 1 carta para enfrentar um Marina.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 1,
+      "restauracoes": []
+    },
+    "imagens/soldat-2.webp": {
+      "Nome": "Soldado Marina",
+      "Classe": "Guarda Marina",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect passive\"><em class=\"keyword marque\">Marcado</em>&nbsp;- Olhe a mão de um adversário e congele um dos Personagens na mão dele.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect ground\">Todos os Guardas custam&nbsp;<span class=\"stat force\" title=\"Force\">+1<img alt=\"Force\" class=\"stat\" height=\"16\" src=\"imagens/force.webp\" width=\"16\"></span>.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 1,
+      "restauracoes": []
+    },
+    "imagens/soldat-3.webp": {
+      "Nome": "Soldado Marina",
+      "Classe": "Guarda Marina",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect passive\"><em class=\"keyword marque\">Marcado</em>&nbsp;- Troque este Soldado Marina por um Marina marcado de outro jogador..</div>",
+          "x": -1,
+          "y": 14,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect ground\">O custo&nbsp;<img alt=\"Force\" class=\"stat\" height=\"16\" src=\"https://hudjinn.github.io/saint_seiya/imagens/force.webp\" width=\"16\" style=\"font-size: 11.2px;\">&nbsp;dos Personagens adjacentes a este Soldado Marina passa a ser de<span class=\"stat cosmos\" title=\"Cosmos\"><img alt=\"Cosmos\" class=\"stat\" height=\"16\" src=\"imagens/cosmos.webp\" width=\"16\"></span>.</div>",
+          "x": 1,
+          "y": 4,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 1,
+      "restauracoes": []
+    },
+    "imagens/soldat-4.webp": {
+      "Nome": "Soldado Marina",
+      "Classe": "Guarda Marina",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect passive\"><em class=\"keyword marque\">Marcado</em>&nbsp;- Activer un effet de <span class=\"keyword miseenjeu\">Mise en jeu</span> d'une carte de votre défausse.</div>",
+          "x": 1,
+          "y": 22,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect ground\">Les autres cartes du terrain ont l'effet de <span class=\"keyword sortie\">Sortie</span> : Le joueur actif blesse un <em>Personnage</em> de sa main.</div>",
+          "x": 0,
+          "y": 11,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 1,
+      "restauracoes": []
+    },
+    "imagens/trident.webp": {
+      "Nome": "Trident de Poséidon",
+      "Classe": "Relíquia",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\">A votre tour, vous pouvez placer un jeton <strong>-1PV</strong> sur cette carte <em>(3 max.). Vous pouvez retirer les jetons <strong>-1PV</strong> de cette carte pour réduire d'autant le coût d'un </em>Marina<em> en <span class=\"stat force\" title=\"Force\"><img alt=\"Force\" class=\"stat\" height=\"16\" src=\"imagens/force.webp\" width=\"16\"></span> et en <span class=\"stat cosmos\" title=\"Cosmos\"><img alt=\"Cosmos\" class=\"stat\" height=\"16\" src=\"imagens/cosmos.webp\" width=\"16\"></span>, puis défausser le </em>Trident de Poséidon*.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect ground\"><font color=\"#007dc6\"><b><i>Entrada&nbsp;</i></b></font>- Chaque joueur défausse sa main et pioche autant de cartes qu'il en a ainsi défaussées.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 5,
+      "restauracoes": []
+    },
+    "imagens/dragon-mers.webp": {
+      "Nome": "Ecaille du Dragon des Mers",
+      "Classe": "Armadura",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect ground\"><font color=\"#007dc6\"><b><i>Entrada&nbsp;</i></b></font>- Le joueur actif désigne un adversaire qui se défausse au hasard d'une carte de sa main. Le joueur actif peut affronter la carte défaussée.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect ground\"><em class=\"keyword sortie\">Sortie</em> - Toutes les <em>Armures</em> du terrain sont défaussées.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 4,
+      "restauracoes": []
+    },
+    "imagens/sirene.webp": {
+      "Nome": "Ecaille de la Sirène",
+      "Classe": "Armadura",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><b style=\"font-size: 11.2px; color: rgb(255, 0, 0);\"><i>Descartar&nbsp;</i></b>- Regarder la main d'un adversaire, vous pouvez échanger un de ses <em>Chevaliers</em> contre une carte de votre main de rang identique.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect ground\"><font color=\"#007dc6\"><b><i>Entrada&nbsp;</i></b></font>- Chaque joueur peut blesser un <em>Personnage</em> de sa main pour récupérer en main un <em>Héros</em> de rang identique de sa défausse.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 4,
+      "restauracoes": []
+    },
+    "imagens/kraken.webp": {
+      "Nome": "Ecaille du Kraken",
+      "Classe": "Armadura",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><b style=\"font-size: 11.2px; color: rgb(255, 0, 0);\"><i>Descartar&nbsp;</i></b>- Récupérer en main un de vos <em>Personnages</em> marqués possédant du <span class=\"stat cosmos\" title=\"Cosmos\"><img alt=\"Cosmos\" class=\"stat\" height=\"16\" src=\"imagens/cosmos.webp\" width=\"16\"></span>.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect ground\"><font color=\"#007dc6\"><b><i>Entrada&nbsp;</i></b></font>- Chaque joueur révèle la première carte de sa pioche, si c'est un <em>Personnage</em> sans coût en <span class=\"stat cosmos\" title=\"Cosmos\"><img alt=\"Cosmos\" class=\"stat\" height=\"16\" src=\"imagens/cosmos.webp\" width=\"16\"></span> il est blessé, sinon il la récupère en main.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 4,
+      "restauracoes": []
+    },
+    "imagens/lyumnades.webp": {
+      "Nome": "Ecaille des Lyumnades",
+      "Classe": "Armadura",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><b style=\"font-size: 11.2px; color: rgb(255, 0, 0);\"><i>Descartar&nbsp;</i></b>- Appliquer l'effet d'<span class=\"keyword arrivee\">Arrivée</span> d'une carte du terrain.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect ground\"><font color=\"#007dc6\"><b><i>Entrada&nbsp;</i></b></font>- Appliquer chaque effet de <span class=\"keyword sortie\">Sortie</span> de la dernière à la première carte du terrain.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 4,
+      "restauracoes": []
+    },
+    "imagens/chrysaor.webp": {
+      "Nome": "Ecaille de Chrysaor",
+      "Classe": "Armadura",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><b style=\"font-size: 11.2px; color: rgb(255, 0, 0);\"><i>Descartar&nbsp;</i></b>- Réduire de <span class=\"stat force\" title=\"Force\">-4<img alt=\"Force\" class=\"stat\" height=\"16\" src=\"imagens/force.webp\" width=\"16\"></span> et -<span class=\"stat cosmos\" title=\"Cosmos\">4<img alt=\"Cosmos\" class=\"stat\" height=\"16\" src=\"imagens/cosmos.webp\" width=\"16\"></span> le coût d'un <em>Personnage</em> <img alt=\"Rare (or)\" class=\"rank\" height=\"16\" src=\"imagens/rank4.webp\" title=\"Rare (or)\" width=\"16\"> du terrain.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect ground\"><font color=\"#007dc6\"><b><i>Entrada&nbsp;</i></b></font>- Chaque joueur peut jouer une <em>Armure</em> de sa main pour piocher une carte.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 4,
+      "restauracoes": []
+    },
+    "imagens/scylla.webp": {
+      "Nome": "Ecaille de Scylla",
+      "Classe": "Armadura",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect ground\"><font color=\"#007dc6\"><b><i>Entrada&nbsp;</i></b></font>- Chaque joueur pioche 5 cartes puis défausse 5 cartes de sa main.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect ground\"><em class=\"keyword vaincu\">Vaincu</em> - Chaque joueur gèle une carte de sa main.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 4,
+      "restauracoes": []
+    },
+    "imagens/cheval-mers.webp": {
+      "Nome": "Ecaille du Cheval des Mers",
+      "Classe": "Armadura",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><em class=\"keyword miseenjeu\" style=\"font-size: 11.2px;\">Ao Jogar</em>&nbsp;- Un <em>Héros</em> en jeu gagne <span class=\"stat cosmos\" title=\"Cosmos\">+1<img alt=\"Cosmos\" class=\"stat\" height=\"16\" src=\"imagens/cosmos.webp\" width=\"16\"></span>.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect ground\"><font color=\"#007dc6\"><b><i>Entrada&nbsp;</i></b></font>- Chaque joueur peut se défausser d'une <em>Armure</em> pour piocher 2 cartes.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 4,
+      "restauracoes": []
+    },
+    "imagens/sirene-marine.webp": {
+      "Nome": "Ecaille de la Sirène Marine",
+      "Classe": "Armadura",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><b style=\"font-size: 11.2px; color: rgb(255, 0, 0);\"><i>Descartar&nbsp;</i></b>- Piocher une carte par <em>Marina</em> et <em>Ecaille</em> présents sur le terrain.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect ground\"><em class=\"keyword sortie\">Sortie</em> - En commençant par le joueur actif, chaque joueur place la première carte de sa pioche dans la défausse d'un autre joueur ou la gèle si c'est une <em>Armure de Bronze</em>.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 3,
+      "restauracoes": []
+    },
+    "imagens/pilier-atlantique-nord.webp": {
+      "Nome": "Pilier de l'Océan Atlantique Nord",
+      "Classe": "Pilar",
+      "Efeitos": [
+        {
+          "texto": "<strong>+1 PV</strong> par <em>Marina</em> dans votre deck.",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect ground\">Chaque <em>Marina</em> gagne <span class=\"stat force\" title=\"Force\">+1<img alt=\"Force\" class=\"stat\" height=\"16\" src=\"imagens/force.webp\" width=\"16\"></span> pour détruire ce pilier.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 0,
+      "restauracoes": []
+    },
+    "imagens/pilier-atlantique-sud.webp": {
+      "Nome": "Pilier de l'Océan Atlantique Sud",
+      "Classe": "Pilar",
+      "Efeitos": [
+        {
+          "texto": "<strong>+1 PV</strong> par <em>Chevalier de Bronze</em> différent dans votre deck.",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect ground\">Chaque <em>Chevalier de Bronze</em> gagne <span class=\"stat force\" title=\"Force\">+1<img alt=\"Force\" class=\"stat\" height=\"16\" src=\"imagens/force.webp\" width=\"16\"></span> pour détruire ce pilier.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 0,
+      "restauracoes": []
+    },
+    "imagens/pilier-arctique.webp": {
+      "Nome": "Pilier de l'Océan Arctique",
+      "Classe": "Pilar",
+      "Efeitos": [
+        {
+          "texto": "<strong>+1 PV</strong> par joueur, si vous êtes le joueur possédant le plus de cartes marquées.",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect ground\">Chaque <em>Hyoga</em> gagne <span class=\"stat force\" title=\"Force\">+1<img alt=\"Force\" class=\"stat\" height=\"16\" src=\"imagens/force.webp\" width=\"16\"></span> pour détruire ce pilier.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 0,
+      "restauracoes": []
+    },
+    "imagens/pilier-antarctique.webp": {
+      "Nome": "Pilier de l'Océan Antarctique",
+      "Classe": "Pilar",
+      "Efeitos": [
+        {
+          "texto": "<strong>+1 PV</strong> pour chacun de vos <em>Chevaliers</em> détruits.",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect ground\">Chaque <em>Ikki</em> gagne <span class=\"stat force\" title=\"Force\">+1<img alt=\"Force\" class=\"stat\" height=\"16\" src=\"imagens/force.webp\" width=\"16\"></span> pour détruire ce pilier.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 0,
+      "restauracoes": []
+    },
+    "imagens/pilier-indien.webp": {
+      "Nome": "Pilier de l'Océan Indien",
+      "Classe": "Pilar",
+      "Efeitos": [
+        {
+          "texto": "<strong>+3 PV</strong> si vous possédez au moins 5 <em>Personnages</em> marqués.",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect ground\">Chaque <em>Shiryu</em> gagne <span class=\"stat force\" title=\"Force\">+1<img alt=\"Force\" class=\"stat\" height=\"16\" src=\"imagens/force.webp\" width=\"16\"></span> pour détruire ce pilier.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 0,
+      "restauracoes": []
+    },
+    "imagens/pilier-pacifique-sud.webp": {
+      "Nome": "Pilier de l'Océan Pacifique Sud",
+      "Classe": "Pilar",
+      "Efeitos": [
+        {
+          "texto": "<strong>+1 PV</strong> par <em>Armure</em> <img src=\"imagens/rank4.webp\" width=\"16\" height=\"16\" class=\"rank\" alt=\"Rare (or)\" title=\"Rare (or)\"> dans votre deck.",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect ground\">Chaque <em>Shun</em> gagne <span class=\"stat force\" title=\"Force\">+1<img alt=\"Force\" class=\"stat\" height=\"16\" src=\"imagens/force.webp\" width=\"16\"></span> pour détruire ce pilier.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 0,
+      "restauracoes": []
+    },
+    "imagens/pilier-pacifique-nord.webp": {
+      "Nome": "Pilier de l'Océan Pacifique Nord",
+      "Classe": "Pilar",
+      "Efeitos": [
+        {
+          "texto": "<strong>+1 PV</strong> par <em>Personnage</em> <img src=\"imagens/rank5.webp\" width=\"16\" height=\"16\" class=\"rank\" alt=\"Très Rare (bleu)\" title=\"Très Rare (bleu)\"> dans votre deck.",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect ground\">Chaque <em>Seiya</em> gagne <span class=\"stat force\" title=\"Force\">+1<img alt=\"Force\" class=\"stat\" height=\"16\" src=\"imagens/force.webp\" width=\"16\"></span> pour détruire ce pilier.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 0,
+      "restauracoes": []
+    },
+    "imagens/seiya-or-h.webp": {
+      "Nome": "Seiya de Pégase",
+      "Classe": "Herói - Cavaleiro de Bronze",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><b style=\"font-size: 11.2px; color: rgb(255, 0, 0);\"><i>Descartar&nbsp;</i></b>/ <em class=\"keyword talent\">Talent</em> - Détruire un <em>Héros</em> de votre main ou de votre défausse pour acquérir un <em>Personnage</em> du terrain.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect passive\"><em class=\"keyword marque\">Marqué</em> - Gagner <span class=\"stat energy\" title=\"Energie\">2<span class=\"icon-flash\"><svg viewBox=\"0 0 24 28\"><polygon points=\"13,2 3,16 11,16 9,26 21,10 13,10\" fill=\"#ffe066\" stroke=\"#ffed00\" stroke-width=\"2\" filter=\"drop-shadow(1px 1px 0 #000)\"></polygon></svg></span></span>.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 4,
+      "restauracoes": []
+    },
+    "imagens/shiryu-or-h.webp": {
+      "Nome": "Shiryu du Dragon",
+      "Classe": "Herói - Cavaleiro de Bronze",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><b style=\"font-size: 11.2px; color: rgb(255, 0, 0);\"><i>Descartar&nbsp;</i></b>/ <em class=\"keyword talent\">Talent</em> - Blesser un <em>Héros</em> <img alt=\"Très Commun (vert)\" class=\"rank\" height=\"16\" src=\"imagens/rank1.webp\" title=\"Très Commun (vert)\" width=\"16\">, <img alt=\"Commun (bronze)\" class=\"rank\" height=\"16\" src=\"imagens/rank2.webp\" title=\"Commun (bronze)\" width=\"16\"> ou <img alt=\"Peu Commun (argent)\" class=\"rank\" height=\"16\" src=\"imagens/rank3.webp\" title=\"Peu Commun (argent)\" width=\"16\"> de votre défausse pour acquérir un <em>Personnage</em> du terrain.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect passive\"><em class=\"keyword marque\">Marqué</em> - Placer dans votre main un autre de vos <em>Personnages</em> blessés.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 4,
+      "restauracoes": []
+    },
+    "imagens/hyoga-or-h.webp": {
+      "Nome": "Hyoga du Cygne",
+      "Classe": "Herói - Cavaleiro de Bronze",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><b style=\"font-size: 11.2px; color: rgb(255, 0, 0);\"><i>Descartar&nbsp;</i></b>/ <em class=\"keyword talent\">Talent</em> - Geler un autre <em>Héros</em> en jeu pour acquérir un <em>Personnage</em> du terrain.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect passive\"><em class=\"keyword marque\">Marqué</em> - Placer dans votre main un <em>Personnage</em> de votre défausse.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 4,
+      "restauracoes": []
+    },
+    "imagens/shun-or-h.webp": {
+      "Nome": "Shun d'Andromède",
+      "Classe": "Herói - Cavaleiro de Bronze",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><b style=\"font-size: 11.2px; color: rgb(255, 0, 0);\"><i>Descartar&nbsp;</i></b>/ <em class=\"keyword talent\">Talent</em> - Détruire une carte de votre main pour placer une carte du terrain dans votre main.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect passive\"><em class=\"keyword marque\">Marqué</em> - Placer dans votre main une <em>Armure</em> de votre défausse.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 4,
+      "restauracoes": []
+    },
+    "imagens/ikki-or-h.webp": {
+      "Nome": "Ikki du Phoenix",
+      "Classe": "Herói - Cavaleiro de Bronze",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><b style=\"font-size: 11.2px; color: rgb(255, 0, 0);\"><i>Descartar&nbsp;</i></b>/ <em class=\"keyword talent\">Talent</em> - Placer un de vos <em>Héros</em> <img alt=\"Très Commun (vert)\" class=\"rank\" height=\"16\" src=\"imagens/rank1.webp\" title=\"Très Commun (vert)\" width=\"16\"> détruits sur votre pioche pour anéantir le <em>Spectre</em> face à votre pion <em>Héros</em>.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect passive\"><em class=\"keyword marque\">Marqué</em> - Placer dans votre défausse un de vos <em>Personnages</em> <img alt=\"Très Commun (vert)\" class=\"rank\" height=\"16\" src=\"imagens/rank1.webp\" title=\"Très Commun (vert)\" width=\"16\"> ou <img alt=\"Commun (bronze)\" class=\"rank\" height=\"16\" src=\"imagens/rank2.webp\" title=\"Commun (bronze)\" width=\"16\"> détruits.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 4,
+      "restauracoes": []
+    },
+    "imagens/seiya-bleu.webp": {
+      "Nome": "Seiya de Pégase",
+      "Classe": "Herói divino - Cavaleiro de Bronze",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><em class=\"keyword miseenjeu\" style=\"font-size: 11.2px;\">Ao Jogar</em>&nbsp;- Recharger vos <em>Sens</em> et réduire de <span class=\"stat force\" title=\"Force\">3<img alt=\"Force\" class=\"stat\" height=\"16\" src=\"imagens/force.webp\" width=\"16\"></span> le coût des <em>Personnages</em> des <em>Enfers</em>. Lorsqu'elle est défaussée, écarter cette carte du jeu et placer votre pion <em>Héros</em> à la <em>Porte des Enfers</em>.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 5,
+      "restauracoes": []
+    },
+    "imagens/shiryu-bleu.webp": {
+      "Nome": "Shiryu du Dragon",
+      "Classe": "Herói divino - Cavaleiro de Bronze",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><em class=\"keyword miseenjeu\" style=\"font-size: 11.2px;\">Ao Jogar</em>&nbsp;- Recharger vos <em>Sens</em> et réduire de <span class=\"stat force\" title=\"Force\">3<img alt=\"Force\" class=\"stat\" height=\"16\" src=\"imagens/force.webp\" width=\"16\"></span> le coût des <em>Personnages</em> des <em>Enfers</em>. Lorsqu'elle est défaussée, écarter cette carte du jeu et placer votre pion <em>Héros</em> à la <em>Porte des Enfers</em>.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 5,
+      "restauracoes": []
+    },
+    "imagens/hyoga-bleu.webp": {
+      "Nome": "Hyoga du Cygne",
+      "Classe": "Herói divino - Cavaleiro de Bronze",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><em class=\"keyword miseenjeu\" style=\"font-size: 11.2px;\">Ao Jogar</em>&nbsp;- Recharger vos <em>Sens</em> et réduire de <span class=\"stat force\" title=\"Force\">3<img alt=\"Force\" class=\"stat\" height=\"16\" src=\"imagens/force.webp\" width=\"16\"></span> le coût des <em>Personnages</em> des <em>Enfers</em>. Lorsqu'elle est défaussée, écarter cette carte du jeu et placer votre pion <em>Héros</em> à la <em>Porte des Enfers</em>.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 5,
+      "restauracoes": []
+    },
+    "imagens/shun-bleu.webp": {
+      "Nome": "Shun d'Andromède",
+      "Classe": "Herói divino - Cavaleiro de Bronze",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><em class=\"keyword miseenjeu\" style=\"font-size: 11.2px;\">Ao Jogar</em>&nbsp;- Recharger vos <em>Sens</em> et réduire de <span class=\"stat force\" title=\"Force\">3<img alt=\"Force\" class=\"stat\" height=\"16\" src=\"imagens/force.webp\" width=\"16\"></span> le coût des <em>Personnages</em> des <em>Enfers</em>. Lorsqu'elle est défaussée, écarter cette carte du jeu et placer votre pion <em>Héros</em> à la <em>Porte des Enfers</em>.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 5,
+      "restauracoes": []
+    },
+    "imagens/ikki-bleu.webp": {
+      "Nome": "Ikki du Phoenix",
+      "Classe": "Herói divino - Cavaleiro de Bronze",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><em class=\"keyword miseenjeu\" style=\"font-size: 11.2px;\">Ao Jogar</em>&nbsp;- Recharger vos <em>Sens</em> et réduire de <span class=\"stat force\" title=\"Force\">3<img alt=\"Force\" class=\"stat\" height=\"16\" src=\"imagens/force.webp\" width=\"16\"></span> le coût des <em>Personnages</em> des <em>Enfers</em>. Lorsqu'elle est défaussée, écarter cette carte du jeu et placer votre pion <em>Héros</em> à la <em>Porte des Enfers</em>.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 5,
+      "restauracoes": []
+    },
+    "imagens/pegase-v3.webp": {
+      "Nome": "Armure de Pégase",
+      "Classe": "Armadura de Bronze",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><b style=\"font-size: 11.2px; color: rgb(255, 0, 0);\"><i>Descartar&nbsp;</i></b>- Détruire 2 <em>Seiya</em> de votre main pour ajouter dans votre main un <em>Seiya</em> de rang immédiatement supérieur à l'un des 2 détruits.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 2,
+      "restauracoes": []
+    },
+    "imagens/dragon-v3.webp": {
+      "Nome": "Armure du Dragon",
+      "Classe": "Armadura de Bronze",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><b style=\"font-size: 11.2px; color: rgb(255, 0, 0);\"><i>Descartar&nbsp;</i></b>- Détruire 2 <em>Shiryu</em> de votre main pour ajouter dans votre main un <em>Shiryu</em> de rang immédiatement supérieur à l'un des 2 détruits.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 2,
+      "restauracoes": []
+    },
+    "imagens/cygne-v3.webp": {
+      "Nome": "Armure du Cygne",
+      "Classe": "Armadura de Bronze",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><b style=\"font-size: 11.2px; color: rgb(255, 0, 0);\"><i>Descartar&nbsp;</i></b>- Détruire 2 <em>Hyoga</em> de votre main pour ajouter dans votre main un <em>Hyoga</em> de rang immédiatement supérieur à l'un des 2 détruits.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 2,
+      "restauracoes": []
+    },
+    "imagens/andromede-v3.webp": {
+      "Nome": "Armure d'Andromède",
+      "Classe": "Armadura de Bronze",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><b style=\"font-size: 11.2px; color: rgb(255, 0, 0);\"><i>Descartar&nbsp;</i></b>- Détruire 2 <em>Shun</em> de votre main pour ajouter dans votre main un <em>Shun</em> de rang immédiatement supérieur à l'un des 2 détruits.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 2,
+      "restauracoes": []
+    },
+    "imagens/phoenix-v3.webp": {
+      "Nome": "Armure du Phoenix",
+      "Classe": "Armadura de Bronze",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><b style=\"font-size: 11.2px; color: rgb(255, 0, 0);\"><i>Descartar&nbsp;</i></b>- Détruire 2 <em>Ikki</em> de votre main pour ajouter dans votre main un <em>Ikki</em> de rang immédiatement supérieur à l'un des 2 détruits.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 2,
+      "restauracoes": []
+    },
+    "imagens/athena-h.webp": {
+      "Nome": "Athéna",
+      "Classe": "",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><em class=\"keyword detruire\">Détruire</em> - Le coût des <em>Personnages</em> des <em>Enfers</em> est réduit de <span class=\"stat force\" title=\"Force\">4<img alt=\"Force\" class=\"stat\" height=\"16\" src=\"imagens/force.webp\" width=\"16\"></span>.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect ground\"><font color=\"#007dc6\"><b><i>Entrada&nbsp;</i></b></font>- Chaque joueur gagne un <em>Sens</em>.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 5,
+      "restauracoes": []
+    },
+    "imagens/shaka-h.webp": {
+      "Nome": "Shaka de la Vierge",
+      "Classe": "Cavaleiro de Ouro",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><em class=\"keyword detruire\">Détruire</em> - Anéantir jusqu'à 3 <em>Renégats</em> de votre pile d'<em>Entrave</em>.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect ground\"><font color=\"#007dc6\"><b><i>Entrada&nbsp;</i></b></font>- Mélanger les <em>Personnages</em> des <em>Enfers</em> dans le <em>Styx</em>.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect out\"></div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 4,
+      "restauracoes": []
+    },
+    "imagens/doko-h.webp": {
+      "Nome": "Doko de la Balance",
+      "Classe": "Cavaleiro de Ouro",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><em class=\"keyword miseenjeu\" style=\"font-size: 11.2px;\">Ao Jogar</em>&nbsp;- Défausser un jeton <em>Arme de la Balance</em> pour que ce <em>Doko</em> gagne <span class=\"stat force\" title=\"Force\">+2<img alt=\"Force\" class=\"stat\" height=\"16\" src=\"imagens/force.webp\" width=\"16\"></span>.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect ground\"><font color=\"#007dc6\"><b><i>Entrada&nbsp;</i></b></font>- Chaque joueur gagne un jeton <em>Arme de la Balance</em>.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect out\"></div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 4,
+      "restauracoes": []
+    },
+    "imagens/milo-h.webp": {
+      "Nome": "Milo du Scorpion",
+      "Classe": "Cavaleiro de Ouro",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\"><em class=\"keyword miseenjeu\" style=\"font-size: 11.2px;\">Ao Jogar&nbsp;</em>- Blesser un <em>Personnage</em> de votre main ou retourner un jeton <strong>PV</strong>.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect play\"><em class=\"keyword blesser\">Blesser</em> - Chaque joueur détruit un <em>Chevalier</em> de sa défausse.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect out\"></div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 4,
+      "restauracoes": []
+    },
+    "imagens/aiolos-h.webp": {
+      "Nome": "Aiolos du Sagittaire",
+      "Classe": "Cavaleiro de Ouro",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect ground\"><font color=\"#007dc6\"><b><i>Entrada&nbsp;</i></b></font>- Défausser les autres <em>Personnages</em> <img alt=\"Rare (or)\" class=\"rank\" height=\"16\" src=\"imagens/rank4.webp\" title=\"Rare (or)\" width=\"16\"> du terrain, puis compléter le terrain.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect out\"></div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 4,
+      "restauracoes": []
+    },
+    "imagens/vieux-maitre.webp": {
+      "Nome": "Vieux Maître",
+      "Classe": "",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\">Un <em>Shiryu</em> joué aux côtés du <em>Vieux Maître</em> gagne <span class=\"stat cosmos\" title=\"Cosmos\">+1<img alt=\"Cosmos\" class=\"stat\" height=\"16\" src=\"imagens/cosmos.webp\" width=\"16\"></span>.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect play\"><b style=\"font-size: 11.2px; color: rgb(255, 0, 0);\"><i>Descartar&nbsp;</i></b>- Le <em>Spectre</em> à la <em>Porte des Enfers</em> est placé sous le <em>Styx</em>.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 1,
+      "restauracoes": []
+    },
+    "imagens/epee.webp": {
+      "Nome": "Epée d'Hadès",
+      "Classe": "Relíquia",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\">Vous ne subissez pas les effets de <span class=\"keyword sortie\">Sortie</span> des <em>Personnages</em> des <em>Enfers</em>, ni aucun effet des <em>Gardes Squelettes</em>.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect play\"><b style=\"font-size: 11.2px; color: rgb(255, 0, 0);\"><i>Descartar&nbsp;</i></b>- Un <em>Personnage</em> en jeu gagne autant de <span class=\"stat force\" title=\"Force\"><img alt=\"Force\" class=\"stat\" height=\"16\" src=\"imagens/force.webp\" width=\"16\"></span> que le nombre de <em>Personnages</em> dans votre pile d'<em>Entrave</em>.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 5,
+      "restauracoes": []
+    },
+    "imagens/harpe.webp": {
+      "Nome": "Harpe de Pandore",
+      "Classe": "Relíquia",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect play\">Lorsqu'un joueur anéantit <em>Pandore</em>, il place la <em>Harpe de Pandore</em> dans sa défausse.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect play\"><em class=\"keyword miseenjeu\" style=\"font-size: 11.2px;\">Ao Jogar</em>&nbsp;- Placer un <em>Spectre</em> des <em>Enfers</em> dans une pile d'<em>Entrave</em>.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 5,
+      "restauracoes": []
+    },
+    "imagens/thanatos.webp": {
+      "Nome": "Thanatos",
+      "Classe": "",
+      "Efeitos": [
+        {
+          "texto": "Nombre de <em>Spectres</em> et <em>Renégats</em> dans votre <em>Néant</em>.",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect ground\"><em class=\"keyword sortie\">Sortie</em> - Chaque adversaire détruit une carte <img alt=\"Rare (or)\" class=\"rank\" height=\"16\" src=\"imagens/rank4.webp\" title=\"Rare (or)\" width=\"16\"> de sa main ou de sa défausse.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 0,
+      "restauracoes": []
+    },
+    "imagens/hypnos.webp": {
+      "Nome": "Hypnos",
+      "Classe": "",
+      "Efeitos": [
+        {
+          "texto": "Votre niveau de <em>Sens</em> le plus élevé.",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect ground\"><em class=\"keyword sortie\">Sortie</em> - Chaque adversaire gèle les <em>Héros</em> de sa main, puis pioche jusqu'à avoir 5 cartes en main.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 0,
+      "restauracoes": []
+    },
+    "imagens/gigant.webp": {
+      "Nome": "Gigant du Cyclope",
+      "Classe": "Espectro",
+      "Efeitos": [
+        {
+          "texto": "<strong>-1 PV</strong> supplémentaire par <em>Personnage</em> en dessous de ce <em>Gigant</em> dans la pile d'<em>Entrave</em>.",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect ground\"><em class=\"keyword sortie\">Sortie</em> - Chaque joueur dépense <span class=\"ame\" title=\"Ame\">2&nbsp;<img alt=\"Ame\" class=\"stat\" height=\"16\" src=\"imagens/ame.webp\" width=\"16\"></span> ou détruit un de ses <em>Personnages</em> marqués.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 0,
+      "restauracoes": []
+    },
+    "imagens/cube.webp": {
+      "Nome": "Cube du Dullahan",
+      "Classe": "Espectro",
+      "Efeitos": [
+        {
+          "texto": "<strong>+1 PV</strong> par <em>Cube</em>, <em>Mills</em> ou <em>Ochs</em> dans votre <em>Néant</em> et _-1 PV_ par <em>Cube</em>, <em>Mills</em> ou <em>Ochs</em> dans votre pile d'<em>Entrave</em>.",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect entrave\">Lorsque vous devez défausser votre <em>Armure</em> équipée, gelez-la au lieu de la défausser.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 0,
+      "restauracoes": []
+    },
+    "imagens/mills.webp": {
+      "Nome": "Mills de l'Elfe",
+      "Classe": "Espectro",
+      "Efeitos": [
+        {
+          "texto": "<strong>+1 PV</strong> par <em>Cube</em>, <em>Mills</em> ou <em>Ochs</em> dans votre <em>Néant</em> et _-1 PV_ par <em>Cube</em>, <em>Mills</em> ou <em>Ochs</em> dans votre pile d'<em>Entrave</em>.",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect entrave\">Blessez un <em>Personnage</em> de votre main pour affronter un <em>Personnage</em> des <em>Enfers</em>.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 0,
+      "restauracoes": []
+    },
+    "imagens/ochs.webp": {
+      "Nome": "Ochs de la Gorgone",
+      "Classe": "Espectro",
+      "Efeitos": [
+        {
+          "texto": "<strong>+1 PV</strong> par <em>Cube</em>, <em>Mills</em> ou <em>Ochs</em> dans votre <em>Néant</em> et _-1 PV_ par <em>Cube</em>, <em>Mills</em> ou <em>Ochs</em> dans votre pile d'<em>Entrave</em>.",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect entrave\">Détruisez un de vos <em>Personnages</em> blessés pour combattre un <em>Personnage</em>.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 0,
+      "restauracoes": []
+    },
+    "imagens/seiya-sagittaire.webp": {
+      "Nome": "Seiya du Sagittaire",
+      "Classe": "",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect ground\"><font color=\"#007dc6\"><b><i>Entrada&nbsp;</i></b></font>- Si un <em>Chevalier d'Argent</em> est présent sur le terrain ; retirer 1 <img alt=\"Flamme\" class=\"stat\" height=\"16\" src=\"imagens/flamme.webp\" title=\"Flamme\" width=\"12\">.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect ground\"><em class=\"keyword vaincu\">Vaincu</em> - Retirer <em>Seiya du Sagittaire</em> du jeu puis récupérer en main 1 carte depuis la défausse du terrain.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 4,
+      "restauracoes": []
+    },
+    "imagens/ikki-lion.webp": {
+      "Nome": "Ikki du Lion",
+      "Classe": "",
+      "Efeitos": [
+        {
+          "texto": "<div class=\"effect ground\"><font color=\"#007dc6\"><b><i>Entrada&nbsp;</i></b></font>- Chaque joueur détruit une carte de sa défausse pour gagner autant de jetons <strong>PV</strong> que son coût en <span class=\"stat force\" title=\"Force\"><img alt=\"Force\" class=\"stat\" height=\"16\" src=\"imagens/force.webp\" width=\"16\"></span>.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        },
+        {
+          "texto": "<div class=\"effect ground\"><em class=\"keyword vaincu\">Vaincu</em> - Placer une de vos cartes détruites dans votre main, puis détruire cet <em>Ikki</em>.</div>",
+          "x": 0,
+          "y": 0,
+          "w": "",
+          "fontSize": 1
+        }
+      ],
+      "stackX": 0,
+      "stackY": 0,
+      "stackWidth": "",
+      "nomeWExtra": 0,
+      "classeWExtra": 0,
+      "classeImgAlt": false,
+      "rank": 4,
+      "restauracoes": []
     }
   },
   "classes_trad": {
@@ -126,10 +4911,12 @@
     "Héros": "Herói",
     "Héros - Chevalier d'Or": "Herói - Cavaleiro de Ouro",
     "Héros - Chevalier de Bronze": "Herói - Cavaleiro de Bronze",
+    "Héros Transcendé - Chevalier de Bronze": "Herói Transcendido - Cavaleiro de Bronze",
     "Héros divin - Chevalier de Bronze": "Herói divino - Cavaleiro de Bronze",
+    "Maison": "Casa",
     "Pilier": "Pilar",
     "Relique": "Relíquia",
-    "Renégat": "Cavaleiro Renegado",
+    "Renégat": "Renegado",
     "Spectre": "Espectro",
     "Spectre - Garde": "Espectro - Guarda"
   },
