@@ -5506,6 +5506,12 @@
     "image": "imagens/aiolos-h.webp",
     "effects": [
       {
+        "type": "pv",
+        "text":"*+2PV per Athéna dans votre jeu.",
+        "html": "<div class=\"pv\">*+2PV per <em>Athéna</em> dans votre jeu.</div>",
+        "icons": []
+      },
+      {
         "text": "Arrivée - Défausser les autres Personnages du terrain, puis compléter le terrain.",
         "html": "<div class=\"effect ground\"><em class=\"keyword arrivee\">Arrivée</em> - Défausser les autres <em>Personnages</em> <img alt=\"Rare (or)\" class=\"rank\" height=\"16\" src=\"/imagens/rank4.webp\" title=\"Rare (or)\" width=\"16\"/> du terrain, puis compléter le terrain.</div>",
         "icons": [

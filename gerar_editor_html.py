@@ -280,6 +280,10 @@ html = """<!DOCTYPE html>
             background: #eee6f9;
             color: #302d29;
         }
+        .effect.entrave {
+            background: #a07db6;
+            color: #302d29;
+        }
         /* Keywords especiais - cartas e lista */
 
         em.keyword {
@@ -1228,7 +1232,7 @@ html += """
             div.querySelectorAll('em.keyword').forEach(function(em){
                 em.textContent = em.getAttribute('data-orig') || em.textContent;
             });
-            return div.textContent.replace(/\s+/g,' ').trim();
+            return div.textContent.replace(/\\s+/g,' ').trim();
         }
         var cartasEditadas = {};
         document.querySelectorAll('.carta').forEach(function(cartaDiv, idx) {
@@ -1270,7 +1274,7 @@ html += """
                     div.querySelectorAll('em.keyword').forEach(function(em){
                         em.textContent = em.getAttribute('data-orig') || em.textContent;
                     });
-                    return div.textContent.replace(/\s+/g,' ').trim();
+                    return div.textContent.replace(/\\s+/g,' ').trim();
                 }
                 var textoComp = textoSemTraduKeyword(texto);
                 var textoOrigComp = textoSemTraduKeyword(textoOrig);
@@ -1423,8 +1427,8 @@ html += """
     window.fbFazerLogin = fbFazerLogin;
     // Firebase não aceita ".", "/", "#", "$", "[", "]" nas chaves — codifica/decodifica
     function fbEncodeKey(k) {
-        return k.replace(/%/g,'%25').replace(/\./g,'%2E').replace(/#/g,'%23')
-                .replace(/\$/g,'%24').replace(/\//g,'%2F').replace(/\[/g,'%5B').replace(/\]/g,'%5D');
+        return k.replace(/%/g,'%25').replace(/\\./g,'%2E').replace(/#/g,'%23')
+                .replace(/\\$/g,'%24').replace(/\\//g,'%2F').replace(/\\[/g,'%5B').replace(/\\]/g,'%5D');
     }
     function fbDecodeKey(k) { return decodeURIComponent(k); }
     function fbEncodeData(data) {
@@ -1828,7 +1832,7 @@ html += """
             var classeEl = container.querySelector('.edit-classe');
             if (!classeEl || !classeEl.dataset.altImg) return;
             if (classeEl.dataset.imgAlt === '1') {
-                var origUrl = classeEl.dataset.altImg.replace(/_1\.png$/, '.png');
+                var origUrl = classeEl.dataset.altImg.replace(/_1\\.png$/, '.png');
                 classeEl.style.backgroundImage = 'url(' + origUrl + ')';
                 delete classeEl.dataset.imgAlt;
                 this.classList.remove('active');
